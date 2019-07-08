@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e05029b9eb4c4a40bdd67b7619c70d1, type: 3}
+  m_Name: AllRecipes
+  m_EditorClassIdentifier: 
+  Value:
+  - {fileID: 11400000, guid: def46f832889c3c438d6f853843dcb3b, type: 2}
+  - {fileID: 11400000, guid: 4e242135ba3c1fd4f95bb292e287aa82, type: 2}
+  - {fileID: 11400000, guid: daef55885666f33488304f39111816b6, type: 2}
+  - {fileID: 11400000, guid: b6022d09d71f2eb48bca80462bf9fbf0, type: 2}
+  - {fileID: 11400000, guid: fd8fb0930082e514cb183b60ddfe17b6, type: 2}
+  - {fileID: 11400000, guid: 355bd553debe8f848b42c7e465d33c56, type: 2}
+  - {fileID: 11400000, guid: 072e8c50f688c06488d21d9bc70ab89c, type: 2}
+  - {fileID: 11400000, guid: 1f38a8f2ab5462e4c8094957fa6b55d7, type: 2}
+  - {fileID: 11400000, guid: 680518cb458edd6468add539c52f80f6, type: 2}
+  - {fileID: 11400000, guid: 128b157d035595440a47f7a3c180ed5f, type: 2}
+  - {fileID: 11400000, guid: a9c40887ed0f2104ba31522faf2d5e52, type: 2}
+  - {fileID: 11400000, guid: 50b2708768728e34a85fc2346e74790a, type: 2}
+  - {fileID: 11400000, guid: 40f078097944c434590c3daa4eaf6c7e, type: 2}
+  OnAdd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventCraftingRecipe, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnRemove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventCraftingRecipe, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventCraftingRecipe, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

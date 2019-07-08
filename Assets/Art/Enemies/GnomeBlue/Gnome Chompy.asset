@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Gnome Chompy
+  m_EditorClassIdentifier: 
+  ID: 5
+  DisplayName: Gnome Chompy
+  Portrait: {fileID: 21300000, guid: e0be62ea78b407d4a88f12efea2ca7d4, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: 1ba330900667d6e458a59c8e91f5b60c, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 149564609b03a5e47990ad3f4a7173ab, type: 2}
+  MinTimeBetweenRandomAnims: 5
+  MaxTimeBetweenRandomAnims: 10
+  Idle: {fileID: 7400000, guid: ba4e0e485ec632f49a585dd1cf03d559, type: 2}
+  Flinch: {fileID: 7400000, guid: 2f21ab662e80e644589f4190af4c1299, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: a9e49339cba25324a989dd1af9bbb2dd, type: 2}
+  AttackExecute: {fileID: 7400000, guid: cc19cb043525a1e47b6a1d668f69f9b2, type: 2}
+  AfterAttack: {fileID: 7400000, guid: a7d95d9186334e04aac416177755e55b, type: 2}
+  Death: {fileID: 7400000, guid: ac35f40247d9925459067e9f6aace722, type: 2}
+  Dead: {fileID: 7400000, guid: 48183e8433e02854e8ead6e942af1fec, type: 2}
+  Walking: {fileID: 7400000, guid: 799dc1cba72454846bcb69fdd96918b5, type: 2}
+  DeadSprite: {fileID: 21300064, guid: e0be62ea78b407d4a88f12efea2ca7d4, type: 3}
+  HealthAtLevel0: 6000
+  DamageAtLevel0: 60
+  TimeBetweenAttacks: 3.5
+  AttackPrepTime: 1
+  AttackExecuteTime: 0.75
+  HasElementalDamage: 0
+  ElementalDamageAtLevel0: 0
+  ElementalDamageType: {fileID: 0}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: 212b5a7b5274ba54eafbf973b21ed3f8, type: 2}
+      dropChance: 0.25
+    - item: {fileID: 11400000, guid: 3b3b3aae3ef904f4fa27af0aa93725d8, type: 2}
+      dropChance: 0.6
+    - item: {fileID: 11400000, guid: c95e6bfd76411ee4ba7c1167255243a9, type: 2}
+      dropChance: 0.1
+    - item: {fileID: 11400000, guid: aadd84ecb64a69d438a811a67a041056, type: 2}
+      dropChance: 0.5
+  OneAndDoneAttacker: 0

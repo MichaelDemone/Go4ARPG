@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd852e8e2711b8429950a5d8d3cfeb4, type: 3}
+  m_Name: MovingAverageWithStdev
+  m_EditorClassIdentifier: 
+  WindowSize: 20
+  TimeBetweenAverages: 30

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: QuestGiverOverride
+  m_Controller: {fileID: 9100000, guid: 185763869f43b944cb0edf06b4584962, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0cc4526054dd9fa4e8ab47cf579b388a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 526b3fe6017c85140beb11c97383bf2a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 40cadd83a7c8dcf47822d4290f1f2526, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 758d32a3ef1611d429446991e41091fe, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4d9e123cda379d9488744f217eddf4e1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 469ce1e080255ae42bb09a7bf8882de2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e303e6380c21c1b439c0bec1e3c03f87, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 66ed1d68dac696545bde9805c12f3aad, type: 2}

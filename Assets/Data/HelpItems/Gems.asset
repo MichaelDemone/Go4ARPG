@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b0f103af1d5704ba8427bdd363c124, type: 3}
+  m_Name: Gems
+  m_EditorClassIdentifier: 
+  DisplayName: Enchanters
+  Description: 'Gems/Jewels/Crystals are needed for enchanting. Their strength can
+    be guessed based on their name, so keep tabs on which enchanter give you the strongest
+    enchanting damage! '
+  SeeAlso:
+  - {fileID: 11400000, guid: c2f3a266a03b47a4a8d15c222a48c7a2, type: 2}
+  - {fileID: 11400000, guid: 09fe193fdd3c14144988bde4da51c37d, type: 2}

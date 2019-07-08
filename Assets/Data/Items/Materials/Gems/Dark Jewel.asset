@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7252a251baf7f3449083c0069d65613, type: 3}
+  m_Name: Dark Jewel
+  m_EditorClassIdentifier: 
+  ID: 56
+  Name: Dark Jewel
+  Image: {fileID: 21300000, guid: 3db01da6ca163684cb2d4b5332b8462c, type: 3}
+  Value: 75
+  Description: An equisite opaque gemstone that radiates evil magic.
+  Rarity: 2
+  Type: {fileID: 11400000, guid: 2b8306db4b1f89b46951140b9e7f9220, type: 2}
+  GemTypeType: 15

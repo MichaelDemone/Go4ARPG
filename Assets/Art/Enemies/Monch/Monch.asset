@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Monch
+  m_EditorClassIdentifier: 
+  ID: 9
+  DisplayName: Monch
+  Portrait: {fileID: 21300000, guid: 198bd0adffe491b48940b2fbe19b0a32, type: 3}
+  SizeOfSprite: {x: 32, y: 32}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: f90fc67c3287ca749b519e9ad9a59f70, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: f55407dce871a18439040cc69ec91174, type: 2}
+  MinTimeBetweenRandomAnims: 2
+  MaxTimeBetweenRandomAnims: 20
+  Idle: {fileID: 7400000, guid: fdad327da4d434648b19b7c46ec006d9, type: 2}
+  Flinch: {fileID: 7400000, guid: fe81f150077401c4d9665854d74f5a48, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: 2065f6e7fd9629d4cb4df64e78962a23, type: 2}
+  AttackExecute: {fileID: 7400000, guid: f11a83ca3cf0fd04a9e043635b6dd3ba, type: 2}
+  AfterAttack: {fileID: 7400000, guid: 39835d42554a6854685c357faf4254fb, type: 2}
+  Death: {fileID: 7400000, guid: 8bdca9a98387abd4a840ead360121abb, type: 2}
+  Dead: {fileID: 7400000, guid: 7d60b7f8379db93439a8f6cc54e8a8d4, type: 2}
+  Walking: {fileID: 7400000, guid: 708288adc19db63429f741587fe751ab, type: 2}
+  DeadSprite: {fileID: 21300050, guid: 198bd0adffe491b48940b2fbe19b0a32, type: 3}
+  BaseHealth: 100
+  BaseDamage: 25
+  TimeBetweenAttacks: 0
+  AttackPrepTime: 2
+  AttackExecuteTime: 0.25
+  HasElementalDamage: 0
+  BaseElementalDamage: 0
+  ElementalDamageType: {fileID: 0}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses:
+      - ElementalType: {fileID: 11400000, guid: 5c34954cafed2ab42a99410f0b4a7918,
+          type: 2}
+        DamageMultiplier: 0
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: 10f87211d9f03ba468a8554aae870c84, type: 2}
+      dropChance: 0.3
+    - item: {fileID: 11400000, guid: 11fbe90a2780405449ad82a1ae93b06e, type: 2}
+      dropChance: 1
+    - item: {fileID: 11400000, guid: a464ae4e3daf624418d389df8584622f, type: 2}
+      dropChance: 0.2
+  OneAndDoneAttacker: 1

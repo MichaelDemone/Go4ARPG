@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2c329e95bdfd747b5a9a4dce04670b, type: 3}
+  m_Name: 4 - Craft Feather Hat
+  m_EditorClassIdentifier: 
+  ID: 8
+  DisplayName: Craft Feathered Hat
+  Level: 4
+  NextQuest: {fileID: 11400000, guid: 3bdbfb305ca5b514fbfb60ae208f0bdc, type: 2}
+  StartConversation:
+    Text: Nice new sword! You know what would go great with that sword? A new hat!
+      You can craft a new feathered hat with a gnome hat and a feather by <b>tapping
+      on the anvil in the top right</b> and then clicking on the crafting recipe that
+      requires 1 feather and 1 gnome hat! If you can't make one yet, you <b>may not
+      have enough materials</b>, so you'll have to <b>defeat a few chickens and gnomes</b>
+      to get the material.
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: "Good job! You can equip that hat through the journal (top right book),
+      going to the equip tab, and clicking the headgear box. The question mark in
+      the bottom right can help you out if you get lost.\n\nIt won't actually help
+      you in any way but you're gonna look so good. \n"
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 30
+  MaxEnemyDropTime: 60
+  MinEnemyDropDistance: 15
+  MaxEnemyDropDistance: 50
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints: []
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}
+      MinLevel: 5
+      MaxLevel: 10
+      DropChance: 2
+    - Follower: {fileID: 11400000, guid: f9cb20d3635f5ec40935188217f021cd, type: 2}
+      MinLevel: 5
+      MaxLevel: 10
+      DropChance: 1
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: be36c9fe256f2e943ba7565f6c48e8fa, type: 2}
+  AmountToReach: 1

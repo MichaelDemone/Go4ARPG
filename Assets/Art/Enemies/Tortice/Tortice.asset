@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Tortice
+  m_EditorClassIdentifier: 
+  ID: 6
+  DisplayName: Tortice
+  Portrait: {fileID: 21300000, guid: 53b7a9fe0c9d6ee4eb17b25284e4e741, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: 46b0d60246267124b9a453ee90c0e718, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 57f0becf7ce1e924ebe6dec25d1b81b6, type: 2}
+  MinTimeBetweenRandomAnims: 10
+  MaxTimeBetweenRandomAnims: 30
+  Idle: {fileID: 7400000, guid: 2ddb68678878a2e4381cfd94f6b7ca8e, type: 2}
+  Flinch: {fileID: 7400000, guid: 8993c73d5380abf43bcd2edbe9ed46bc, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: f724427e7c720a842ad7322129a95946, type: 2}
+  AttackExecute: {fileID: 7400000, guid: 08e811ec7850ad64a9c5929b684277f0, type: 2}
+  AfterAttack: {fileID: 7400000, guid: 35c52f2afabb45842a5e04c012820730, type: 2}
+  Death: {fileID: 7400000, guid: 5c237755bbb467043a619588f75e6316, type: 2}
+  Dead: {fileID: 7400000, guid: b5229944de194e14bbc9550c4094ea10, type: 2}
+  Walking: {fileID: 7400000, guid: 828a491050c436b41a3e78408eb61500, type: 2}
+  DeadSprite: {fileID: 21300060, guid: 53b7a9fe0c9d6ee4eb17b25284e4e741, type: 3}
+  BaseHealth: 48.8
+  BaseDamage: 10
+  TimeBetweenAttacks: 10
+  AttackPrepTime: 0.25
+  AttackExecuteTime: 0.375
+  HasElementalDamage: 1
+  BaseElementalDamage: 20
+  ElementalDamageType: {fileID: 11400000, guid: 2e3d517a6eddcc14bb76e30ceae83a92,
+    type: 2}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: 49a395b3e2e7c7b4aa598c53811f7e7d, type: 2}
+      dropChance: 0.25
+    - item: {fileID: 11400000, guid: d8b9e342a823b224798d3b1d7d6bdf71, type: 2}
+      dropChance: 0.05
+    - item: {fileID: 0}
+      dropChance: 0
+  OneAndDoneAttacker: 0

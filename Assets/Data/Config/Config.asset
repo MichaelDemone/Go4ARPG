@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59be99384ad993949a61dc4d27c0f04c, type: 3}
+  m_Name: Config
+  m_EditorClassIdentifier: 
+  RarityToColor:
+  - Rarity: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    WeaponLevelPerTap:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.025177047
+        outSlope: 0.025177047
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.041499782
+      - serializedVersion: 3
+        time: 5000
+        value: 99
+        inSlope: -0.00082691
+        outSlope: -0.00082691
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.076549515
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - Rarity: 1
+    Color: {r: 0, g: 1, b: 0, a: 1}
+    WeaponLevelPerTap:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.020777065
+        outSlope: 0.020777065
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.02811245
+      - serializedVersion: 3
+        time: 6500
+        value: 99
+        inSlope: 0.0014105184
+        outSlope: 0.0014105184
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.038821965
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - Rarity: 2
+    Color: {r: 0, g: 1, b: 1, a: 1}
+    WeaponLevelPerTap:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.018217804
+        outSlope: 0.018217804
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.030120483
+      - serializedVersion: 3
+        time: 8000
+        value: 99
+        inSlope: 0.00018436775
+        outSlope: 0.00018436775
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.030120483
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - Rarity: 3
+    Color: {r: 1, g: 0, b: 1, a: 1}
+    WeaponLevelPerTap:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.022586076
+        outSlope: 0.022586076
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.03992016
+      - serializedVersion: 3
+        time: 10000
+        value: 100
+        inSlope: -0.000000020117525
+        outSlope: -0.000000020117525
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.075848244
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - Rarity: 4
+    Color: {r: 1, g: 1, b: 0, a: 1}
+    WeaponLevelPerTap:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.0131409895
+        outSlope: 0.0131409895
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.043912176
+      - serializedVersion: 3
+        time: 12500
+        value: 100
+        inSlope: 0.000705113
+        outSlope: 0.000705113
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.08183633
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - Rarity: 5
+    Color: {r: 0, g: 0, b: 0, a: 1}
+    WeaponLevelPerTap:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4

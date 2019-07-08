@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Green Gnome
+  m_EditorClassIdentifier: 
+  ID: 15
+  DisplayName: Green Gnome
+  Portrait: {fileID: 21300000, guid: 560c1c6bacec80b42beabace4159e48e, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: 18490713dd8bc1441bcda360acb69605, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: f3c04ab5bb2b84146bcd08e65a08b089, type: 2}
+  MinTimeBetweenRandomAnims: 30
+  MaxTimeBetweenRandomAnims: 180
+  Idle: {fileID: 7400000, guid: 46bdadda6d120a042bba979a91908f35, type: 2}
+  Flinch: {fileID: 7400000, guid: 7b2c18ab0774c6b4091801e90869c643, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: 164aa9ddb23b74940a8df45e4c2c3646, type: 2}
+  AttackExecute: {fileID: 7400000, guid: e0ef732776b28734aa4f19e00166ed06, type: 2}
+  AfterAttack: {fileID: 7400000, guid: 57ec7093ea5c35240bc7600f5c2c93d9, type: 2}
+  Death: {fileID: 7400000, guid: ffbeb4db412c88b45ae41590b0c026a6, type: 2}
+  Dead: {fileID: 7400000, guid: d1018a116e017ce4fa0e4a56f1330bba, type: 2}
+  Walking: {fileID: 7400000, guid: 3a4a77268e2965449827f915e6502947, type: 2}
+  DeadSprite: {fileID: 21300050, guid: 560c1c6bacec80b42beabace4159e48e, type: 3}
+  BaseHealth: 100
+  BaseDamage: 17
+  TimeBetweenAttacks: 0
+  AttackPrepTime: 0.75
+  AttackExecuteTime: 0.25
+  HasElementalDamage: 0
+  BaseElementalDamage: 0
+  ElementalDamageType: {fileID: 0}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items: []
+  OneAndDoneAttacker: 0

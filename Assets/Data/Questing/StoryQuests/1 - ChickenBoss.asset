@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c0be4fcee030147a69fac0bb634505, type: 3}
+  m_Name: 1 - ChickenBoss
+  m_EditorClassIdentifier: 
+  ID: 1
+  DisplayName: Defeat Chicken Boss
+  Level: 1
+  NextQuest: {fileID: 11400000, guid: 7772697f7dd01f34b9f246fc0cdf5cbd, type: 2}
+  StartConversation:
+    Text: 'Welcome to <color=red>Adventure Trek 2 Pre-Alpha!</color>
+
+
+      In this game you fight enemies and get cool loot!
+
+
+      To start off, lets teach you about fighting. A chicken is going to approach
+      you who has the intent to harm you. You must fight it! To defeat the evil chicken
+      you must simply tap on the screen.'
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: Great job taking care of that chicken. Don't worry about hurting the chicken,
+      it and all the others are just clones of me gone wrong that can't feel anything.
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 9999999
+  MaxEnemyDropTime: 100000000
+  MinEnemyDropDistance: 9999999
+  MaxEnemyDropDistance: 100000000
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints: []
+  Enemies:
+    Drops: []
+  QuestRewards: []
+  Enemy: {fileID: 11400000, guid: f9cb20d3635f5ec40935188217f021cd, type: 2}

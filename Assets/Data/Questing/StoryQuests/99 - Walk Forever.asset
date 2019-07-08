@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a923da22bfb6ff343a3f83cc655b9d8f, type: 3}
+  m_Name: 99 - Walk Forever
+  m_EditorClassIdentifier: 
+  ID: 4
+  DisplayName: The End.
+  Level: 15
+  NextQuest: {fileID: 0}
+  StartConversation:
+    Text: "Thank you for play testing <color=red>Adventure Trek 2</color>!\n\nWe hope
+      you enjoyed playing our game. There is obviously a lot of work still to do before
+      we can say it is done but we hope you enjoyed what we have so far. \n\nWe would
+      really appreciate it if you could <link=\"https://www.surveymonkey.com/r/V7PWDVN\"><color=blue>click
+      this link</color></link> to fill out a quick survey and give us your feedback
+      on the game so we can improve it!\n\nThanks again!\n\n-Spiffy Chicken Games\n"
+    Speaker: {fileID: 21300000, guid: e69d604f24b4c034cac690dde3906002, type: 3}
+  EndConversation:
+    Text: NANI?!
+    Speaker: {fileID: 21300046, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 240
+  MaxEnemyDropTime: 480
+  MinEnemyDropDistance: 50
+  MaxEnemyDropDistance: 250
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints: []
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: 0fa793a270e17e94988ea8a538153bab, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: f9cb20d3635f5ec40935188217f021cd, type: 2}
+      MinLevel: 20
+      MaxLevel: 30
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 24dcc537a71658e4e9fbf5e0d5fc124a, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 7783ad179c921cd43bf23290bc4f3051, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}
+      MinLevel: 15
+      MaxLevel: 25
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: cda96108237db6e4d84dd6f435cc0239, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: b9128b39a35b6774995edaeac41aee56, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 6c8f3c7d1db4f8d4c8f328fecf3daa82, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: e2ea2a9bb3cb6454fb68c82a76f56fa3, type: 2}
+      MinLevel: 0
+      MaxLevel: 0
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: e90a0a3db47957740b6326a2485c456b, type: 2}
+      MinLevel: 0
+      MaxLevel: 0
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 581f3693b61c6534881558b338b2fc3f, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 27b54859f6122f94fa2569cd958da847, type: 2}
+      MinLevel: 10
+      MaxLevel: 20
+      DropChance: 1
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: fccca33ee9801fb4286449995f40c3eb, type: 2}
+  AmountToReach: -1
+  AmountSoFar: {fileID: 11400000, guid: 645a038b5a22bf84cbeedfc19fd7c44a, type: 2}

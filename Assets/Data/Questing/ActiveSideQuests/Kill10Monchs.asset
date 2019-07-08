@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada0d5cb92b2c864bacdd24744b16c27, type: 3}
+  m_Name: Kill10Monchs
+  m_EditorClassIdentifier: 
+  ID: 7
+  DisplayName: Kill 10 Monchs
+  NextQuest: {fileID: 0}
+  Area: {fileID: 11400000, guid: 20807a95d9221854188f642cafb3449d, type: 2}
+  StartConversation:
+    Text: I fucking hate monches.
+    Speaker: {fileID: 21300000, guid: 9468193b853eb2c4aa10ed54ed27a3eb, type: 3}
+  EndConversation:
+    Text: Thank you for doing that
+    Speaker: {fileID: 21300000, guid: 9468193b853eb2c4aa10ed54ed27a3eb, type: 3}
+  TotalAmount: {fileID: 11400000, guid: e70966d51d11ac54bbbd2c2a80a97b71, type: 2}
+  AmountToReach: 10
+  AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}

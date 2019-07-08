@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64793f7087d520e4986f332c04439f67, type: 3}
+  m_Name: Copper Ore
+  m_EditorClassIdentifier: 
+  ID: 13
+  Image: {fileID: 21300000, guid: f81acf519a1502b49aa8a3bc9ca77cd0, type: 3}
+  Value: 25
+  Description: A lump of copper ore. Its not rust its "patina."
+  Rarity: 1
+  MaxStackSize: 0
+  Type: 0

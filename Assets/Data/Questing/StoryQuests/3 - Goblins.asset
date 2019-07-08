@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada0d5cb92b2c864bacdd24744b16c27, type: 3}
+  m_Name: 3 - Goblins
+  m_EditorClassIdentifier: 
+  ID: 3
+  DisplayName: Defeat 5 Goblins
+  Level: 4
+  NextQuest: {fileID: 11400000, guid: fc18e94318e97394291c84a4249c3c18, type: 2}
+  StartConversation:
+    Text: You're doing great! Those gnomes didn't stand a chance. Some stronger folks
+      heard about how strong you are and want a piece so you're gonna have to fight
+      tougher enemies. The goblins are a ruthless bunch and are coming after you.
+      Try and <b>defeat 5 of those goblins</b>.
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: 'Nice work! For defeating the goblins, I present you with a <color=red><b>goblin
+      sword</b></color>. Use it wisely.
+
+
+      Just kidding, hit everything with it.'
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 30
+  MaxEnemyDropTime: 60
+  MinEnemyDropDistance: 20
+  MaxEnemyDropDistance: 100
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints:
+  - MinDistanceBetween: 50
+    MaxDistanceBetween: 150
+    Image: {fileID: 21300000, guid: dfd16260fe78d094ca5b6fa32592a98f, type: 3}
+    Drops:
+      Items:
+      - item: {fileID: 11400000, guid: 37922c7fca4096e48a04b7094a8a3449, type: 2}
+        dropChance: 0.75
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: f9cb20d3635f5ec40935188217f021cd, type: 2}
+      MinLevel: 1
+      MaxLevel: 4
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}
+      MinLevel: 1
+      MaxLevel: 4
+      DropChance: 2
+    - Follower: {fileID: 11400000, guid: 51d3cce514427d448a622c4b31127522, type: 2}
+      MinLevel: 1
+      MaxLevel: 4
+      DropChance: 7
+  QuestRewards:
+  - it: {fileID: 11400000, guid: 2da6b9adf5d871c4a8c481d49c4b2092, type: 2}
+    Level: 5
+    RandomRoll: 72
+  TotalAmount: {fileID: 11400000, guid: 27ca57e927a9d564cbbc4aeac61c99bb, type: 2}
+  AmountToReach: 5
+  AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}

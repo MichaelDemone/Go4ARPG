@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b312d8dc3e6ebbb4fa35f02bdc5d92a2, type: 3}
+  m_Name: 5 - Craft Goblin Armor
+  m_EditorClassIdentifier: 
+  ID: 10
+  DisplayName: Craft Golbin Armor Armor
+  Level: 5
+  NextQuest: {fileID: 11400000, guid: 9bb92d304139bd443a17fa212d7c7469, type: 2}
+  StartConversation:
+    Text: Now that you can defeat goblins <b>AND</b> craft things, you're unstoppable!
+      <b>Gather 12 goblin armors</b> from the corpses of goblins (or otherwise...)
+      and <b>craft some goblin armor Armor</b>!
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: 'Great job! You can equip your new armor through the journal. Use the question
+      mark in the bottom right if you need assistance.
+
+
+      That goblin armor with your feathered hat will look amazing.'
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 30
+  MaxEnemyDropTime: 60
+  MinEnemyDropDistance: 15
+  MaxEnemyDropDistance: 50
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints:
+  - MinDistanceBetween: 100
+    MaxDistanceBetween: 200
+    Image: {fileID: 21300000, guid: dfd16260fe78d094ca5b6fa32592a98f, type: 3}
+    Drops:
+      Items:
+      - item: {fileID: 11400000, guid: 37922c7fca4096e48a04b7094a8a3449, type: 2}
+        dropChance: 0.75
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: 51d3cce514427d448a622c4b31127522, type: 2}
+      MinLevel: 5
+      MaxLevel: 10
+      DropChance: 5
+    - Follower: {fileID: 11400000, guid: ad9b8d87849cbb443985f26909b572f2, type: 2}
+      MinLevel: 5
+      MaxLevel: 10
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}
+      MinLevel: 5
+      MaxLevel: 10
+      DropChance: 2
+    - Follower: {fileID: 11400000, guid: f9cb20d3635f5ec40935188217f021cd, type: 2}
+      MinLevel: 5
+      MaxLevel: 10
+      DropChance: 1
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: 5fac347c681b575488404e964df1b54b, type: 2}
+  AmountToReach: 1
+  AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}

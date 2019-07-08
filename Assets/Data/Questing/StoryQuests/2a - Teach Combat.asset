@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c0be4fcee030147a69fac0bb634505, type: 3}
+  m_Name: 2a - Teach Combat
+  m_EditorClassIdentifier: 
+  ID: 12
+  DisplayName: Defeat Chicken Boss AGAIN!
+  Level: 10
+  NextQuest: {fileID: 11400000, guid: 34332a3094c776547ab733c1126f5bc8, type: 2}
+  StartConversation:
+    Text: "Now that you've gotten the hang of tapping you're probably wondering \"How
+      can I protect myself from damage?\" Well have I got the solution for you! \n\nIn
+      combat you can can <b>swipe away from the enemy to block</b> their attacks and
+      take less damage. Alternatively, you can <b>swipe towards the enemy to parry</b>
+      to take no damage and stun the enemy, but mis-timing a parry can leave you vulnerable!\n\nYou
+      have a short window while the enemy is winding up to block and an even shorter
+      window while the enemy is mid-attack to parry. This chicken will glow blue when
+      it is blockable and red when he is parryable."
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: "Good job! The enemies will continue to glow blue or red for the next few
+      quests to allow you to practice, but after that you'll be on your own. \n\nRemember
+      to click the question mark in the bottom right if you need help."
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 20
+  MaxEnemyDropTime: 40
+  MinEnemyDropDistance: 10
+  MaxEnemyDropDistance: 50
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints: []
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: 51d3cce514427d448a622c4b31127522, type: 2}
+      MinLevel: 3
+      MaxLevel: 7
+      DropChance: 1
+  QuestRewards: []
+  Enemy: {fileID: 11400000, guid: 1b66009fee8697e49adee1bbb71ffac3, type: 2}

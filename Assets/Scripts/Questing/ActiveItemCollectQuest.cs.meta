@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b312d8dc3e6ebbb4fa35f02bdc5d92a2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - NextQuest: {instanceID: 0}
+  - Area: {instanceID: 0}
+  - TotalAmount: {instanceID: 0}
+  - AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

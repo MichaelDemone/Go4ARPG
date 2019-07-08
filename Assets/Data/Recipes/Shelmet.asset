@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97f1898c302cd44b8adfe51accc35cd, type: 3}
+  m_Name: Shelmet
+  m_EditorClassIdentifier: 
+  ID: 12
+  Components:
+  - Item: {fileID: 11400000, guid: 39600ae6efc82fb43ab14a937a81a4a1, type: 2}
+    Amount: 1
+  - Item: {fileID: 11400000, guid: bfc13541347b32d42a02758e57778329, type: 2}
+    Amount: 6
+  Result:
+    Item: {fileID: 11400000, guid: 6db684d341d796241afdf8ed903cfaec, type: 2}
+    Amount: 1

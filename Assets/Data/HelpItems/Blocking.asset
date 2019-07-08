@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b0f103af1d5704ba8427bdd363c124, type: 3}
+  m_Name: Blocking
+  m_EditorClassIdentifier: 
+  DisplayName: Blocking
+  Description: Blocking allows you to lessen the amount of damage done to you but
+    prevents you from attacking. When you do a long swipe to the right of your screen
+    while in combat, a shield will appear over your character and you will be blocking.
+    You cannot attack while blocking, but if the monster attacks it will do less damage
+    based on your armor's stats. If you do a block while you see an enemy winding
+    up for an attack it will be a 'perfect block' and will block more of the damage.
+    Blocking does not affect elemental damage.
+  SeeAlso:
+  - {fileID: 11400000, guid: c2f3a266a03b47a4a8d15c222a48c7a2, type: 2}
+  - {fileID: 11400000, guid: c8ab6f775d6b6d645ba9fdbb809f8b81, type: 2}
+  - {fileID: 11400000, guid: 455d62b261d84d648b3dcb8e7a1fc477, type: 2}

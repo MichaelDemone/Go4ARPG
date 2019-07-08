@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Goblin Champion
+  m_EditorClassIdentifier: 
+  ID: 4
+  DisplayName: Goblin Champion
+  Portrait: {fileID: 21300000, guid: 6afa27fbfcbf46c439be7a9c9bfcb794, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: 0f8933b31aca05243b28bfdd896a3007, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 7503b15ba0ecffd42863b5b50ffabe9a, type: 2}
+  MinTimeBetweenRandomAnims: 10
+  MaxTimeBetweenRandomAnims: 11
+  Idle: {fileID: 7400000, guid: 40957253c41e8f146bf7717e2bfa7380, type: 2}
+  Flinch: {fileID: 7400000, guid: fc8dd694275541a4a83afd050a027236, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: 88e06c8e8277ad546aff46f9f4afa5cb, type: 2}
+  AttackExecute: {fileID: 7400000, guid: 39969f013ff8e0a459e62085cb2cdcae, type: 2}
+  AfterAttack: {fileID: 7400000, guid: 5b9af66be240ab34ca61f1a567d62038, type: 2}
+  Death: {fileID: 7400000, guid: 0d1fdf45d50fe8c4bbe306ab4de2e8c4, type: 2}
+  Dead: {fileID: 7400000, guid: 463b372ca55ba614cabf2633493179a0, type: 2}
+  Walking: {fileID: 7400000, guid: fb037e16210d199448abc0a1af4d881b, type: 2}
+  DeadSprite: {fileID: 21300080, guid: 6afa27fbfcbf46c439be7a9c9bfcb794, type: 3}
+  HealthAtLevel0: 50000
+  DamageAtLevel0: 150
+  TimeBetweenAttacks: 3
+  AttackPrepTime: 0.375
+  AttackExecuteTime: 0.5
+  HasElementalDamage: 0
+  ElementalDamageAtLevel0: 0
+  ElementalDamageType: {fileID: 0}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: f9ce8a3957c5c404bac197dc677cb6dd, type: 2}
+      dropChance: 0.05
+  OneAndDoneAttacker: 0

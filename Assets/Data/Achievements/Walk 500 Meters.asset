@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c341df8585b5cc488aaa0b0c8293940, type: 3}
+  m_Name: Walk 500 Meters
+  m_EditorClassIdentifier: 
+  ID: 2
+  AchievementIcon: {fileID: 21300000, guid: 72060952398b2384ab4933474edf555c, type: 3}
+  AchievementCompletedText: You walked a kilometer!
+  NumberToReach: 1000
+  Number: {fileID: 11400000, guid: 74f12590ab51f1d458ce51a019ae59e3, type: 2}

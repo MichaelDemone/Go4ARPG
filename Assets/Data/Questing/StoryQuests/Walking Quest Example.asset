@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a923da22bfb6ff343a3f83cc655b9d8f, type: 3}
+  m_Name: Walking Quest Example
+  m_EditorClassIdentifier: 
+  ID: 0
+  DisplayName: 
+  NextQuest: {fileID: 0}
+  StartConversation:
+    Text: 
+    Speaker: {fileID: 0}
+  EndConversation:
+    Text: 
+    Speaker: {fileID: 0}
+  MinEnemyDropTime: 240
+  MaxEnemyDropTime: 480
+  MinEnemyDropDistance: 50
+  MaxEnemyDropDistance: 250
+  Area: {fileID: 0}
+  MiningPoints: []
+  Enemies:
+    Drops: []
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: fccca33ee9801fb4286449995f40c3eb, type: 2}
+  AmountToReach: 1000
+  AmountSoFar: {fileID: 11400000, guid: 645a038b5a22bf84cbeedfc19fd7c44a, type: 2}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7252a251baf7f3449083c0069d65613, type: 3}
+  m_Name: Green Crystal
+  m_EditorClassIdentifier: 
+  ID: 57
+  Name: Poison Crystal
+  Image: {fileID: 21300000, guid: b92a1cd762d934a40ac30c70e203375b, type: 3}
+  Value: 150
+  Description: An incredible green crystal radiates a sickly energy.
+  Rarity: 3
+  Type: {fileID: 11400000, guid: 340fc19084f13f942b011990a3e168cb, type: 2}
+  GemTypeType: 30

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe28381dc1f903a4a80caba2471126ea, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  MaxHealth:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 5a119c1659773204eb31d934c2ccdf1c, type: 2}
+  Health:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: f98c0dae92606424ead1fe09dd8181ed, type: 2}
+  Gold:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 270540f0df2b56e4086493e3e7066ace, type: 2}
+  Level:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  Experience:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  PowerPerBlock:
+    UseConstant: 1
+    ConstantValue: 60
+    Variable: {fileID: 0}
+  OnPowerMax: {fileID: 11400000, guid: 676de03edee86cf42b032f719f4c487c, type: 2}
+  PlayerDeath: {fileID: 11400000, guid: 9be316ce6ac3c2e47ad0119253013955, type: 2}
+  Weapon:
+    UseConstant: 0
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 11400000, guid: ddec0eaf5ab10b542b2cca79d5614413, type: 2}
+  Armor:
+    UseConstant: 0
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 11400000, guid: aef2e70a37f2e9b4f8d5bf8624d26f8f, type: 2}
+  Headgear:
+    UseConstant: 0
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 51a1543524a270a45bc1d26cb08f360f, type: 2}

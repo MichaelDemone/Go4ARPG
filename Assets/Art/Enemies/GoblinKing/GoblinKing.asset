@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: GoblinKing
+  m_EditorClassIdentifier: 
+  ID: 7
+  DisplayName: Goblin King
+  Portrait: {fileID: 21300000, guid: fab3d851a44d4de449052d4d4d9309ed, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: 13c31e834dfd52841a1b9572226560c5, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 360d94484572ba5478c9c3a4937265cb, type: 2}
+  MinTimeBetweenRandomAnims: 5
+  MaxTimeBetweenRandomAnims: 10
+  Idle: {fileID: 7400000, guid: cd60ae1025ed89b42bd13d4888e15f5d, type: 2}
+  Flinch: {fileID: 7400000, guid: 5d70f58deddcaba4c931e6bced006543, type: 2}
+  BeforeAttack: {fileID: 0}
+  AttackExecute: {fileID: 0}
+  AfterAttack: {fileID: 0}
+  Death: {fileID: 7400000, guid: 971f09d8bba633748a49ae4ef81ef8ea, type: 2}
+  Dead: {fileID: 7400000, guid: a3fab8dc58d98fe4fa86e661f80a1d78, type: 2}
+  Walking: {fileID: 0}
+  DeadSprite: {fileID: 0}
+  BaseHealth: 29.1
+  BaseDamage: 7.4
+  TimeBetweenAttacks: 5
+  AttackPrepTime: 0.5
+  AttackExecuteTime: 0.5
+  HasElementalDamage: 0
+  BaseElementalDamage: 0
+  ElementalDamageType: {fileID: 0}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: 2da6b9adf5d871c4a8c481d49c4b2092, type: 2}
+      dropChance: 0.6
+    - item: {fileID: 11400000, guid: 11fbe90a2780405449ad82a1ae93b06e, type: 2}
+      dropChance: 1
+    - item: {fileID: 0}
+      dropChance: 1
+    - item: {fileID: 11400000, guid: 11fbe90a2780405449ad82a1ae93b06e, type: 2}
+      dropChance: 0.5
+    - item: {fileID: 11400000, guid: c20ab2832a61eba47b68b5650049b9cf, type: 2}
+      dropChance: 0.1
+  OneAndDoneAttacker: 0

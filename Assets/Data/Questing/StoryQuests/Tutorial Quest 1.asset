@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c0be4fcee030147a69fac0bb634505, type: 3}
+  m_Name: Tutorial Quest 1
+  m_EditorClassIdentifier: 
+  ID: 9
+  DisplayName: Kill 1 Gnome
+  NextQuest: {fileID: 0}
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  StartConversation:
+    Text: Welcome to the game! Click the little red arrow on the left side and then
+      click the gnome to fight it! Tap to attack it.
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: Congratulations! Now you're going to learn about how to craft!
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  TotalAmount: {fileID: 11400000, guid: c81d62077aaa51d49b956024b1c8fb17, type: 2}
+  AmountToReach: 1
+  AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}
+  EnemyList: {fileID: 11400000, guid: d9764a15526dace4899689a1b14b9b44, type: 2}
+  Enemy: {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}

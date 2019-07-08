@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28da0886677550c40a312788f0e7afe7, type: 3}
+  m_Name: CurrentQuest
+  m_EditorClassIdentifier: 
+  DeveloperDescription: 
+  InitialValue: {fileID: 11400000, guid: d0b1a45baf6b3d242a6af33d66b443b7, type: 2}
+  OnChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventActiveQuestBase, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _value: {fileID: 11400000, guid: d0b1a45baf6b3d242a6af33d66b443b7, type: 2}

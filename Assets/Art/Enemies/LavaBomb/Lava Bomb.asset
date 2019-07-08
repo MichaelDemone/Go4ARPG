@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Lava Bomb
+  m_EditorClassIdentifier: 
+  ID: 20
+  DisplayName: Lava Bomb
+  Portrait: {fileID: 21300000, guid: 62508ff8a981e77448cceb78092cca06, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: d2449776ffd75c248a53680ada6dc975, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 396cdc586f30ccf4d974c812c0bfe783, type: 2}
+  MinTimeBetweenRandomAnims: 6
+  MaxTimeBetweenRandomAnims: 15
+  Idle: {fileID: 7400000, guid: e88647b0263ca6744a84e2576c522ccb, type: 2}
+  Flinch: {fileID: 7400000, guid: c20704419dc35e742be3333aa995ffe9, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: 0924717fc66f71745a3c535735f9a0a3, type: 2}
+  AttackExecute: {fileID: 7400000, guid: d10dd9106b42f2e4c96c95255e2a7652, type: 2}
+  AfterAttack: {fileID: 7400000, guid: 19d50b29010982844ab37b1500243b0f, type: 2}
+  Death: {fileID: 7400000, guid: f46929d65250a9140ae8dc8216329845, type: 2}
+  Dead: {fileID: 7400000, guid: a0eb9de5154c8c04781534c3bdc5f9c2, type: 2}
+  Walking: {fileID: 7400000, guid: fad02f58cd02b83499b413ef6379570c, type: 2}
+  DeadSprite: {fileID: 21300094, guid: 62508ff8a981e77448cceb78092cca06, type: 3}
+  HealthAtLevel0: 17000
+  DamageAtLevel0: 100
+  TimeBetweenAttacks: 5
+  AttackPrepTime: 1
+  AttackExecuteTime: 0.625
+  HasElementalDamage: 1
+  ElementalDamageAtLevel0: 100
+  ElementalDamageType: {fileID: 11400000, guid: ac66ff0c16089c04d84fea70a9d11015,
+    type: 2}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: cca3b4ab4ef63d5448382ac5a3f35c50, type: 2}
+      dropChance: 1
+    - item: {fileID: 11400000, guid: cca3b4ab4ef63d5448382ac5a3f35c50, type: 2}
+      dropChance: 0.25
+  OneAndDoneAttacker: 1

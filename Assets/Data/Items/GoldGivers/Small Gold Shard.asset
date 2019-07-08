@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537e80b66e507d44c9c2c4286ef354b4, type: 3}
+  m_Name: Small Gold Shard
+  m_EditorClassIdentifier: 
+  ID: 62
+  Name: Small Gold Shard
+  Image: {fileID: 21300000, guid: e909176c33acaac419aef97636b3c098, type: 3}
+  Value: 1
+  Description: Sell this for 1 whole piece of gold! You're almost rich!
+  Rarity: 0
+  SellWithTrash: 1

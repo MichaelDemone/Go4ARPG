@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2c329e95bdfd747b5a9a4dce04670b, type: 3}
+  m_Name: 6 - Reach 2Km Walked
+  m_EditorClassIdentifier: 
+  ID: 13
+  DisplayName: Walk To Fire Zone
+  Level: 6
+  NextQuest: {fileID: 11400000, guid: 68904e00581c0b14b86a002773fbf51b, type: 2}
+  StartConversation:
+    Text: 'Egad! During your goblin defeating spree a goblin champion in a far off
+      land challenged you to a fight! You have to walk 1500m to get there, but I know
+      you can do it.
+
+
+      You may encounter a few new things on your way there. A few new species have
+      been spotted roaming around here and odd looking fellows may offer quests during
+      your travels, feel free to do them while you''re walking to the distant land.'
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: Oh we are almost there, I can feel it! Just slowly blink and we should be
+      there.
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 50
+  MaxEnemyDropTime: 100
+  MinEnemyDropDistance: 50
+  MaxEnemyDropDistance: 100
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints:
+  - MinDistanceBetween: 100
+    MaxDistanceBetween: 200
+    Image: {fileID: 21300000, guid: dfd16260fe78d094ca5b6fa32592a98f, type: 3}
+    Drops:
+      Items:
+      - item: {fileID: 11400000, guid: 37922c7fca4096e48a04b7094a8a3449, type: 2}
+        dropChance: 0.75
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}
+      MinLevel: 5
+      MaxLevel: 7
+      DropChance: 3
+    - Follower: {fileID: 11400000, guid: 0fa793a270e17e94988ea8a538153bab, type: 2}
+      MinLevel: 5
+      MaxLevel: 7
+      DropChance: 2
+    - Follower: {fileID: 11400000, guid: 24dcc537a71658e4e9fbf5e0d5fc124a, type: 2}
+      MinLevel: 5
+      MaxLevel: 7
+      DropChance: 2
+    - Follower: {fileID: 11400000, guid: 7783ad179c921cd43bf23290bc4f3051, type: 2}
+      MinLevel: 5
+      MaxLevel: 7
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: 51d3cce514427d448a622c4b31127522, type: 2}
+      MinLevel: 5
+      MaxLevel: 7
+      DropChance: 3
+    - Follower: {fileID: 11400000, guid: e2ea2a9bb3cb6454fb68c82a76f56fa3, type: 2}
+      MinLevel: 0
+      MaxLevel: 0
+      DropChance: 1
+    - Follower: {fileID: 11400000, guid: e90a0a3db47957740b6326a2485c456b, type: 2}
+      MinLevel: 0
+      MaxLevel: 0
+      DropChance: 1
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: 74f12590ab51f1d458ce51a019ae59e3, type: 2}
+  AmountToReach: 1500

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Ninja Goblin
+  m_EditorClassIdentifier: 
+  ID: 16
+  DisplayName: Goblin Ninja
+  Portrait: {fileID: 21300000, guid: 9f07ed4e4b23dc64098e3b31b36d334a, type: 3}
+  SizeOfSprite: {x: 64, y: 64}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: c973967036808e24ebdd541bbcb41a99, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 7aca2235d4e26a045936ec6b1d4e7ac0, type: 2}
+  MinTimeBetweenRandomAnims: 12
+  MaxTimeBetweenRandomAnims: 14
+  Idle: {fileID: 7400000, guid: 152b419721f5da844a272d1953ab2a5e, type: 2}
+  Flinch: {fileID: 7400000, guid: 2e505ce444697e94a8705089bf340324, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: e4e08452dfbeedd4080616eb36757512, type: 2}
+  AttackExecute: {fileID: 7400000, guid: 3761a342c791cb44880c36a2d9159614, type: 2}
+  AfterAttack: {fileID: 7400000, guid: af82e41ffb475ea4cbe5070ea1edae48, type: 2}
+  Death: {fileID: 7400000, guid: 80e05667b43156e4687dddf72e13d728, type: 2}
+  Dead: {fileID: 7400000, guid: 5817680fa68e17846bf94c266acf324d, type: 2}
+  Walking: {fileID: 7400000, guid: 0d2e9d4aec4ebfe4d9502c23498b9fb2, type: 2}
+  DeadSprite: {fileID: 21300054, guid: 9f07ed4e4b23dc64098e3b31b36d334a, type: 3}
+  BaseHealth: 10
+  BaseDamage: 20
+  TimeBetweenAttacks: 7
+  AttackPrepTime: 0.5
+  AttackExecuteTime: 0.5
+  HasElementalDamage: 1
+  BaseElementalDamage: 20
+  ElementalDamageType: {fileID: 11400000, guid: 5c34954cafed2ab42a99410f0b4a7918,
+    type: 2}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: b333cf7fecaebf742bf8e228d7678d5e, type: 2}
+      dropChance: 0.1
+    - item: {fileID: 11400000, guid: a774e612aec67b740aa55df3e3e3ff17, type: 2}
+      dropChance: 0.5
+  OneAndDoneAttacker: 0

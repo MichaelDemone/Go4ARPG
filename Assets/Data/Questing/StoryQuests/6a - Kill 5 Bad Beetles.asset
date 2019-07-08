@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada0d5cb92b2c864bacdd24744b16c27, type: 3}
+  m_Name: 6a - Kill 5 Bad Beetles
+  m_EditorClassIdentifier: 
+  ID: 11
+  DisplayName: Bad Beetle Slayer
+  Level: 6
+  NextQuest: {fileID: 0}
+  StartConversation:
+    Text: You look stressed, try killing many beetles. That always helps me!
+    Speaker: {fileID: 21300002, guid: d1f4f2861a5493746a532113a8f1dfd1, type: 3}
+  EndConversation:
+    Text: Feel more relaxed now? If not, here's some sweet sweet loot.
+    Speaker: {fileID: 21300002, guid: d1f4f2861a5493746a532113a8f1dfd1, type: 3}
+  MinEnemyDropTime: 20
+  MaxEnemyDropTime: 40
+  MinEnemyDropDistance: 15
+  MaxEnemyDropDistance: 40
+  Area: {fileID: 11400000, guid: 5e4d1ba5949749b44bc3427231ca82f2, type: 2}
+  MiningPoints: []
+  Enemies:
+    Drops:
+    - Follower: {fileID: 11400000, guid: 0fa793a270e17e94988ea8a538153bab, type: 2}
+      MinLevel: 5
+      MaxLevel: 7
+      DropChance: 5
+    - Follower: {fileID: 11400000, guid: 24dcc537a71658e4e9fbf5e0d5fc124a, type: 2}
+      MinLevel: 8
+      MaxLevel: 10
+      DropChance: 1
+  QuestRewards:
+  - it: {fileID: 11400000, guid: 0304f5a168938d84ca86376587ce5bbb, type: 2}
+    Level: -1
+    RandomRoll: -1
+  - it: {fileID: 11400000, guid: 0304f5a168938d84ca86376587ce5bbb, type: 2}
+    Level: -1
+    RandomRoll: -1
+  - it: {fileID: 11400000, guid: 0304f5a168938d84ca86376587ce5bbb, type: 2}
+    Level: -1
+    RandomRoll: -1
+  - it: {fileID: 11400000, guid: e569c822608e91343ad176ae5b1f744f, type: 2}
+    Level: 7
+    RandomRoll: -1
+  - it: {fileID: 11400000, guid: e569c822608e91343ad176ae5b1f744f, type: 2}
+    Level: 8
+    RandomRoll: -1
+  TotalAmount: {fileID: 11400000, guid: 84910e2cd9cfff349a5abf60fabe7caa, type: 2}
+  AmountToReach: 5
+  AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}

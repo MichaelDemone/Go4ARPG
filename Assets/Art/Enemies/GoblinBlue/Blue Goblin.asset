@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Blue Goblin
+  m_EditorClassIdentifier: 
+  ID: 13
+  DisplayName: Blue Goblin
+  Portrait: {fileID: 21300000, guid: e2545104d53500946929c95b2690cdc0, type: 3}
+  SizeOfSprite: {x: 32, y: 32}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: 2cdbe3c753068ce47bed78385693138c, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: c91d90e94e0aaab419c9a4121dc8637d, type: 2}
+  MinTimeBetweenRandomAnims: 30
+  MaxTimeBetweenRandomAnims: 180
+  Idle: {fileID: 7400000, guid: b0e36491b436c5a45a4bbaef19b1dbfa, type: 2}
+  Flinch: {fileID: 7400000, guid: b389b646f9ad409459def55061eeb7dc, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: 56caf1649daf87b4e9c5886a07bb814c, type: 2}
+  AttackExecute: {fileID: 7400000, guid: bd0da8d9fa00b5649a501c8a3430f884, type: 2}
+  AfterAttack: {fileID: 7400000, guid: f4d109be76deb4145b704ce099c85ea6, type: 2}
+  Death: {fileID: 7400000, guid: 6652d04e2bc2b484ba7547c6c1b66376, type: 2}
+  Dead: {fileID: 7400000, guid: a8651d931914a9145bd745f196b88525, type: 2}
+  Walking: {fileID: 7400000, guid: 1119eac8ebcd4504ca1a1f3321509e81, type: 2}
+  DeadSprite: {fileID: 21300054, guid: e2545104d53500946929c95b2690cdc0, type: 3}
+  BaseHealth: 100
+  BaseDamage: 20
+  TimeBetweenAttacks: 0
+  AttackPrepTime: 2
+  AttackExecuteTime: 0.25
+  HasElementalDamage: 0
+  BaseElementalDamage: 0
+  ElementalDamageType: {fileID: 0}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items: []
+  OneAndDoneAttacker: 0

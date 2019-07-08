@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b312d8dc3e6ebbb4fa35f02bdc5d92a2, type: 3}
+  m_Name: 7 - Get a Gem
+  m_EditorClassIdentifier: 
+  ID: 14
+  DisplayName: Get a Gem
+  Level: 7
+  NextQuest: {fileID: 11400000, guid: a1f342b0db0f6874081902b4d25ca172, type: 2}
+  StartConversation:
+    Text: Nice blink! We are here now. It's so hot and firey here. Oh, I've heard
+      there's <b>mining points</b> here!! They appear next to the trail, if you tap
+      on them you can break them open get gems that are inside them! They're good
+      for selling and enchanting weapons! Try and get one!
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: Ohhhhhhhhhhh it's shiny and pretty! Use it to enchant your weapon and make
+      yourself more powerful.
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 999999
+  MaxEnemyDropTime: 9999999
+  MinEnemyDropDistance: 999999
+  MaxEnemyDropDistance: 9999999
+  Area: {fileID: 11400000, guid: de6df770e5018c44db6db97474277957, type: 2}
+  MiningPoints:
+  - MinDistanceBetween: 54
+    MaxDistanceBetween: 70
+    Image: {fileID: 21300000, guid: 2521e10b9b3e294408f50f3827d7a705, type: 3}
+    Drops:
+      Items:
+      - item: {fileID: 11400000, guid: a464ae4e3daf624418d389df8584622f, type: 2}
+        dropChance: 1
+  Enemies:
+    Drops: []
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: 74d2b061e88312449831a9207a87e51d, type: 2}
+  AmountToReach: 1
+  AmountSoFar: {fileID: 11400000, guid: 66d427283c1651346a2bb795dcaa50b7, type: 2}

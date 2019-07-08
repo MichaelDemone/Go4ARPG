@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64793f7087d520e4986f332c04439f67, type: 3}
+  m_Name: Iron Ore
+  m_EditorClassIdentifier: 
+  ID: 15
+  Image: {fileID: 21300000, guid: 279b65d20ba400446a2cee664121984a, type: 3}
+  Value: 35
+  Description: 'A lump of iron ore. This could probably be useful. '
+  Rarity: 2
+  MaxStackSize: 0
+  Type: 0

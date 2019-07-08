@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0872ecbd2af476a4f857fd0afb31d430, type: 3}
+  m_Name: TestEnemySlayer
+  m_EditorClassIdentifier: 
+  ID: 5
+  DisplayName: Kill 5 Monchs
+  Enemy: {fileID: 11400000, guid: bab6c5ae11e85b84e93f622b614ade7c, type: 2}
+  TotalToKill: 5
+  KilledCount: {fileID: 11400000, guid: e70966d51d11ac54bbbd2c2a80a97b71, type: 2}

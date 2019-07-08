@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2c329e95bdfd747b5a9a4dce04670b, type: 3}
+  m_Name: 8 - Enchant a Weapon
+  m_EditorClassIdentifier: 
+  ID: 15
+  DisplayName: Enchant a Weapon
+  Level: 7
+  NextQuest: {fileID: 11400000, guid: d5a3181b25c7d8647bf8f2b64851bbe5, type: 2}
+  StartConversation:
+    Text: To enchant your weapon, all you have to do is click the top right anvil,
+      select the "Enchant" tab, and fill in what you want to enchant and then click
+      the enchant button!
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  EndConversation:
+    Text: Ohhhh that's gonna be a good weapon to fight the goblin champion with...
+    Speaker: {fileID: 21300000, guid: c27605eebf83392428128ddf89b5bd1f, type: 3}
+  MinEnemyDropTime: 999999
+  MaxEnemyDropTime: 9999999
+  MinEnemyDropDistance: 999999
+  MaxEnemyDropDistance: 9999999
+  Area: {fileID: 11400000, guid: de6df770e5018c44db6db97474277957, type: 2}
+  MiningPoints:
+  - MinDistanceBetween: 100
+    MaxDistanceBetween: 2000
+    Image: {fileID: 21300000, guid: 2521e10b9b3e294408f50f3827d7a705, type: 3}
+    Drops:
+      Items:
+      - item: {fileID: 11400000, guid: a464ae4e3daf624418d389df8584622f, type: 2}
+        dropChance: 0.6
+      - item: {fileID: 11400000, guid: e49f5dd06a30be34a89ba3cfe20cd5f1, type: 2}
+        dropChance: 0.1
+  Enemies:
+    Drops: []
+  QuestRewards: []
+  TotalAmount: {fileID: 11400000, guid: 7d8fe6d2e7f33864b90fbc69e833b4c2, type: 2}
+  AmountToReach: 1

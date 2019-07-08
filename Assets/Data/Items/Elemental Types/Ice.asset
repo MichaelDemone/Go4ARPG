@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf47fd378bc65494da74f58a602c31e3, type: 3}
+  m_Name: Ice
+  m_EditorClassIdentifier: 
+  DamageColor: {r: 0.07450981, g: 0.69803923, b: 0.9490197, a: 1}
+  NamePrefixes:
+  - Name: Chilled
+    RandomValueMin: 10
+    BaseDamage: 1
+  - Name: Frosty
+    RandomValueMin: 30
+    BaseDamage: 2
+  - Name: Freezing
+    RandomValueMin: 70
+    BaseDamage: 5
+  - Name: Frigid
+    RandomValueMin: 90
+    BaseDamage: 8
+  - Name: Glacial
+    RandomValueMin: 100
+    BaseDamage: 10

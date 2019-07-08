@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf47fd378bc65494da74f58a602c31e3, type: 3}
+  m_Name: Poison
+  m_EditorClassIdentifier: 
+  DamageColor: {r: 0.3137255, g: 0.60784316, b: 0.29411766, a: 1}
+  NamePrefixes:
+  - Name: Dirty
+    RandomValueMin: 10
+    BaseDamage: 1
+  - Name: Infectious
+    RandomValueMin: 30
+    BaseDamage: 2
+  - Name: Poisonous
+    RandomValueMin: 70
+    BaseDamage: 5
+  - Name: Toxic
+    RandomValueMin: 90
+    BaseDamage: 8
+  - Name: Plagued
+    RandomValueMin: 100
+    BaseDamage: 10

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97f1898c302cd44b8adfe51accc35cd, type: 3}
+  m_Name: Toothpick
+  m_EditorClassIdentifier: 
+  ID: 2
+  Components:
+  - Item: {fileID: 11400000, guid: 37922c7fca4096e48a04b7094a8a3449, type: 2}
+    Amount: 1
+  - Item: {fileID: 11400000, guid: 10f87211d9f03ba468a8554aae870c84, type: 2}
+    Amount: 10
+  Result:
+    Item: {fileID: 11400000, guid: d138635bc5b52cb42af404429ba71ab4, type: 2}
+    Amount: 1

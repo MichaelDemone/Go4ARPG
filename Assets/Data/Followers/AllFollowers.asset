@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713e87baa4110a74fa28d2f3344de130, type: 3}
+  m_Name: AllFollowers
+  m_EditorClassIdentifier: 
+  Value:
+  - {fileID: 11400000, guid: f9cb20d3635f5ec40935188217f021cd, type: 2}
+  - {fileID: 11400000, guid: e75340b3bcfa1db4bae6e3c12eb51d0b, type: 2}
+  - {fileID: 11400000, guid: 51d3cce514427d448a622c4b31127522, type: 2}
+  - {fileID: 11400000, guid: 581f3693b61c6534881558b338b2fc3f, type: 2}
+  - {fileID: 11400000, guid: 2e192900fc69cce47bbdd742701c4d63, type: 2}
+  - {fileID: 11400000, guid: 24dcc537a71658e4e9fbf5e0d5fc124a, type: 2}
+  - {fileID: 11400000, guid: bab6c5ae11e85b84e93f622b614ade7c, type: 2}
+  - {fileID: 11400000, guid: ddee636582497854889c3ed5085dffe5, type: 2}
+  - {fileID: 11400000, guid: 396482660d9279a4294f369245325131, type: 2}
+  - {fileID: 11400000, guid: 1661ac05f43e068448b3f2960ac1d57f, type: 2}
+  - {fileID: 11400000, guid: ded08c89b255409499576e626cb15960, type: 2}
+  - {fileID: 11400000, guid: 122dbbbf58a55ed4ea26d6db1f754cbb, type: 2}
+  - {fileID: 11400000, guid: ad9b8d87849cbb443985f26909b572f2, type: 2}
+  - {fileID: 11400000, guid: 0fa793a270e17e94988ea8a538153bab, type: 2}
+  - {fileID: 11400000, guid: 7c3e61303c6798748b00b115c31a54f4, type: 2}
+  - {fileID: 11400000, guid: ae440f5c2b096e24e8fb41f791a0ec9e, type: 2}
+  - {fileID: 11400000, guid: b9128b39a35b6774995edaeac41aee56, type: 2}
+  - {fileID: 11400000, guid: 6c8f3c7d1db4f8d4c8f328fecf3daa82, type: 2}
+  - {fileID: 11400000, guid: cda96108237db6e4d84dd6f435cc0239, type: 2}
+  - {fileID: 11400000, guid: 27b54859f6122f94fa2569cd958da847, type: 2}
+  - {fileID: 11400000, guid: 1b66009fee8697e49adee1bbb71ffac3, type: 2}
+  - {fileID: 11400000, guid: 7783ad179c921cd43bf23290bc4f3051, type: 2}
+  - {fileID: 11400000, guid: 5b64378297fe9da4881ccb7b22ca3909, type: 2}
+  - {fileID: 11400000, guid: e2ea2a9bb3cb6454fb68c82a76f56fa3, type: 2}
+  - {fileID: 11400000, guid: e90a0a3db47957740b6326a2485c456b, type: 2}
+  OnAdd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventFollowerData, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnRemove:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventFollowerData, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CustomEvents.UnityEventFollowerData, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

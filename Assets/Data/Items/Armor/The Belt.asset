@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb9eda6433449d4c84a56e96486fbbb, type: 3}
+  m_Name: The Belt
+  m_EditorClassIdentifier: 
+  ID: 78
+  Name: The Belt
+  Image: {fileID: 21300000, guid: 31cc6e2b0059bb94dbd73e06efad6c51, type: 3}
+  Value: 50
+  Description: A belt worn by a champion.
+  Rarity: 2
+  SellWithTrash: 0
+  ArmorAtLevel0: 10
+  ElementalWeakness:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}

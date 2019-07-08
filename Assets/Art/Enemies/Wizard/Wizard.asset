@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed46357c010e84ea5a3394f3ad888d, type: 3}
+  m_Name: Wizard
+  m_EditorClassIdentifier: 
+  ID: 8
+  DisplayName: Wizard
+  Portrait: {fileID: 21300000, guid: d78ea1f06254335418ccb2c28aac0a47, type: 3}
+  SizeOfSprite: {x: 32, y: 32}
+  SpaceBetweenEnemies: 32
+  SideIdleAnimation: {fileID: 7400000, guid: fa8b3cf7a3c163548959b092684e4fdf, type: 2}
+  RandomAnimation: {fileID: 7400000, guid: 325dd30ed7d60dd4a82a13006fc458d5, type: 2}
+  MinTimeBetweenRandomAnims: 10
+  MaxTimeBetweenRandomAnims: 20
+  Idle: {fileID: 7400000, guid: 39b536c2881987e43860119da93d9793, type: 2}
+  Flinch: {fileID: 7400000, guid: 54307da56f3ea4346b85800045ebf174, type: 2}
+  BeforeAttack: {fileID: 7400000, guid: d34f77f4ae980704b8ebd541f7907d62, type: 2}
+  AttackExecute: {fileID: 7400000, guid: 02a93a5bf793bd249a9391689accae11, type: 2}
+  AfterAttack: {fileID: 7400000, guid: c966b03568461954d83a4c0827fbe099, type: 2}
+  Death: {fileID: 7400000, guid: 197df1f8516650c43a923cf77f16cdab, type: 2}
+  Dead: {fileID: 7400000, guid: c1345a52cc42ffa479a52e454764b665, type: 2}
+  Walking: {fileID: 7400000, guid: 6991f0b882b94cf44beaac4d61496f24, type: 2}
+  DeadSprite: {fileID: 21300062, guid: d78ea1f06254335418ccb2c28aac0a47, type: 3}
+  BaseHealth: 22.9
+  BaseDamage: 14.9
+  TimeBetweenAttacks: 6
+  AttackPrepTime: 1
+  AttackExecuteTime: 0.5
+  HasElementalDamage: 1
+  BaseElementalDamage: 0
+  ElementalDamageType: {fileID: 11400000, guid: 2b8306db4b1f89b46951140b9e7f9220,
+    type: 2}
+  ElementalWeaknesses:
+    UseConstant: 1
+    ConstantValue:
+      Weaknesses: []
+    Variable: {fileID: 0}
+  Drops:
+    Items:
+    - item: {fileID: 11400000, guid: d053d65b8f09c264983e32e3a535f101, type: 2}
+      dropChance: 0.5
+    - item: {fileID: 11400000, guid: a774e612aec67b740aa55df3e3e3ff17, type: 2}
+      dropChance: 0.25
+    - item: {fileID: 11400000, guid: a464ae4e3daf624418d389df8584622f, type: 2}
+      dropChance: 0.25
+  OneAndDoneAttacker: 0

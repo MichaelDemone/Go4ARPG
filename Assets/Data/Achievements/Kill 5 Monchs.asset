@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c341df8585b5cc488aaa0b0c8293940, type: 3}
+  m_Name: Kill 5 Monchs
+  m_EditorClassIdentifier: 
+  ID: 1
+  AchievementIcon: {fileID: 21300000, guid: 198bd0adffe491b48940b2fbe19b0a32, type: 3}
+  AchievementCompletedText: You killed 5 Monchs!
+  NumberToReach: 5
+  Number: {fileID: 11400000, guid: e70966d51d11ac54bbbd2c2a80a97b71, type: 2}

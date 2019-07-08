@@ -3,16 +3,18 @@ using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour {
-    [NonSerialized] [AutoSet] public Transform t;
-    public Transform transformToWatch;
-    public Vector3 offset;
+    [AutoSet] public Transform Camera;
+    public Transform TransformToWatch;
+    public Vector3 Offset;
 
-    void Awake() {
+#if UNITY_EDITOR
+    void Reset() {
         AutoSet.Init(this);
     }
+#endif
 
     // Update is called once per frame
     void FixedUpdate() {
-        t.position = Vector3.Lerp(t.position, transformToWatch.position + offset, 0.5f);
+        Camera.position = Vector3.Lerp(Camera.position, TransformToWatch.position + Offset, 0.5f);
     }
 }

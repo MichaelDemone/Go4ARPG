@@ -5,17 +5,16 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
 
-
     public float MovementForceStrength = 10f;
 
     [AutoSet] public Rigidbody2D body;
     [AutoSet(SetByNameInChildren = true)] public SpriteRenderer View;
 
-
-    // Start is called before the first frame update
-    void Start() {
+#if UNITY_EDITOR
+    void Reset() {
         AutoSet.Init(this);
     }
+#endif
 
     // Update is called once per frame
     void Update() {
@@ -47,19 +46,35 @@ public class PlayerMovement : MonoBehaviour {
 
     }
 
+    private bool withinTopCollider = false;
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("TransitionArea")) {
-
-            other.gameObject.GetComponentInParent<TilemapCollider2D>().enabled = false;
+        if(other.CompareTag("TransitionArea")) {
+            other.GetComponentInParent<TilemapTransitionArea>().PlayerEntered(this);
+            withinTopCollider = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-
+        if(other.CompareTag("TransitionArea")) {
+            withinTopCollider = false;
+            other.GetComponentInParent<TilemapTransitionArea>().PlayerExited(this);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
+        if(withinTopCollider && Input.GetKey(KeyCode.S)) {
+            other.GetComponentInParent<TilemapTransitionArea>().PlayerAttemptEnterBottom(this);
+        }
+    }
 
+    private void OnTransition(TilemapTransitionArea tta, Collider2D other) {
+        if(other == tta.TopCollider) {
+            tta.FadeOutTopTilemap();
+            tta.TopColliderTilemap.GetComponent<TilemapCollider2D>().enabled = false;
+        } else {
+            tta.FadeOutBottomTilemap();
+            tta.BottomColliderTilemap.GetComponent<TilemapCollider2D>().enabled = false;
+        }
     }
 
 

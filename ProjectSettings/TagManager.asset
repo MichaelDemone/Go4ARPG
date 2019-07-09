@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: FarBackground
+    uniqueID: 1130202919
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

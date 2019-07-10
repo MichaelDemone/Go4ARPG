@@ -22,8 +22,6 @@ namespace G4AW2.Data.DropSystem {
                 }
             }
 
-            if(addGlobalItems) droppedItems.AddRange(ItemDropManager.GetRandomDrop());
-
             return droppedItems;
         }
 

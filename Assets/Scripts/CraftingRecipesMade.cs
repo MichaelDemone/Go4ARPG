@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,21 @@ public class CraftingRecipesMade : ScriptableObject, ISaveable {
         foreach (int id in so.made) {
             RecipesMade.Add(id);
         }
+    }
+
+    public string GetName() {
+        throw new NotImplementedException();
+    }
+
+    public object GetSaveObject() {
+        throw new NotImplementedException();
+    }
+
+    public Type GetSaveType() {
+        throw new NotImplementedException();
+    }
+
+    public void SetData(object saveObject) {
+        throw new NotImplementedException();
     }
 }

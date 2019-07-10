@@ -1,8 +1,6 @@
 using System;
 using CustomEvents;
 using UnityEngine;
-using G4AW2.Data.DropSystem;
-using G4AW2.Dialogue;
 
 namespace G4AW2.Combat {
 
@@ -64,7 +62,7 @@ namespace G4AW2.Combat {
 	        Gold.Value = newAmount;
 
             Health.Value = MaxHealth;
-	        PopUp.SetPopUp($"You died! You lost: {oldAmount - newAmount} gold.", new string[] {"Ok"}, new Action[] {() => { }});
+	        //PopUp.SetPopUp($"You died! You lost: {oldAmount - newAmount} gold.", new string[] {"Ok"}, new Action[] {() => { }});
 	    }
 
 		public int GetLightDamage() {

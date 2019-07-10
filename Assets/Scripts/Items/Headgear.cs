@@ -1,9 +1,11 @@
+using System;
 using G4AW2.Data.DropSystem;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CustomEvents;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "Data/Items/Headgear")]
 public class Headgear : Item, ITrashable, ISaveable {
@@ -66,6 +68,10 @@ public class Headgear : Item, ITrashable, ISaveable {
 
     public string GetSaveString() {
         return JsonUtility.ToJson(new DummySave() { ID = ID, Level = Level, RandomRoll = RandomRoll });
+    }
+
+    public void SetData(string saveString) {
+        throw new NotImplementedException();
     }
 
     public void SetData(string saveString, params object[] otherData) {

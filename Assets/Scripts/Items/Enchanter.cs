@@ -41,6 +41,18 @@ public class Enchanter : Item, ISaveable {
         return Type.GetPrefix(RandomlyGeneratedValue) + " " + base.GetName();
     }
 
+    public object GetSaveObject() {
+        throw new NotImplementedException();
+    }
+
+    public Type GetSaveType() {
+        throw new NotImplementedException();
+    }
+
+    public void SetData(object saveObject) {
+        throw new NotImplementedException();
+    }
+
     public string GetPrefix() {
         return Type.GetPrefix(RandomlyGeneratedValue);
     }

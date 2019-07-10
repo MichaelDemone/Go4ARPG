@@ -63,6 +63,18 @@ namespace G4AW2.Data.DropSystem {
             return $"{nameMod} {base.GetName()}";
         }
 
+        public object GetSaveObject() {
+            throw new NotImplementedException();
+        }
+
+        public Type GetSaveType() {
+            throw new NotImplementedException();
+        }
+
+        public void SetData(object saveObject) {
+            throw new NotImplementedException();
+        }
+
         public override string GetDescription() {
             return $"ARM Value: {ARMValue}\n" +
                    $"{Description}";

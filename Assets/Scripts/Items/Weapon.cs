@@ -15,8 +15,8 @@ namespace G4AW2.Data.DropSystem
         public PersistentSetItem AllItems;
 
         public int RawDamage => Mathf.RoundToInt(DamageAtLevel0 * MasteryDamageMod * (1 + Level / 10f) * mod);
-        public int Mastery => Mathf.FloorToInt( ConfigObject.GetLevel(Rarity, MasteryLevels.GetTaps(ID)));
-        public float RawMastery => ConfigObject.GetLevel(Rarity, MasteryLevels.GetTaps(ID));
+        public int Mastery => 0;
+        public float RawMastery => 0;
         private float MasteryDamageMod => Mastery == 99 ? 2.15f : 1 + Mastery / 100f;
 
         public float DamageAtLevel0;
@@ -40,28 +40,8 @@ namespace G4AW2.Data.DropSystem
 
 
         void OnEnable() {
-            TapsWithWeapon.OnValueChange += TapsChanged;
             if(Name == "")
                 Name = name;
-        }
-
-        private int lastLevel = -1;
-        void TapsChanged(int amount) {
-
-            if (!MasteryLevels.Loaded) return;
-
-            if (lastLevel == -1) {
-                lastLevel = Mastery;
-                return;
-            }
-
-            MasteryLevels.Tap(ID);
-
-            if (Mastery != lastLevel) {
-                LevelUp.Raise(this);
-                DataChanged?.Invoke();
-                lastLevel = Mastery;
-            }
         }
 
         public override bool ShouldCreateNewInstanceWhenPlayerObtained() {
@@ -77,6 +57,18 @@ namespace G4AW2.Data.DropSystem
 
         public override string GetName() {
             return GetName(IsEnchanted, true);
+        }
+
+        public object GetSaveObject() {
+            throw new NotImplementedException();
+        }
+
+        public Type GetSaveType() {
+            throw new NotImplementedException();
+        }
+
+        public void SetData(object saveObject) {
+            throw new NotImplementedException();
         }
 
         public string GetName(bool enchantInclude, bool includeNameMod) {

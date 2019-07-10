@@ -155,4 +155,20 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
             Add(ItemToAdd);
         }
     }
+
+    public string GetName() {
+        throw new NotImplementedException();
+    }
+
+    public object GetSaveObject() {
+        throw new NotImplementedException();
+    }
+
+    public Type GetSaveType() {
+        throw new NotImplementedException();
+    }
+
+    public void SetData(object saveObject) {
+        throw new NotImplementedException();
+    }
 }

@@ -10,7 +10,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/CraftingTable")]
 public class CraftingTable : ScriptableObject {
 
-    public ActiveQuestBaseVariable CurrentQuest;
     public PersistentSetCraftingRecipe Recipes;
     public Inventory Inventory;
 
@@ -59,6 +58,7 @@ public class CraftingTable : ScriptableObject {
             it.CreatedFromOriginal = true;
             it.OnAfterObtained();
 
+            /*
             if (it is Weapon) {
                 ((Weapon) it).Level = CurrentQuest.Value.Level;
             }
@@ -69,7 +69,7 @@ public class CraftingTable : ScriptableObject {
 
             if(it is Headgear) {
                 ((Headgear) it).Level = CurrentQuest.Value.Level;
-            }
+            }*/
         }
 
         Inventory.Add(it, cr.Result.Amount);

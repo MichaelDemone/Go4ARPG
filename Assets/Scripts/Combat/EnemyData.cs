@@ -6,7 +6,11 @@ using UnityEngine;
 
 namespace G4AW2.Data.Combat {
 	[CreateAssetMenu(menuName = "Data/Follower/Enemy")]
-    public class EnemyData : FollowerData, ISaveable {
+    public class EnemyData : ScriptableObject, ISaveable {
+
+	    public int ID;
+	    public string DisplayName;
+	    public Sprite Portrait;
 
 		[Header("Animations")]
 		public AnimationClip Idle;
@@ -65,12 +69,12 @@ namespace G4AW2.Data.Combat {
 	        public int Level;
 	    }
 
-	    public override string GetSaveString() {
+	    public string GetSaveString() {
 	        return JsonUtility.ToJson(new SaveObject() { ID = ID, Level = Level});
         }
 
 
-	    public override void SetData(string saveString, params object[] otherData) {
+	    public void SetData(string saveString, params object[] otherData) {
 
 	        SaveObject ds = JsonUtility.FromJson<SaveObject>(saveString);
 
@@ -79,16 +83,17 @@ namespace G4AW2.Data.Combat {
 
 	        EnemyData original;
 
-	        if(otherData[0] is PersistentSetFollowerData) {
-	            PersistentSetFollowerData allFollowers = (PersistentSetFollowerData) otherData[0];
-	            original = allFollowers.First(it => it.ID == ID) as EnemyData;
-	        } else {
+	        //if(otherData[0] is PersistentSetEnemyData) {
+	        //    PersistentSetEnemyData allFollowers = (PersistentSetEnemyData) otherData[0];
+	        //    original = allFollowers.First(it => it.ID == ID) as EnemyData;
+	        //} else {
 	            original = otherData[0] as EnemyData;
 	            if(Idle == original.Idle)
 	                return; // This object may have been create based on the original. In which case, we don't need to do any copying
-            }
+            //}
 
             // Copy Original Values
+	        DisplayName = original.DisplayName;
 	        Idle = original.Idle;
             Flinch = original.Flinch;
             BeforeAttack = original.BeforeAttack;
@@ -99,8 +104,6 @@ namespace G4AW2.Data.Combat {
             Walking = original.Walking;
 	        ElementalWeaknesses = original.ElementalWeaknesses;
 	        ElementalDamageType = original.ElementalDamageType;
-
-            base.SetData(saveString, original);
         }
 	}
 }

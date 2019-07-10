@@ -1,5 +1,4 @@
 using CustomEvents;
-using G4AW2.Dialogue;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -97,7 +96,7 @@ namespace G4AW2.Saving {
         }
 
         private void ShowErrorPopUp() {
-            PopUp.SetPopUp("Could not load save data. Try closing the game and reopening. If the problem persists please contact support.", new[] { "Ok", "Other" },
+            /*PopUp.SetPopUp("Could not load save data. Try closing the game and reopening. If the problem persists please contact support.", new[] { "Ok", "Other" },
                 new Action[] {
                     () => {
                         Application.Quit();
@@ -115,7 +114,7 @@ namespace G4AW2.Saving {
                                 }
                             });
                     }
-                });
+                });*/
         }
 
         private void LoadFromString(string loadText) {
@@ -150,10 +149,11 @@ namespace G4AW2.Saving {
                 }
             }
 
+            /*
             if (error) {
                 PopUp.SetPopUp(errorMessage, new[] {"Ok", "Close Game"},
                     new Action[] {() => { }, () => Application.Quit()});
-            }
+            }*/
             
         }
 

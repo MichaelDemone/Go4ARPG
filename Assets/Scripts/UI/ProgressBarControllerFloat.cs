@@ -1,35 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using CustomEvents;
+using G4AW2.Utils;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ProgressBarControllerFloat : MonoBehaviour {
 
 	[Header("Values")]
-	public FloatReference Max;
-	public FloatReference Current;
+	public ObservableFloat Max;
+	public ObservableFloat Current;
 
 	[Header("UI")]
 	public Image ProgressBarFill;
 
-	void OnEnable() {
-		if (!Max.UseConstant)
-			Max.Variable.OnChange.AddListener(UpdateUI);
-		if (!Current.UseConstant)
-			Current.Variable.OnChange.AddListener(UpdateUI);
-	}
-
-	void OnDisable() {
-		if (!Max.UseConstant)
-			Max.Variable.OnChange.RemoveListener(UpdateUI);
-		if (!Current.UseConstant)
-			Current.Variable.OnChange.RemoveListener(UpdateUI);
-	}
+    public TextMeshProUGUI Text;
 
 	void Start() {
 		UpdateUI();
 	}
+
+    public void SetData(ObservableFloat current, ObservableFloat max) {
+        Max = max;
+        Current = current;
+
+        Max.OnValueChange += UpdateUI;
+        Current.OnValueChange += UpdateUI;
+
+        UpdateUI();
+    }
 
 	private void UpdateUI( float i ) { UpdateUI(); }
 
@@ -47,10 +47,11 @@ public class ProgressBarControllerFloat : MonoBehaviour {
 	public void UpdateUI() {
 		Vector3 scale = ProgressBarFill.rectTransform.localScale;
 		if (Max == 0) {
-			Debug.LogWarning("Max - min is zero. Object: " + name);
 			return;
 		}
 		scale.x = Mathf.Clamp01(Current / Max);
 		ProgressBarFill.rectTransform.localScale = scale;
+	    Text.text = $"{Current.Value:n2} / {Max.Value:n2}";
+
 	}
 }

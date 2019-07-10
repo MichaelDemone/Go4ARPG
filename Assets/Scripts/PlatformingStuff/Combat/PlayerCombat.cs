@@ -1,18 +1,35 @@
 using System;
+using G4AW2.Utils;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour {
 
     public static PlayerCombat Instance;
 
+    public ProgressBarControllerFloat ActionBar;
+
     void Awake() {
         Instance = this;
     }
 
+    void Start() {
+        ActionBar.SetData(CurrentActionTime, TimeDoAction);
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (CurrentActionTime < TimeDoAction) {
+            CurrentActionTime.Value += Time.deltaTime;
+        }
+        else {
+            CurrentActionTime.Value = TimeDoAction;
+        }
+    }
+
     public float Damage = 1;
 
-    [NonSerialized] public float TimeDoAction = 1f;
-    [NonSerialized] public float CurrentActionTime = 0f;
+    [NonSerialized] public ObservableFloat TimeDoAction = new ObservableFloat(1f);
+    [NonSerialized] public ObservableFloat CurrentActionTime = new ObservableFloat(0);
 
     public void EnemyClicked(Enemy e) {
         // Walk up & smack enemy
@@ -25,20 +42,7 @@ public class PlayerCombat : MonoBehaviour {
 
     public void Smack(Enemy e) {
         e.InflictDamage(Damage);
-        CurrentActionTime = 0;
+        CurrentActionTime.Value = 0;
         Debug.Log("Smacked enemy!");
-    }
-
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-        if (CurrentActionTime < TimeDoAction) {
-            Debug.Log("Recovering action: " + CurrentActionTime);
-            CurrentActionTime += Time.deltaTime;
-        }
     }
 }

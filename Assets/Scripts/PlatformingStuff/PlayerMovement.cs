@@ -5,28 +5,58 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
 
+    public static PlayerMovement Instance;
+
     public float MovementForceStrength = 10f;
 
     [AutoSet] public Rigidbody2D body;
     [AutoSet(SetByNameInChildren = true)] public SpriteRenderer View;
 
+    [AutoSet] public Transform t;
+
 #if UNITY_EDITOR
     void Reset() {
         AutoSet.Init(this);
     }
+
+    void OnEnable() {
+        AutoSet.Init(this);
+    }
 #endif
+
+    void Awake() {
+        Instance = this;
+    }
 
     // Update is called once per frame
     void Update() {
         Vector2 vel = body.velocity;
         if (Input.GetKey(KeyCode.D)) {
             vel.x = MovementForceStrength;
+            walkingToPoint = false;
         }
         else if (Input.GetKey(KeyCode.A)) {
             vel.x = -MovementForceStrength;
+            walkingToPoint = false;
 
         } else {
-            vel.x = 0;
+            if (walkingToPoint) {
+                if (destination.x < t.position.x) {
+                    vel.x = -MovementForceStrength;
+                }
+                else {
+                    vel.x = MovementForceStrength;
+                }
+
+                if (((Vector2)t.position - destination).magnitude < destinationTolerance) {
+                    // Destination reached.
+                    destinationReached();
+                    walkingToPoint = false;
+                }
+            }
+            else {
+               vel.x = 0;
+            }
         }
         body.velocity = vel;
         
@@ -34,16 +64,20 @@ public class PlayerMovement : MonoBehaviour {
             View.flipX = vel.x < 0;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private bool walkingToPoint = false;
+    private Vector2 destination;
+    private float destinationTolerance;
+    private Action destinationReached;
 
-    }
+    public bool AttemptToWalkToPoint(Vector2 point, float positionTolerance, Action onReach) {
+        Vector2 dir = point - (Vector2) transform.position;
 
-    private void OnCollisionExit2D(Collision2D collision) {
+        destination = point;
+        destinationTolerance = positionTolerance;
+        destinationReached = onReach;
 
-    }
-
-    private void OnCollisionStay2D(Collision2D collision) {
-
+        walkingToPoint = true;
+        return true;
     }
 
     private bool withinTopCollider = false;
@@ -77,5 +111,16 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision) {
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision) {
+
+    }
 
 }

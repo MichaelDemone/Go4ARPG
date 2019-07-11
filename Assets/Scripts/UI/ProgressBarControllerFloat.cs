@@ -51,7 +51,7 @@ public class ProgressBarControllerFloat : MonoBehaviour {
 		}
 		scale.x = Mathf.Clamp01(Current / Max);
 		ProgressBarFill.rectTransform.localScale = scale;
-	    Text.text = $"{Current.Value:n2} / {Max.Value:n2}";
+	    if(Text != null) Text.text = $"{Current.Value:n2} / {Max.Value:n2}";
 
 	}
 }

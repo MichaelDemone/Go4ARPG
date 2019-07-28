@@ -38,11 +38,6 @@ public class PlayerCombat : MonoBehaviour {
 
     public void EnemyClicked(Enemy e) {
         // Walk up & smack enemy
-        PlayerMovement.Instance.AttemptToWalkToPoint(e.transform.position, GlobalDefines.GRID_SIZE, () => {
-            if(CurrentActionTime >= TimeDoAction) {
-                Smack(e);
-            }
-        });
     }
 
     public void Smack(Enemy e) {

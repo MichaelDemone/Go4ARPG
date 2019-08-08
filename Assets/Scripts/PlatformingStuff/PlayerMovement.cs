@@ -1,4 +1,5 @@
 using System;
+using G4AW2.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,6 +14,13 @@ public class PlayerMovement : MonoBehaviour {
     [AutoSet(SetByNameInChildren = true)] public SpriteRenderer View;
 
     [AutoSet] public Transform t;
+
+    [AutoSet(CheckChildrenForComponents = true)] public PlayerAnimations Animations;
+    [AutoSet(CheckChildrenForComponents = true, SetByNameInChildren = true)] public Transform Weapon;
+
+
+    public float WeaponDistanceFromPlayer = 0.15f;
+    public Vector3 WeaponOffset = new Vector2(0, 0.05f);
 
 #if UNITY_EDITOR
     void Reset() {
@@ -30,20 +38,66 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Vector2 vel = new Vector2();
-        if (Input.GetKey(KeyCode.D)) {
-            vel.x = 1;
-        } else if (Input.GetKey(KeyCode.A)) {
-            vel.x = -1;
-        } else if (Input.GetKey(KeyCode.W)) {
-            vel.y = 1;
-        } else if (Input.GetKey(KeyCode.S)) {
-            vel.y = -1;
+        // Set Velocity
+        {
+            Vector2 vel = new Vector2();
+            if(Input.GetKey(KeyCode.D)) {
+                vel.x = 1;
+            }
+            if(Input.GetKey(KeyCode.A)) {
+                vel.x += -1;
+            }
+            if(Input.GetKey(KeyCode.W)) {
+                vel.y = 1;
+            }
+            if(Input.GetKey(KeyCode.S)) {
+                vel.y += -1;
+            }
+            if(body.velocity.magnitude == 0 && vel.magnitude > 0) {
+                // Started walking
+                Animations.StartWalking();
+            }
+            if(body.velocity.magnitude != 0 && vel.magnitude == 0) {
+                // Stopped walking
+                Animations.StopWalking();
+            }
+            body.velocity = vel.normalized * MovementForceStrength;
         }
-        body.velocity = vel.normalized * MovementForceStrength;
+
+        // Set body orientation
+        {
+            if(Math.Abs(body.velocity.x) > 0.01f)
+                View.flipX = body.velocity.x < 0;
+                //View.gameObject.transform.localScale = View.gameObject.transform.localScale.SetX(body.velocity.x < 0 ? -1 : 1);
+        }
+
+        // Set attack animations
+        {
+            if(Input.GetMouseButtonDown(0)) {
+                Animations.Attack();
+            }
+            if(Input.GetMouseButtonUp(0)) {
+                Animations.ResetAttack();
+            }
+        }
+
+        // Set weapon rotation + position
+        {
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 0;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos.z = 0;
+            Vector3 FakeMiddle = transform.position + WeaponOffset;
+            Vector3 directionToMouseFromPlayer = (mousePos - FakeMiddle).normalized;
+            Vector3 weaponPosition = FakeMiddle + directionToMouseFromPlayer * WeaponDistanceFromPlayer;
+
+            Weapon.position = weaponPosition;
+            Weapon.right = directionToMouseFromPlayer;
+            Weapon.localScale = Weapon.localScale.SetY(directionToMouseFromPlayer.x < 0 ? -1 : 1);
+        }
         
-        if(Math.Abs(vel.x) > 0.01f)
-            View.flipX = vel.x < 0;
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

@@ -26,10 +26,10 @@ public class PlayerAnimations : MonoBehaviour {
     [ContextMenu("StartWalking")]
 	public void StartWalking()
     {
-        animator.SetBool("Walking", true);
-        armAnimator.SetBool("Walking", true);
-        armourAnimator.SetBool("Walking", true);
-        weaponAnimator.SetBool("Walking", true);
+        animator?.SetBool("Walking", true);
+        //armAnimator?.SetBool("Walking", true);
+        //armourAnimator?.SetBool("Walking", true);
+        //weaponAnimator?.SetBool("Walking", true);
         StartedWalking.Invoke();
 
     }
@@ -37,29 +37,29 @@ public class PlayerAnimations : MonoBehaviour {
     [ContextMenu("StopWalking")]
     public void StopWalking()
     {
-        animator.SetBool("Walking", false);
-        armAnimator.SetBool("Walking", false);
-        armourAnimator.SetBool("Walking", false);
-        weaponAnimator.SetBool("Walking", false);
+        animator?.SetBool("Walking", false);
+        //armAnimator?.SetBool("Walking", false);
+        //armourAnimator?.SetBool("Walking", false);
+        //weaponAnimator?.SetBool("Walking", false);
         StoppedWalking.Invoke();
     }
 
     [ContextMenu("Spin")]
     public void Spin() {
         spinDone = null;
-        animator.SetTrigger("Spin");
-        armAnimator.SetTrigger("Spin");
-        armourAnimator.SetTrigger("Spin");
-        weaponAnimator.SetTrigger("Spin");
+        animator?.SetTrigger("Spin");
+        //armAnimator?.SetTrigger("Spin");
+        //armourAnimator?.SetTrigger("Spin");
+        //weaponAnimator?.SetTrigger("Spin");
     }
 
     private Action spinDone;
     public void Spin(Action spinDone) {
         this.spinDone = spinDone;
-        animator.SetTrigger("Spin");
-        armAnimator.SetTrigger("Spin");
-        armourAnimator.SetTrigger("Spin");
-        weaponAnimator.SetTrigger("Spin");
+        animator?.SetTrigger("Spin");
+        //armAnimator?.SetTrigger("Spin");
+        //armourAnimator?.SetTrigger("Spin");
+        //weaponAnimator?.SetTrigger("Spin");
     }
 
     public void SpinDone()
@@ -75,17 +75,17 @@ public class PlayerAnimations : MonoBehaviour {
     public void Celebrate()
     {
         celebrationFinished = null;
-        animator.SetTrigger("Celebrate");
-        armAnimator.SetTrigger("Celebrate");
-        armourAnimator.SetTrigger("Celebrate");
-        weaponAnimator.SetTrigger("Celebrate");
+        animator?.SetTrigger("Celebrate");
+        //armAnimator?.SetTrigger("Celebrate");
+        //armourAnimator?.SetTrigger("Celebrate");
+        //weaponAnimator?.SetTrigger("Celebrate");
     }
 
     public void Celebrate(Action onFinish) {
-        animator.SetTrigger("Celebrate");
-        armAnimator.SetTrigger("Celebrate");
-        armourAnimator.SetTrigger("Celebrate");
-        weaponAnimator.SetTrigger("Celebrate");
+        animator?.SetTrigger("Celebrate");
+        ////rmAnimator?.SetTrigger("Celebrate");
+        //armourAnimator?.SetTrigger("Celebrate");
+        //weaponAnimator?.SetTrigger("Celebrate");
         celebrationFinished = onFinish;
     }
 
@@ -96,18 +96,18 @@ public class PlayerAnimations : MonoBehaviour {
     [ContextMenu("Attack")]
     public void Attack()
     {
-        animator.SetTrigger("Attack");
-        armAnimator.SetTrigger("Attack");
-        armourAnimator.SetTrigger("Attack");
-        weaponAnimator.SetTrigger("Attack");
+        animator?.SetTrigger("Attack");
+        //armAnimator?.SetTrigger("Attack");
+        //armourAnimator?.SetTrigger("Attack");
+        weaponAnimator?.SetTrigger("Attack");
     }
 
     [ContextMenu("ResetAttack")]
     public void ResetAttack()
     {
-        animator.ResetTrigger("Attack");
-        armAnimator.ResetTrigger("Attack");
-        armourAnimator.ResetTrigger("Attack");
-        weaponAnimator.ResetTrigger("Attack");
+        animator?.ResetTrigger("Attack");
+        //armAnimator?.ResetTrigger("Attack");
+        //armourAnimator?.ResetTrigger("Attack");
+        weaponAnimator?.ResetTrigger("Attack");
     }
 }

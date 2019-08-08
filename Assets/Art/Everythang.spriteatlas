@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Everythang
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: -4985247087482913360, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: -859860927333491566, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: -4931547109833593363, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 4970067500745138008, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 9024208059883752563, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 7072439853906286570, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: -5534718340733575440, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 2030507501482415285, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 8662370391360126577, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: -3652753398286997341, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 3420019380589954764, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 8248474097308535115, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 7559232604684453710, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: -8454166701434426864, guid: cae61065253518a44a270776d381066b, type: 3}
+    - {fileID: 7827472093232620422, guid: cae61065253518a44a270776d381066b, type: 3}
+    totalSpriteSurfaceArea: 1500
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 3420019380589954764, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: -3652753398286997341, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 8662370391360126577, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 2030507501482415285, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: -5534718340733575440, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 7072439853906286570, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 9024208059883752563, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 4970067500745138008, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: -4931547109833593363, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: -859860927333491566, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: -8454166701434426864, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 7827472093232620422, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 8248474097308535115, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: 7559232604684453710, guid: cae61065253518a44a270776d381066b, type: 3}
+  - {fileID: -4985247087482913360, guid: cae61065253518a44a270776d381066b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 67276833_2426831927592722_8266432475534721024_n_9
+  - 67276833_2426831927592722_8266432475534721024_n_8
+  - 67276833_2426831927592722_8266432475534721024_n_7
+  - 67276833_2426831927592722_8266432475534721024_n_6
+  - 67276833_2426831927592722_8266432475534721024_n_5
+  - 67276833_2426831927592722_8266432475534721024_n_4
+  - 67276833_2426831927592722_8266432475534721024_n_3
+  - 67276833_2426831927592722_8266432475534721024_n_2
+  - 67276833_2426831927592722_8266432475534721024_n_1
+  - 67276833_2426831927592722_8266432475534721024_n_0
+  - 67276833_2426831927592722_8266432475534721024_n_12
+  - 67276833_2426831927592722_8266432475534721024_n_13
+  - 67276833_2426831927592722_8266432475534721024_n_10
+  - 67276833_2426831927592722_8266432475534721024_n_11
+  - 67276833_2426831927592722_8266432475534721024_n_14
+  m_Tag: Everythang
+  m_IsVariant: 0

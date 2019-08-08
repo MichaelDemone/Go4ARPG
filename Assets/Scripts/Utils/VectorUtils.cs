@@ -28,6 +28,20 @@ namespace G4AW2.Utils {
             return new Vector2(x,y).normalized;
 	    }
 
-	}
+	    public static Vector3 SetX(this Vector3 vec, float val) {
+	        vec.x = val;
+	        return vec;
+	    }
+
+	    public static Vector3 SetY(this Vector3 vec, float val) {
+	        vec.y = val;
+	        return vec;
+	    }
+
+	    public static Vector3 SetZ(this Vector3 vec, float val) {
+	        vec.y = val;
+	        return vec;
+	    }
+    }
 }
 

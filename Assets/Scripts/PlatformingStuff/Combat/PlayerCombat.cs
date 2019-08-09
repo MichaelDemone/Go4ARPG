@@ -12,13 +12,15 @@ public class PlayerCombat : MonoBehaviour {
     public ProgressBarControllerFloat ActionBar;
     public ProgressBarControllerFloat HealthBar;
 
+    public float Damage = 1;
+
     void Awake() {
         Instance = this;
     }
 
     void Start() {
-        ActionBar.SetData(CurrentActionTime, TimeDoAction);
-        HealthBar.SetData(CurrentHealth, MaxHealth);
+        //ActionBar.SetData(CurrentActionTime, TimeDoAction);
+        //HealthBar.SetData(CurrentHealth, MaxHealth);
     }
 
     // Update is called once per frame
@@ -31,20 +33,9 @@ public class PlayerCombat : MonoBehaviour {
         }
     }
 
-    public float Damage = 1;
 
     [NonSerialized] public ObservableFloat TimeDoAction = new ObservableFloat(1f);
     [NonSerialized] public ObservableFloat CurrentActionTime = new ObservableFloat(0);
-
-    public void EnemyClicked(Enemy e) {
-        // Walk up & smack enemy
-    }
-
-    public void Smack(Enemy e) {
-        e.InflictDamage(Damage);
-        CurrentActionTime.Value = 0;
-        Debug.Log("Smacked enemy!");
-    }
 
     public void GetHurtBy(Enemy source, float damageAmount) {
         CurrentHealth.Value -= damageAmount;

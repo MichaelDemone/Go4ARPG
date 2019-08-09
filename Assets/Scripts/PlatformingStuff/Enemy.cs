@@ -7,20 +7,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    public ObservableFloat MaxHealth = new ObservableFloat(20);
-    [NonSerialized] public ObservableFloat CurrentHealth = new ObservableFloat(20);
-
-
-    [AutoSet(true)] public ColliderEvents Range;
-    public string[] EnemyTags;
-
-    public ObservableFloat ActionTime = new ObservableFloat(1.5f);
-    [NonSerialized] public ObservableFloat CurrentActionTime = new ObservableFloat(0);
-
     public ProgressBarControllerFloat HealthBar;
     public ProgressBarControllerFloat ActionBar;
+    public ObservableFloat MaxHealth = new ObservableFloat(20);
+    public ObservableFloat ActionTime = new ObservableFloat(1.5f);
+    [AutoSet(SetByNameInChildren = true)] public ColliderEvents AggroRange;
+    [AutoSet(SetByNameInChildren = true)] public ColliderEvents AwareRange;
+    [AutoSet(SetByNameInChildren = true)] public ColliderEvents DamageRange;
+    public string[] EnemyTags;
+
+
+    [NonSerialized] public ObservableFloat CurrentHealth = new ObservableFloat(20);
+    [NonSerialized] public ObservableFloat CurrentActionTime = new ObservableFloat(0);
+
 
     public float Damage;
+
 
 #if UNITY_EDITOR
     void Reset() {
@@ -32,15 +34,23 @@ public class Enemy : MonoBehaviour {
 #endif
 
     void Awake() {
-        Range.TriggerEntered2D += ColliderEnteredRange;
-        Range.TriggerStayed2D += ColliderStayedRange;
-        Range.TriggerExited2D += ColliderExitedRange;
+        AggroRange.TriggerEntered2D += AggroZoneEntered;
+        AggroRange.TriggerStayed2D += AggroZoneStayed;
+        AggroRange.TriggerExited2D += AggroZoneExited;
+
+        AwareRange.TriggerEntered2D += AwareZoneEntered;
+        AwareRange.TriggerStayed2D += AwareZoneStayed;
+        AwareRange.TriggerExited2D += AwareZoneExited;
+
+        DamageRange.TriggerEntered2D += DamageZoneEntered;
+        DamageRange.TriggerStayed2D += DamageZoneStayed;
+        DamageRange.TriggerExited2D += DamageZoneExited;
     }
 
     // Start is called before the first frame update
     void Start() {
-        ActionBar.SetData(CurrentActionTime, ActionTime);
-        HealthBar.SetData(CurrentHealth, MaxHealth);
+        //ActionBar.SetData(CurrentActionTime, ActionTime);
+        //HealthBar.SetData(CurrentHealth, MaxHealth);
     }
 
     // Update is called once per frame
@@ -57,51 +67,102 @@ public class Enemy : MonoBehaviour {
     }
 
     public void UpdateTargets() {
-        if (targets.Count == 0) return;
+        if (damageTargets.Count == 0) return;
         if (CurrentActionTime >= ActionTime) StartCoroutine(DoAttack());
 
     }
 
-    private bool attacking = false;
     public IEnumerator DoAttack() {
         yield return new WaitForSeconds(0.5f);
 
-        if (targets.Count == 0) yield break;
+        if (damageTargets.Count == 0) yield break;
         if (CurrentActionTime < ActionTime) {
             Debug.LogWarning("Called Do Attack twice");
             yield break;
         }
 
-        GameObject target = targets.GetRandom();
-        target.GetComponent<PlayerCombat>().GetHurtBy(this, Damage);
+        damageTargets.ForEach(t => t.GetComponent<PlayerCombat>().GetHurtBy(this, Damage));
         CurrentActionTime.Value = 0;
-    }
-
-    private List<GameObject> targets = new List<GameObject>();
-    private void ColliderEnteredRange(Collider2D other) {
-        if (EnemyTags.Contains(other.tag)) {
-            targets.Add(other.gameObject);
-        }
-        UpdateTargets();
-    }
-
-    private void ColliderStayedRange(Collider2D other) {
-    }
-
-    private void ColliderExitedRange(Collider2D other) {
-        targets.Remove(other.gameObject);
-    }
-
-
-    void OnMouseDown() {
-        PlayerCombat.Instance.EnemyClicked(this);
     }
 
     public void InflictDamage(float damage) {
         CurrentHealth.Value -= damage;
-        if (CurrentHealth <= 0) {
+        Debug.Log("Current Health: " + CurrentHealth.Value);
+        if(CurrentHealth <= 0) {
             Debug.Log("Death!");
-            Destroy(gameObject.transform.parent.gameObject);
+            Destroy(gameObject);
         }
+    }
+
+    #region AggroColliders
+
+    private List<GameObject> aggroTargets = new List<GameObject>();
+    private void AggroZoneEntered(Collider2D other) {
+        if(EnemyTags.Contains(other.tag)) {
+            aggroTargets.Add(other.gameObject);
+        }
+        UpdateTargets();
+    }
+
+    private void AggroZoneStayed(Collider2D other) {
+    }
+
+    private void AggroZoneExited(Collider2D other) {
+        aggroTargets.Remove(other.gameObject);
+    }
+
+    #endregion
+
+    #region AwareColliders
+
+    private List<GameObject> awareTargets = new List<GameObject>();
+    private void AwareZoneEntered(Collider2D other) {
+        if(EnemyTags.Contains(other.tag)) {
+            awareTargets.Add(other.gameObject);
+        }
+        UpdateTargets();
+    }
+
+    private void AwareZoneStayed(Collider2D other) {
+    }
+
+    private void AwareZoneExited(Collider2D other) {
+        awareTargets.Remove(other.gameObject);
+    }
+
+    #endregion
+
+    #region DamageColliders
+
+    private List<GameObject> damageTargets = new List<GameObject>();
+    private void DamageZoneEntered(Collider2D other) {
+        if(EnemyTags.Contains(other.tag)) {
+            damageTargets.Add(other.gameObject);
+        }
+        UpdateTargets();
+    }
+
+    private void DamageZoneStayed(Collider2D other) {
+    }
+
+    private void DamageZoneExited(Collider2D other) {
+        damageTargets.Remove(other.gameObject);
+    }
+
+    #endregion
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("PlayerWeapon")) {
+            // You're getting hit. RIP.
+            InflictDamage(PlayerCombat.Instance.Damage);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+
     }
 }

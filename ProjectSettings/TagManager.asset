@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - TransitionArea
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX

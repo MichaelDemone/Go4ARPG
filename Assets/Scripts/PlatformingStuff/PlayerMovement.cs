@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour {
     public float WeaponDistanceFromPlayer = 0.15f;
     public Vector3 WeaponOffset = new Vector2(0, 0.05f);
 
+    private bool attacking = false;
+
 #if UNITY_EDITOR
     void Reset() {
         AutoSet.Init(this);
@@ -64,22 +66,20 @@ public class PlayerMovement : MonoBehaviour {
             body.velocity = vel.normalized * MovementForceStrength;
         }
 
-        // Set body orientation
-        {
-            if(Math.Abs(body.velocity.x) > 0.01f)
-                View.flipX = body.velocity.x < 0;
-                //View.gameObject.transform.localScale = View.gameObject.transform.localScale.SetX(body.velocity.x < 0 ? -1 : 1);
-        }
-
         // Set attack animations
         {
             if(Input.GetMouseButtonDown(0)) {
                 Animations.Attack();
+                attacking = true;
             }
             if(Input.GetMouseButtonUp(0)) {
                 Animations.ResetAttack();
+                attacking = false;
             }
         }
+
+
+        Vector3 directionToMouseFromPlayer;
 
         // Set weapon rotation + position
         {
@@ -88,14 +88,23 @@ public class PlayerMovement : MonoBehaviour {
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             mousePos.z = 0;
             Vector3 FakeMiddle = transform.position + WeaponOffset;
-            Vector3 directionToMouseFromPlayer = (mousePos - FakeMiddle).normalized;
+            directionToMouseFromPlayer = (mousePos - FakeMiddle).normalized;
             Vector3 weaponPosition = FakeMiddle + directionToMouseFromPlayer * WeaponDistanceFromPlayer;
 
             Weapon.position = weaponPosition;
             Weapon.right = directionToMouseFromPlayer;
             Weapon.localScale = Weapon.localScale.SetY(directionToMouseFromPlayer.x < 0 ? -1 : 1);
         }
-        
+
+        // Set body orientation
+        {
+            if(Math.Abs(body.velocity.x) > 0.01f)
+                View.flipX = body.velocity.x < 0;
+
+            if (attacking) {
+                View.flipX = directionToMouseFromPlayer.x < 0;
+            }
+        }
 
 
     }

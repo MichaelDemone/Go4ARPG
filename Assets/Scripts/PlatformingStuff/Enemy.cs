@@ -2,27 +2,44 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using EditorUtils;
 using G4AW2.Utils;
 using UnityEngine;
 
+/// <summary>
+/// This enemy will walk towards targets within their aggro area
+/// if the target is within the damage zone and they have their action ready, the enemy will attack
+/// If a target aggro'd this enemy, this enemy will follow it at full speed within the aggro area, and then follow it
+/// at half speed in the aware area, and stop following it once it's out of all areas.
+/// 
+/// </summary>
 public class Enemy : MonoBehaviour {
 
+    [Header("Health and Action bar Stuff")]
     public ProgressBarControllerFloat HealthBar;
     public ProgressBarControllerFloat ActionBar;
     public ObservableFloat MaxHealth = new ObservableFloat(20);
-    public ObservableFloat ActionTime = new ObservableFloat(1.5f);
+    [NonSerialized] public ObservableFloat CurrentHealth = new ObservableFloat(20);
+
+
+    [Header("Auto Set Items")]
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents AggroRange;
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents AwareRange;
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents DamageRange;
+    [AutoSet] public Rigidbody2D Body;
+
+
+    [Header("Combat")]
     public string[] EnemyTags;
 
+    public float Speed = 0.75f;
 
-    [NonSerialized] public ObservableFloat CurrentHealth = new ObservableFloat(20);
-    [NonSerialized] public ObservableFloat CurrentActionTime = new ObservableFloat(0);
-
-
+    [Header("Attacking")]
+    public float WarmUpTime = 0.5f; // i.e gnome chompy opens his mouth and a circle appears around him
+    public float ExecuteAttackTime = 0.1f; // He slams his mouth down and the damage is done
+    public float CooldownTime = 3f;
     public float Damage;
-
+    private float timeBeforeCanAttack = 0;
 
 #if UNITY_EDITOR
     void Reset() {
@@ -53,36 +70,54 @@ public class Enemy : MonoBehaviour {
         //HealthBar.SetData(CurrentHealth, MaxHealth);
     }
 
+    private bool attacking = false;
+
     // Update is called once per frame
     void Update() {
-        UpdateTargets();
 
-        if (CurrentActionTime < ActionTime) {
-            CurrentActionTime.Value += Time.deltaTime;
-            if (CurrentActionTime >= ActionTime) {
-                CurrentActionTime.Value = ActionTime;
-                UpdateTargets();
+        if (attacking) return;
+
+        Vector2 velocity = Vector2.zero;
+
+        if (target != null) {
+            if (targetType == TargetType.Damage) {
+                if(Time.time >= timeBeforeCanAttack) {
+                    // Attack!
+                    attacking = true;
+                    StartCoroutine(DoAttack());
+                } else {
+                    // Keep following target.
+                    velocity = (target.transform.position - transform.position).normalized;
+                }
+            } else if (targetType == TargetType.Aggro) {
+                // Follow Target
+                velocity = (target.transform.position - transform.position).normalized;
             }
         }
-    }
 
-    public void UpdateTargets() {
-        if (damageTargets.Count == 0) return;
-        if (CurrentActionTime >= ActionTime) StartCoroutine(DoAttack());
+        Body.velocity = velocity * Speed;
 
     }
 
     public IEnumerator DoAttack() {
-        yield return new WaitForSeconds(0.5f);
 
-        if (damageTargets.Count == 0) yield break;
-        if (CurrentActionTime < ActionTime) {
-            Debug.LogWarning("Called Do Attack twice");
-            yield break;
+        // Warm up
+        Debug.Log("Warming up");
+        yield return new WaitForSeconds(WarmUpTime);
+
+        // Execute attack
+        Debug.Log("Executing");
+        yield return new WaitForSeconds(ExecuteAttackTime);
+
+        Debug.Log("Attacking");
+        if (target != null && targetType == TargetType.Damage) {
+            Debug.Log("Hit: " + target);
+            target.GetComponent<PlayerCombat>().GetHurtBy(this, Damage);
         }
-
-        damageTargets.ForEach(t => t.GetComponent<PlayerCombat>().GetHurtBy(this, Damage));
-        CurrentActionTime.Value = 0;
+        
+        // Reset action time
+        timeBeforeCanAttack = Time.time + CooldownTime;
+        attacking = false;
     }
 
     public void InflictDamage(float damage) {
@@ -96,57 +131,61 @@ public class Enemy : MonoBehaviour {
 
     #region AggroColliders
 
-    private List<GameObject> aggroTargets = new List<GameObject>();
+    [SerializeField] [ReadOnly] private GameObject target = null;
+    [SerializeField] [ReadOnly] private TargetType targetType = TargetType.None;
+    private enum TargetType { Damage = 3, Aggro = 2, None = 0 }
     private void AggroZoneEntered(Collider2D other) {
+        if (target != null && targetType >= TargetType.Aggro) return;
+
         if(EnemyTags.Contains(other.tag)) {
-            aggroTargets.Add(other.gameObject);
+            target = other.gameObject;
+            targetType = TargetType.Aggro;
         }
-        UpdateTargets();
     }
 
     private void AggroZoneStayed(Collider2D other) {
     }
 
     private void AggroZoneExited(Collider2D other) {
-        aggroTargets.Remove(other.gameObject);
+        // Once the target has aggro'd the enemy, the enemy will be aggro'd until the enemy leaves the aware collider
+        //if(other.gameObject == target)
+        //    targetType = TargetType.Aware;
     }
 
     #endregion
 
     #region AwareColliders
 
-    private List<GameObject> awareTargets = new List<GameObject>();
     private void AwareZoneEntered(Collider2D other) {
-        if(EnemyTags.Contains(other.tag)) {
-            awareTargets.Add(other.gameObject);
-        }
-        UpdateTargets();
     }
 
     private void AwareZoneStayed(Collider2D other) {
     }
 
     private void AwareZoneExited(Collider2D other) {
-        awareTargets.Remove(other.gameObject);
+        if (other.gameObject == target)
+            target = null;
     }
 
     #endregion
 
     #region DamageColliders
 
-    private List<GameObject> damageTargets = new List<GameObject>();
     private void DamageZoneEntered(Collider2D other) {
+        if(target != null && targetType >= TargetType.Damage)
+            return;
+
         if(EnemyTags.Contains(other.tag)) {
-            damageTargets.Add(other.gameObject);
+            target = other.gameObject;
+            targetType = TargetType.Damage;
         }
-        UpdateTargets();
     }
 
     private void DamageZoneStayed(Collider2D other) {
     }
 
     private void DamageZoneExited(Collider2D other) {
-        damageTargets.Remove(other.gameObject);
+        if(other.gameObject == target) targetType = TargetType.Aggro;
     }
 
     #endregion

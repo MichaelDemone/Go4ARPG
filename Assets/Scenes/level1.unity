@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 752663007}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76493,7 +76493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334717087}
   - component: {fileID: 1334717088}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Collider
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
@@ -76585,7 +76585,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.8
 --- !u!4 &1401927050
 Transform:
   m_ObjectHideFlags: 0
@@ -76641,7 +76641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482672226}
   - component: {fileID: 1482672227}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Weapon Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76822,7 +76822,8 @@ GameObject:
   - component: {fileID: 1774974725}
   - component: {fileID: 1774974727}
   - component: {fileID: 1774974726}
-  m_Layer: 0
+  - component: {fileID: 1774974728}
+  m_Layer: 9
   m_Name: Gnome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76936,13 +76937,40 @@ MonoBehaviour:
   ActionBar: {fileID: 0}
   MaxHealth:
     currentValue: 20
-  ActionTime:
-    currentValue: 1.5
   AggroRange: {fileID: 1401927048}
   AwareRange: {fileID: 2128461273}
   DamageRange: {fileID: 1870737679}
-  EnemyTags: []
+  Body: {fileID: 1774974728}
+  EnemyTags:
+  - Player
+  Speed: 0.75
+  WarmUpTime: 0.5
+  ExecuteAttackTime: 0.1
+  CooldownTime: 3
   Damage: 0
+  target: {fileID: 0}
+  targetType: 0
+--- !u!50 &1774974728
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774974723}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1815069432
 GameObject:
   m_ObjectHideFlags: 0
@@ -77089,7 +77117,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
 --- !u!4 &1870737681
 Transform:
   m_ObjectHideFlags: 0
@@ -77258,7 +77286,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
 --- !u!4 &2128461275
 Transform:
   m_ObjectHideFlags: 0

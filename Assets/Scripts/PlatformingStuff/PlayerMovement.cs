@@ -118,6 +118,10 @@ public class PlayerMovement : MonoBehaviour {
                 Animations.Attack();
                 attacking = true;
             }
+            if(Input.GetMouseButton(0)) {
+                Animations.Attack();
+                attacking = true;
+            }
             if(Input.GetMouseButtonUp(0)) {
                 Animations.ResetAttack();
                 attacking = false;

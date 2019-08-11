@@ -5,6 +5,7 @@ using System.Linq;
 using EditorUtils;
 using G4AW2.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// This enemy will walk towards targets within their aggro area
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour {
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents AwareRange;
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents DamageRange;
     [AutoSet] public Rigidbody2D Body;
+    [AutoSet] public Animator Animator;
 
 
     [Header("Combat")]
@@ -40,6 +42,10 @@ public class Enemy : MonoBehaviour {
     public float CooldownTime = 3f;
     public float Damage;
     private float timeBeforeCanAttack = 0;
+
+    [Header("Misc")] public RobustLerperSerialized DeathFade;
+
+    private bool dead = false;
 
 #if UNITY_EDITOR
     void Reset() {
@@ -67,15 +73,15 @@ public class Enemy : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         //ActionBar.SetData(CurrentActionTime, ActionTime);
-        //HealthBar.SetData(CurrentHealth, MaxHealth);
+        HealthBar.SetData(CurrentHealth, MaxHealth);
     }
 
     private bool attacking = false;
 
     // Update is called once per frame
     void Update() {
-
-        if (attacking) return;
+        DeathFade.Update(Time.deltaTime);
+        if (attacking || dead) return;
 
         Vector2 velocity = Vector2.zero;
 
@@ -87,29 +93,34 @@ public class Enemy : MonoBehaviour {
                     StartCoroutine(DoAttack());
                 } else {
                     // Keep following target.
-                    velocity = (target.transform.position - transform.position).normalized;
+                    //velocity = (target.transform.position - transform.position).normalized;
                 }
             } else if (targetType == TargetType.Aggro) {
                 // Follow Target
                 velocity = (target.transform.position - transform.position).normalized;
+            } else if (targetType == TargetType.Following) {
+                velocity = (target.transform.position - transform.position).normalized / 2f;
             }
         }
 
         Body.velocity = velocity * Speed;
-
+        Animator.SetFloat("Speed", velocity.magnitude);
     }
 
     public IEnumerator DoAttack() {
 
         // Warm up
         Debug.Log("Warming up");
+        Animator.SetTrigger("AttackStart");
         yield return new WaitForSeconds(WarmUpTime);
 
         // Execute attack
         Debug.Log("Executing");
+        Animator.SetTrigger("AttackExecute");
         yield return new WaitForSeconds(ExecuteAttackTime);
 
         Debug.Log("Attacking");
+        Animator.SetTrigger("AttackEnd");
         if (target != null && targetType == TargetType.Damage) {
             Debug.Log("Hit: " + target);
             target.GetComponent<PlayerCombat>().GetHurtBy(this, Damage);
@@ -121,11 +132,17 @@ public class Enemy : MonoBehaviour {
     }
 
     public void InflictDamage(float damage) {
+        if (dead) return;
+
         CurrentHealth.Value -= damage;
-        Debug.Log("Current Health: " + CurrentHealth.Value);
         if(CurrentHealth <= 0) {
             Debug.Log("Death!");
-            Destroy(gameObject);
+            Animator.SetTrigger("Death");
+            StopAllCoroutines();
+            Body.velocity = Vector2.zero;
+            dead = true;
+            DeathFade.StartLerping();
+            //Destroy(gameObject);
         }
     }
 
@@ -133,7 +150,7 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] [ReadOnly] private GameObject target = null;
     [SerializeField] [ReadOnly] private TargetType targetType = TargetType.None;
-    private enum TargetType { Damage = 3, Aggro = 2, None = 0 }
+    private enum TargetType { Damage = 3, Aggro = 2, Following = 1, None = 0 }
     private void AggroZoneEntered(Collider2D other) {
         if (target != null && targetType >= TargetType.Aggro) return;
 
@@ -147,9 +164,8 @@ public class Enemy : MonoBehaviour {
     }
 
     private void AggroZoneExited(Collider2D other) {
-        // Once the target has aggro'd the enemy, the enemy will be aggro'd until the enemy leaves the aware collider
-        //if(other.gameObject == target)
-        //    targetType = TargetType.Aware;
+        if(other.gameObject == target)
+            targetType = TargetType.Following;
     }
 
     #endregion

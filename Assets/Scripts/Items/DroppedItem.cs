@@ -21,8 +21,7 @@ public class DroppedItem : MonoBehaviour {
             Inventory.Instance.Add(Item, Amount);
 
             // Give feedback
-
-
+            SmoothPopUpManager.ShowPopUp(transform.position, $"<color=green>+{Amount}</color> {Item.Name}", Color.white, true);
             Destroy(gameObject);
         }    
     }

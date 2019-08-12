@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace CustomEvents {
 
-	public class RuntimeSetGeneric<T, TEvent> : ScriptableObject, IEnumerable<T>, ISaveable where TEvent : UnityEvent<T> {
+	public class RuntimeSetGeneric<T, TEvent> : ScriptableObject, IEnumerable<T> where TEvent : UnityEvent<T> {
 		public List<T> Value { get { return list; } }
 		private List<T> list = new List<T>();
 
@@ -79,21 +79,6 @@ namespace CustomEvents {
         IEnumerator IEnumerable.GetEnumerator() {
             return Value.GetEnumerator();
         }
-
-	    [Serializable]
-	    private struct SaveObject {
-	        public List<T> List;
-	    }
-
-	    public virtual string GetSaveString() {
-	        return JsonUtility.ToJson(new SaveObject { List = Value });
-	    }
-
-	    public virtual void SetData(string saveString, params object[] otherData) {
-	        Clear();
-
-	        Value.AddRange(JsonUtility.FromJson<SaveObject>(saveString).List);
-	    }
     }
 }
 

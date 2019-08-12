@@ -46,12 +46,6 @@ namespace G4AW2.Data.Combat {
         public float GetElementalWeakness(ElementalType type) {
 	        return ElementalWeaknesses.Value?[type] ?? 1;
 	    }
-
-
-        private class SaveObject {
-	        public int ID;
-	        public int Level;
-	    }
 	}
 }
 

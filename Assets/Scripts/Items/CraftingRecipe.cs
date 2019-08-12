@@ -10,11 +10,12 @@ namespace G4AW2.Data.Crafting
     [CreateAssetMenu(menuName = "Data/Crafting Recipe")]
     public class CraftingRecipe : ScriptableObject, IID {
         public int ID = 0;
-        public List<InventoryEntry> Components;
-        public InventoryEntry Result;
+
+        public List<(Item, int)> Components;
+        public (Item, int) Result;
 
         public bool IsCraftable(Inventory inventory) {
-            return Components.All(component => inventory.GetAmountOf(component.Item) >= component.Amount);
+            return Components.All(component => inventory.GetAmountOf(component.Item1) >= component.Item2);
         }
 
 #if UNITY_EDITOR

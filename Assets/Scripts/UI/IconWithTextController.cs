@@ -14,7 +14,7 @@ public class IconWithTextController : MonoBehaviour, IPointerClickHandler {
 
     private Action onClick;
 
-    public void SetData(Item s, int amount, string text, Action onClick, Sprite overrideSprite = null, bool showText = true) {
+    public void SetData(ItemInstance s, int amount, string text, Action onClick, Sprite overrideSprite = null, bool showText = true) {
         Item.SetData(s, amount, i => onClick(), overrideSprite, showText);
         Text.text = text;
         this.onClick = onClick;

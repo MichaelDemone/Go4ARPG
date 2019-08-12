@@ -150,7 +150,7 @@ public class Enemy : MonoBehaviour {
 
             foreach (var item in EnemyInfo.Data.Drops.GetItems(false)) {
                 var go = Instantiate(DroppedItemPrefab, transform.position + (Vector3) VectorUtils.GetRandomDir(0, ItemSpawnDistance), Quaternion.identity, DroppedItemParent);
-                go.SetItem(item, 1);
+                go.SetItem(item);
             }
         }
     }

@@ -9,7 +9,7 @@ using UnityEngine.Events;
 namespace CustomEvents {
 
     [Serializable]
-	public abstract class Variable<T, TEvent> : ScriptableObject, ISaveable where TEvent : UnityEvent<T>, ISerializationCallbackReceiver, new() {
+	public abstract class Variable<T, TEvent> : ScriptableObject where TEvent : UnityEvent<T>, ISerializationCallbackReceiver, new() {
 		[Multiline]
 		public string DeveloperDescription = "";
 	    public T InitialValue;
@@ -41,20 +41,5 @@ namespace CustomEvents {
 		}
 
 	    public void OnBeforeSerialization() { }
-
-        public virtual string GetSaveString() {
-            var ots = new SaveObject();
-            ots.ObjectToSave = Value;
-            return JsonUtility.ToJson(ots);
-        }
-
-        public virtual void SetData( string saveString, params object[] otherData ) {
-            var ots = JsonUtility.FromJson<SaveObject>(saveString);
-            Value = ots.ObjectToSave;
-        }
-
-        private class SaveObject {
-            public T ObjectToSave;
-        }
     }
 }

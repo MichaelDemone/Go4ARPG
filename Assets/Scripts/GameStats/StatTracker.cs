@@ -5,7 +5,6 @@ using System.Linq;
 using CustomEvents;
 using G4AW2.Data.Combat;
 using G4AW2.Data.DropSystem;
-using G4AW2.Saving;
 using UnityEngine;
 
 #if UNITY_EDITOR

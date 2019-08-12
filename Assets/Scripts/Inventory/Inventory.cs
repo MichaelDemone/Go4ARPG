@@ -1,32 +1,20 @@
-using System;
-using CustomEvents;
+using G4AW2.Data.Crafting;
 using G4AW2.Data.DropSystem;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using G4AW2.Data.Crafting;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Data/Inventory")]
-public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveable {
+[Serializable]
+public class Inventory {
 
-    private List<InventoryEntry> InventoryEntries = new List<InventoryEntry>();
-    public PersistentSetItem AllItems;
-    public CraftingTable CraftingTable;
-    public Sprite QuestionMark;
-
-    public static Inventory Instance;
-
-    public void OnEnable() {
-        Instance = this;
-    }
+    public List<ItemInstance> Items = new List<ItemInstance>();
+    public List<WeaponInstance> Weapons = new List<WeaponInstance>();
+    public List<ArmorInstance> Armors = new List<ArmorInstance>();
+    public List<HeadgearInstance> Headgears = new List<HeadgearInstance>();
 
     public int GetAmountOf(Item it) {
-        return InventoryEntries.Sum(i => i.Item.ID == it.ID ? i.Amount : 0);
-    }
-
-    public void AddItems(IEnumerable<Item> items) {
-        foreach(Item item in items) Add(item);
+        return Items.Sum(i => i.DataId == it.ID ? i.Amount : 0);
     }
 
     public void Add(Item it) {
@@ -35,43 +23,48 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
 
     private List<CraftingRecipe> currentRecipes = null;
 
+    public void Add(IItem it) {
+        if(it is ItemInstance) {
+            Add(it.GetItem(), ((ItemInstance) it).Amount);
+        } else if(it is WeaponInstance) {
+            Weapons.Add((WeaponInstance) it);
+        } else if(it is ArmorInstance) {
+            Armors.Add((ArmorInstance) it);
+        } else if(it is HeadgearInstance) {
+            Headgears.Add((HeadgearInstance) it);
+        }
+    }
+
     public void Add(Item it, int amount) {
 
-        InventoryEntry entry = InventoryEntries.FirstOrDefault(e => e.Item == it);
-        //GameEventHandler.Singleton.OnLootObtained(it, amount);
-
-        if(entry == default(InventoryEntry)) {
-            InventoryEntries.Add(new InventoryEntry() { Item = it, Amount = amount});
+        int i = Items.FindIndex(item => item.DataId == it.ID);
+        if(i == -1) {
+            ItemInstance ii = new ItemInstance(it, amount);
+            Items.Add(ii);
         } else {
-            entry.Amount += amount;
+            ItemInstance ii = Items[i];
+            ii.Amount += amount;
+            Items[i] = ii;
         }
+    }
 
-        // Check if a new recipe is makeable
-        if (currentRecipes == null) {
-            currentRecipes = CraftingTable.GetPossibleRecipes();
+    private void CheckForNewRecipes() {
+        if(currentRecipes == null) {
+            currentRecipes = Game.Instance.CraftingTable.GetPossibleRecipes();
         } else {
-            List<CraftingRecipe> recipes = CraftingTable.GetPossibleRecipes();
-            foreach(var recipe in recipes) {
+            List<CraftingRecipe> recipes = Game.Instance.CraftingTable.GetPossibleRecipes();
+            foreach(CraftingRecipe recipe in recipes) {
                 if(!currentRecipes.Contains(recipe) && !CraftingRecipesMade.RecipesMade.Contains(recipe.ID)) {
                     string postText = "";
-                    foreach(var component in recipe.Components) {
+                    foreach((Item, int) component in recipe.Components) {
                         postText +=
-                            $"{component.Amount} {component.Item.GetName()}{(component.Amount > 1 ? "s" : "")}\n";
+                            $"{component.Item2} {component.Item1.Name}{(component.Item2 > 1 ? "s" : "")}\n";
                     }
                     //QuickPopUp.Show(QuestionMark, $"<size=150%>New Craftable Recipe!</size>\nA new recipe is now craftable!\nRequires:{postText}");
                 }
             }
             currentRecipes = recipes;
         }
-        
-    }
-
-    public void Add(InventoryEntry it) {
-        Add(it.Item, it.Amount);
-    }
-
-    public bool Remove(InventoryEntry it) {
-        return Remove(it.Item, it.Amount);
     }
 
     public bool Remove(Item it) {
@@ -79,78 +72,62 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
     }
 
     public bool Remove(Item it, int amount) {
-        InventoryEntry entry = InventoryEntries.FirstOrDefault(e => e.Item == it);
-        if(entry == default(InventoryEntry)) {
-            return false;
-        } else {
-            if(entry.Amount - amount < 0) {
-                return false;
+
+        int i = -1;
+        if(it is Weapon) {
+            i = Weapons.FindIndex(e => e.DataID == it.ID);
+            if(i != -1) {
+                Weapons.RemoveAt(i);
             }
 
-            entry.Amount -= amount;
-            if(entry.Amount == 0) {
-                InventoryEntries.Remove(entry);
-            }
+            return i != -1 && amount == 1;
         }
 
-        return true;
+        if(it is Armor) {
+            return false;
+        }
+
+        if(it is Headgear) {
+            return false;
+        }
+
+        i = Items.FindIndex(e => e.DataId == it.ID);
+        if(i != -1 && Items[i].Amount >= amount) {
+            ItemInstance t = Items[i];
+            t.Amount -= amount;
+            if(t.Amount == 0) {
+                Items.RemoveAt(i);
+            } else {
+                Items[i] = t;
+            }
+
+            return true;
+        }
+        return false;
     }
 
     public bool Contains(Item it, int amount) {
-        InventoryEntry entry = InventoryEntries.FirstOrDefault(e => e.Item.ID == it.ID);
-        if(entry == default(InventoryEntry) || entry.Amount - amount < 0) {
+
+        int i = -1;
+        if(it is Weapon) {
+            i = Weapons.FindIndex(e => e.DataID == it.ID);
+            return i != -1 && amount == 1;
+        }
+
+        if(it is Armor) {
             return false;
         }
 
-        return true;
-    }
-    public bool Contains(Item it) => Contains(it, 1);
-    public bool Contains(InventoryEntry it) => Contains(it.Item, it.Amount);
-
-    public string GetSaveString() {
-        DummySave ds = new DummySave();
-        InventoryEntries.ForEach(e => ds.Entries.Add(e.GetIdEntry()));
-        return JsonUtility.ToJson(ds);
-    }
-
-    public void SetData(string saveString, params object[] otherData) {
-        DummySave entries = JsonUtility.FromJson<DummySave>(saveString);
-        InventoryEntries.Clear();
-        foreach(InventoryEntry.InventoryEntryWithID entry in entries.Entries) {
-
-            Item it = AllItems.First(d => d.ID == entry.Id);
-
-            if (it is ISaveable) {
-                it = Instantiate(it);
-                it.CreatedFromOriginal = true;
-                ((ISaveable) it).SetData(entry.AdditionalInfo, it);
-            }
-
-            InventoryEntry ie = new InventoryEntry() {
-                Item = it,
-                Amount = entry.Amount,
-            };
-
-            InventoryEntries.Add(ie);
+        if(it is Headgear) {
+            return false;
         }
-    }
 
-    private class DummySave {
-        public List<InventoryEntry.InventoryEntryWithID> Entries = new List<InventoryEntry.InventoryEntryWithID>();
+        i = Items.FindIndex(e => e.DataId == it.ID);
+        return i != -1 && Items[i].Amount >= amount;
     }
-
-    public IEnumerator<InventoryEntry> GetEnumerator() {
-        return InventoryEntries.GetEnumerator();
+    public bool Contains(Item it) {
+        return Contains(it, 1);
     }
-
-    IEnumerator IEnumerable.GetEnumerator() {
-        return InventoryEntries.GetEnumerator();
-    }
-
-    public void Clear() {
-        InventoryEntries.Clear();
-    }
-
 
     public Item ItemToAdd;
     [ContextMenu("Add Item")]

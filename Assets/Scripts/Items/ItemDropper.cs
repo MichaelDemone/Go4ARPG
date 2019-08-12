@@ -6,19 +6,29 @@ namespace G4AW2.Data.DropSystem {
     public class ItemDropper {
         public List<ItemAndRarity> Items;
 
-        public List<Item> GetItems(bool addGlobalItems) {
-            List<Item> droppedItems = new List<Item>();
+        public List<IItem> GetItems(bool addGlobalItems) {
+            List<IItem> droppedItems = new List<IItem>();
 
             foreach(ItemAndRarity item in Items) {
                 float value = Random.value;
                 if(item.dropChance > value) {
                     Item itemThatGoesToInventory = item.item;
-                    if(item.item.ShouldCreateNewInstanceWhenPlayerObtained()) {
-                        itemThatGoesToInventory = Object.Instantiate(item.item);
-                        itemThatGoesToInventory.CreatedFromOriginal = true;
-                        itemThatGoesToInventory.OnAfterObtained();
+                    if (itemThatGoesToInventory is Weapon) {
+                        WeaponInstance wi = new WeaponInstance((Weapon) itemThatGoesToInventory, 1, null);
+                        droppedItems.Add(wi);
                     }
-                    droppedItems.Add(itemThatGoesToInventory);
+                    else if (itemThatGoesToInventory is Armor) {
+                        ArmorInstance wi = new ArmorInstance((Armor) itemThatGoesToInventory, 1);
+                        droppedItems.Add(wi);
+                    }
+                    else if (itemThatGoesToInventory is Headgear) {
+                        HeadgearInstance wi = new HeadgearInstance((Headgear) itemThatGoesToInventory, 1);
+                        droppedItems.Add(wi);
+                    }
+                    else {
+                        ItemInstance ii = new ItemInstance(itemThatGoesToInventory, 1);
+                        droppedItems.Add(ii);
+                    }
                 }
             }
 
@@ -28,10 +38,10 @@ namespace G4AW2.Data.DropSystem {
 #if UNITY_EDITOR
         private void DropItem(int times) {
             int drop_total = 0;
-            Dictionary<Item, int> counts = new Dictionary<Item, int>();
+            Dictionary<IItem, int> counts = new Dictionary<IItem, int>();
             for(int i = 0; i < times; i++) {
-                List<Item> items = GetItems(false);
-                foreach(Item item in items) {
+                List<IItem> items = GetItems(false);
+                foreach(IItem item in items) {
                     int count = 0;
                     if(counts.TryGetValue(item, out count)) {
                         counts.Remove(item);
@@ -41,8 +51,8 @@ namespace G4AW2.Data.DropSystem {
                 }
             }
 
-            foreach(KeyValuePair<Item, int> kvp in counts) {
-                Debug.Log(string.Format("Key: {0}, Value: {1}", kvp.Key.name, kvp.Value / (float) times));
+            foreach(KeyValuePair<IItem, int> kvp in counts) {
+                Debug.Log(string.Format("Key: {0}, Value: {1}", kvp.Key.GetName(), kvp.Value / (float) times));
             }
             Debug.Log("Number of drops: " + drop_total);
         }
@@ -51,9 +61,9 @@ namespace G4AW2.Data.DropSystem {
         private void DropOne() {
             Debug.Log("Drop one");
 
-            List<Item> items = GetItems(false);
-            foreach(Item item in items) {
-                Debug.Log("Dropped: " + item.name);
+            List<IItem> items = GetItems(false);
+            foreach(IItem item in items) {
+                Debug.Log("Dropped: " + item.GetName());
             }
         }
 

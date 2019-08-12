@@ -30,8 +30,21 @@ public class ProgressBarControllerFloat : MonoBehaviour {
 
         UpdateUI();
     }
+    public void SetData(ObservableFloat current, float max) {
+        Max.Value = max;
+        Current = current;
+        Current.OnValueChange += UpdateUI;
+        UpdateUI();
+    }
 
-	private void UpdateUI( float i ) { UpdateUI(); }
+    public void SetData(float current, ObservableFloat max) {
+        Max = max;
+        Current.Value = current;
+        Max.OnValueChange += UpdateUI;
+        UpdateUI();
+    }
+
+    private void UpdateUI( float i ) { UpdateUI(); }
 
 	public void SetMax( float Max ) {
 		this.Max.Value = Max;

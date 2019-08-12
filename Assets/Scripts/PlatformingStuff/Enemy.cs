@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using EditorUtils;
+using G4AW2.Data.Combat;
 using G4AW2.Utils;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,11 +17,6 @@ using UnityEngine.Events;
 /// </summary>
 public class Enemy : MonoBehaviour {
 
-    [Header("Health and Action bar Stuff")]
-    public ProgressBarControllerFloat HealthBar;
-    public ProgressBarControllerFloat ActionBar;
-    public ObservableFloat MaxHealth = new ObservableFloat(20);
-    [NonSerialized] public ObservableFloat CurrentHealth = new ObservableFloat(20);
 
 
     [Header("Auto Set Items")]
@@ -29,34 +25,24 @@ public class Enemy : MonoBehaviour {
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents DamageRange;
     [AutoSet] public Rigidbody2D Body;
     [AutoSet] public Animator Animator;
-
-
-    [Header("Combat")]
-    public string[] EnemyTags;
-
-    public float Speed = 0.75f;
-
-    [Header("Attacking")]
-    public float WarmUpTime = 0.5f; // i.e gnome chompy opens his mouth and a circle appears around him
-    public float ExecuteAttackTime = 0.1f; // He slams his mouth down and the damage is done
-    public float CooldownTime = 3f;
-    public float Damage;
-    private float timeBeforeCanAttack = 0;
+    [AutoSet] public SpriteRenderer Renderer;
 
     [Header("Misc")] public RobustLerperSerialized DeathFade;
+    public RobustLerperSerialized OnHit;
+    public ProgressBarControllerFloat HealthBar;
+    public EnemyDataInstance EnemyInfo;
 
+    [Header("Item Dropping")]
+    public DroppedItem DroppedItemPrefab;
+    public Transform DroppedItemParent;
+    public float ItemSpawnDistance;
+
+    private float timeBeforeCanAttack = 0;
+    private bool attacking = false;
     private bool dead = false;
 
-#if UNITY_EDITOR
-    void Reset() {
-        AutoSet.Init(this);
-    }
-    void OnEnable() {
-        AutoSet.Init(this);
-    }
-#endif
-
     void Awake() {
+        AutoSet.Init(this);
         AggroRange.TriggerEntered2D += AggroZoneEntered;
         AggroRange.TriggerStayed2D += AggroZoneStayed;
         AggroRange.TriggerExited2D += AggroZoneExited;
@@ -72,16 +58,32 @@ public class Enemy : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        //ActionBar.SetData(CurrentActionTime, ActionTime);
-        HealthBar.SetData(CurrentHealth, MaxHealth);
+        HealthBar.SetData(EnemyInfo.CurrentHealth, EnemyInfo.MaxHealth);
+
+        if (EnemyInfo.Data != null) {
+            AnimatorOverrideController aoc = Animator.runtimeAnimatorController as AnimatorOverrideController;
+            AnimatorOverrideController other = new AnimatorOverrideController(aoc);
+
+            other["AfterAttack"] = EnemyInfo.Data.AfterAttack;
+            other["AttackExecute"] = EnemyInfo.Data.AttackExecute;
+            other["BeforeAttack"] = EnemyInfo.Data.BeforeAttack;
+            other["Dead"] = EnemyInfo.Data.Dead;
+            other["Death"] = EnemyInfo.Data.Death;
+            other["Flinch"] = EnemyInfo.Data.Flinch;
+            other["Idle"] = EnemyInfo.Data.Idle;
+            other["Walking"] = EnemyInfo.Data.Walking;
+
+            Animator.runtimeAnimatorController = other;
+        }
     }
 
-    private bool attacking = false;
 
     // Update is called once per frame
     void Update() {
         DeathFade.Update(Time.deltaTime);
         if (attacking || dead) return;
+
+        OnHit.Update(Time.deltaTime);
 
         Vector2 velocity = Vector2.zero;
 
@@ -103,46 +105,53 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        Body.velocity = velocity * Speed;
+        Body.velocity = velocity * EnemyInfo.Data.Speed;
+        if (velocity.magnitude > 00.01f) {
+            Renderer.flipX = velocity.x < 0;
+        }
         Animator.SetFloat("Speed", velocity.magnitude);
     }
 
     public IEnumerator DoAttack() {
 
         // Warm up
-        Debug.Log("Warming up");
         Animator.SetTrigger("AttackStart");
-        yield return new WaitForSeconds(WarmUpTime);
+        yield return new WaitForSeconds(EnemyInfo.Data.AttackPrepTime);
 
         // Execute attack
-        Debug.Log("Executing");
         Animator.SetTrigger("AttackExecute");
-        yield return new WaitForSeconds(ExecuteAttackTime);
+        yield return new WaitForSeconds(EnemyInfo.Data.AttackExecuteTime);
 
-        Debug.Log("Attacking");
         Animator.SetTrigger("AttackEnd");
         if (target != null && targetType == TargetType.Damage) {
             Debug.Log("Hit: " + target);
-            target.GetComponent<PlayerCombat>().GetHurtBy(this, Damage);
+            target.GetComponent<PlayerCombat>().GetHurtBy(this, EnemyInfo.Damage);
         }
-        
+        yield return new WaitForSeconds(0.5f);
+
         // Reset action time
-        timeBeforeCanAttack = Time.time + CooldownTime;
+        timeBeforeCanAttack = Time.time + EnemyInfo.Data.TimeBetweenAttacks;
         attacking = false;
     }
 
     public void InflictDamage(float damage) {
         if (dead) return;
 
-        CurrentHealth.Value -= damage;
-        if(CurrentHealth <= 0) {
-            Debug.Log("Death!");
+        OnHit.StartLerping();
+        Animator.SetTrigger("Flinch");
+
+        EnemyInfo.CurrentHealth.Value -= damage;
+        if(EnemyInfo.CurrentHealth <= 0) {
             Animator.SetTrigger("Death");
             StopAllCoroutines();
             Body.velocity = Vector2.zero;
             dead = true;
             DeathFade.StartLerping();
-            //Destroy(gameObject);
+
+            foreach (var item in EnemyInfo.Data.Drops.GetItems(false)) {
+                var go = Instantiate(DroppedItemPrefab, transform.position + (Vector3) VectorUtils.GetRandomDir(0, ItemSpawnDistance), Quaternion.identity, DroppedItemParent);
+                go.SetItem(item, 1);
+            }
         }
     }
 
@@ -154,7 +163,7 @@ public class Enemy : MonoBehaviour {
     private void AggroZoneEntered(Collider2D other) {
         if (target != null && targetType >= TargetType.Aggro) return;
 
-        if(EnemyTags.Contains(other.tag)) {
+        if(other.CompareTag("Player")) {
             target = other.gameObject;
             targetType = TargetType.Aggro;
         }
@@ -191,7 +200,7 @@ public class Enemy : MonoBehaviour {
         if(target != null && targetType >= TargetType.Damage)
             return;
 
-        if(EnemyTags.Contains(other.tag)) {
+        if(other.CompareTag("Player")) {
             target = other.gameObject;
             targetType = TargetType.Damage;
         }

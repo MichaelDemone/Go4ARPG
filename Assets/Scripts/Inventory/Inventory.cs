@@ -15,6 +15,12 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
     public CraftingTable CraftingTable;
     public Sprite QuestionMark;
 
+    public static Inventory Instance;
+
+    public void OnEnable() {
+        Instance = this;
+    }
+
     public int GetAmountOf(Item it) {
         return InventoryEntries.Sum(i => i.Item.ID == it.ID ? i.Amount : 0);
     }
@@ -32,14 +38,13 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
     public void Add(Item it, int amount) {
 
         InventoryEntry entry = InventoryEntries.FirstOrDefault(e => e.Item == it);
-        GameEventHandler.Singleton.OnLootObtained(it, amount);
+        //GameEventHandler.Singleton.OnLootObtained(it, amount);
 
         if(entry == default(InventoryEntry)) {
             InventoryEntries.Add(new InventoryEntry() { Item = it, Amount = amount});
         } else {
             entry.Amount += amount;
         }
-
 
         // Check if a new recipe is makeable
         if (currentRecipes == null) {
@@ -53,7 +58,7 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
                         postText +=
                             $"{component.Amount} {component.Item.GetName()}{(component.Amount > 1 ? "s" : "")}\n";
                     }
-                    QuickPopUp.Show(QuestionMark, $"<size=150%>New Craftable Recipe!</size>\nA new recipe is now craftable!\nRequires:{postText}");
+                    //QuickPopUp.Show(QuestionMark, $"<size=150%>New Craftable Recipe!</size>\nA new recipe is now craftable!\nRequires:{postText}");
                 }
             }
             currentRecipes = recipes;
@@ -154,21 +159,5 @@ public class Inventory : ScriptableObject, IEnumerable<InventoryEntry>, ISaveabl
         if(ItemToAdd != null) {
             Add(ItemToAdd);
         }
-    }
-
-    public string GetName() {
-        throw new NotImplementedException();
-    }
-
-    public object GetSaveObject() {
-        throw new NotImplementedException();
-    }
-
-    public Type GetSaveType() {
-        throw new NotImplementedException();
-    }
-
-    public void SetData(object saveObject) {
-        throw new NotImplementedException();
     }
 }

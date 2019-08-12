@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,6 +13,6 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   AllItems: {fileID: 11400000, guid: f34cbb7c711f3c94f92aaeed3b937361, type: 2}
-  CraftingTable: {fileID: 11400000, guid: e7cc1f445aad6fa4393b27bf6c2bcb89, type: 2}
+  CraftingTable: {fileID: 11400000, guid: 4a3e02a671bc2c3478e1604731fe01d9, type: 2}
   QuestionMark: {fileID: 21300000, guid: afcffb3aa82f3b147b7df77048db2a74, type: 3}
   ItemToAdd: {fileID: 11400000, guid: 2da6b9adf5d871c4a8c481d49c4b2092, type: 2}

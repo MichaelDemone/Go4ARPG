@@ -22,13 +22,13 @@ namespace G4AW2.Utils {
 			return vec;
 		}
 
-	    public static Vector2 GetRandomDir() {
+	    public static Vector2 GetRandomDir(float minMagnitude = 1f, float maxMagnitude = 1f) {
 	        float x = Random.value - 0.5f;
 	        float y = Random.value - 0.5f;
-            return new Vector2(x,y).normalized;
+	        return new Vector2(x, y).normalized * Random.Range(minMagnitude, maxMagnitude);
 	    }
 
-	    public static Vector3 SetX(this Vector3 vec, float val) {
+        public static Vector3 SetX(this Vector3 vec, float val) {
 	        vec.x = val;
 	        return vec;
 	    }

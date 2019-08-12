@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace G4AW2.Data.Combat {
 	[CreateAssetMenu(menuName = "Data/Follower/Enemy")]
-    public class EnemyData : ScriptableObject, ISaveable {
+    public class EnemyData : ScriptableObject {
 
 	    public int ID;
 	    public string DisplayName;
@@ -31,6 +31,7 @@ namespace G4AW2.Data.Combat {
 	    public float TimeBetweenAttacks;
         public float AttackPrepTime;
         public float AttackExecuteTime;
+	    public float Speed = 0.75f;
 
         [Header("Elemental")]
 	    public bool HasElementalDamage;
@@ -42,23 +43,6 @@ namespace G4AW2.Data.Combat {
 		public ItemDropper Drops;
 	    public bool OneAndDoneAttacker = false;
 
-	    [NonSerialized] public int Level;
-
-	    public int MaxHealth => Mathf.RoundToInt(HealthAtLevel0 * (1 + Level / 10f));
-	    public int Damage => Mathf.RoundToInt(DamageAtLevel0 * (1 + Level / 10f));
-	    public int ElementalDamage => Mathf.RoundToInt(ElementalDamageAtLevel0 * (1 + Level / 10f));
-
-#if UNITY_EDITOR
-        [ContextMenu("Print Stats")]
-        public void PrintStats() {
-            foreach(int i in new[] { 1, 5, 10, 15, 20, 25, 50, 100}) {
-                this.Level = i;
-                Debug.Log($"Stats at level {i}:\nHealth: {MaxHealth}\nDamage: {Damage}\nElemental Damage: {ElementalDamage}");
-            }
-            this.Level = 0;
-        }
-#endif
-
         public float GetElementalWeakness(ElementalType type) {
 	        return ElementalWeaknesses.Value?[type] ?? 1;
 	    }
@@ -68,43 +52,6 @@ namespace G4AW2.Data.Combat {
 	        public int ID;
 	        public int Level;
 	    }
-
-	    public string GetSaveString() {
-	        return JsonUtility.ToJson(new SaveObject() { ID = ID, Level = Level});
-        }
-
-
-	    public void SetData(string saveString, params object[] otherData) {
-
-	        SaveObject ds = JsonUtility.FromJson<SaveObject>(saveString);
-
-	        ID = ds.ID;
-	        Level = ds.Level;
-
-	        EnemyData original;
-
-	        //if(otherData[0] is PersistentSetEnemyData) {
-	        //    PersistentSetEnemyData allFollowers = (PersistentSetEnemyData) otherData[0];
-	        //    original = allFollowers.First(it => it.ID == ID) as EnemyData;
-	        //} else {
-	            original = otherData[0] as EnemyData;
-	            if(Idle == original.Idle)
-	                return; // This object may have been create based on the original. In which case, we don't need to do any copying
-            //}
-
-            // Copy Original Values
-	        DisplayName = original.DisplayName;
-	        Idle = original.Idle;
-            Flinch = original.Flinch;
-            BeforeAttack = original.BeforeAttack;
-            AttackExecute = original.AttackExecute;
-            AfterAttack = original.AfterAttack;
-            Death = original.Death;
-            Dead = original.Dead;
-            Walking = original.Walking;
-	        ElementalWeaknesses = original.ElementalWeaknesses;
-	        ElementalDamageType = original.ElementalDamageType;
-        }
 	}
 }
 

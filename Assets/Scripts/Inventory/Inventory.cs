@@ -13,6 +13,23 @@ public class Inventory {
     public List<ArmorInstance> Armors = new List<ArmorInstance>();
     public List<HeadgearInstance> Headgears = new List<HeadgearInstance>();
 
+    private List<CraftingRecipe> currentRecipes = null;
+
+    public void InitItems() {
+        foreach (var item in Items) {
+            item.Data = Game.Instance.Items[item.DataId];
+        }
+        foreach(var item in Weapons) {
+            item.Data = (Weapon) Game.Instance.Items[item.DataId];
+        }
+        foreach(var item in Armors) {
+            item.Data = (Armor) Game.Instance.Items[item.DataId];
+        }
+        foreach(var item in Headgears) {
+            item.Data = (Headgear) Game.Instance.Items[item.DataId];
+        }
+    }
+
     public int GetAmountOf(Item it) {
         return Items.Sum(i => i.DataId == it.ID ? i.Amount : 0);
     }
@@ -20,8 +37,6 @@ public class Inventory {
     public void Add(Item it) {
         Add(it, 1);
     }
-
-    private List<CraftingRecipe> currentRecipes = null;
 
     public void Add(IItem it) {
         if(it is ItemInstance) {
@@ -75,7 +90,7 @@ public class Inventory {
 
         int i = -1;
         if(it is Weapon) {
-            i = Weapons.FindIndex(e => e.DataID == it.ID);
+            i = Weapons.FindIndex(e => e.DataId == it.ID);
             if(i != -1) {
                 Weapons.RemoveAt(i);
             }
@@ -107,10 +122,9 @@ public class Inventory {
     }
 
     public bool Contains(Item it, int amount) {
-
         int i = -1;
         if(it is Weapon) {
-            i = Weapons.FindIndex(e => e.DataID == it.ID);
+            i = Weapons.FindIndex(e => e.DataId == it.ID);
             return i != -1 && amount == 1;
         }
 
@@ -125,16 +139,8 @@ public class Inventory {
         i = Items.FindIndex(e => e.DataId == it.ID);
         return i != -1 && Items[i].Amount >= amount;
     }
+
     public bool Contains(Item it) {
         return Contains(it, 1);
-    }
-
-    public Item ItemToAdd;
-    [ContextMenu("Add Item")]
-    ///THIS IS FOR TESTING ONLY.
-    public void Add() {
-        if(ItemToAdd != null) {
-            Add(ItemToAdd);
-        }
     }
 }

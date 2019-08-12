@@ -3,16 +3,16 @@ using G4AW2.Data.DropSystem;
 using UnityEngine;
 
 [Serializable]
-public struct WeaponInstance : IItem {
+public class WeaponInstance : IItem {
 
     [NonSerialized] public Weapon Data;
 
     // Instance Data
-    public int DataID;
+    public int DataId;
     public bool MarkedAsTrash;
     public int Level;
     public int Random;
-    public EnchanterInstance Enchantment { get; private set; }
+    public EnchanterInstance Enchantment;
 
     // Properties
     public int RawDamage => Mathf.RoundToInt(Data.DamageAtLevel0 * MasteryDamageMod * (1 + Level / 10f) * Mod);
@@ -24,7 +24,7 @@ public struct WeaponInstance : IItem {
     private string NameMod => ModRoll.GetName(Random);
 
     public WeaponInstance(Weapon data, int level, EnchanterInstance enchantment) {
-        DataID = data.ID;
+        DataId = data.ID;
         Data = data;
         Level = level;
         Random = UnityEngine.Random.Range(0, 101);

@@ -5,7 +5,7 @@ using G4AW2.Data.DropSystem;
 using UnityEngine;
 
 [Serializable]
-public struct ItemInstance : IItem {
+public class ItemInstance : IItem {
     [NonSerialized] public Item Data;
     public int DataId;
     public int Amount;

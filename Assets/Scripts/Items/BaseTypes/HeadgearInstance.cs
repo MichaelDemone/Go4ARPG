@@ -9,27 +9,28 @@ using Random = UnityEngine.Random;
 public class HeadgearInstance : IItem, ITrashable {
     [NonSerialized] public Headgear Data;
 
+    public int DataId;
+    public bool IsMarkedAsTrash;
+    public int Random;
+    public int Level;
+
     public int ExtraHealth => Formulas.GetValue(Data.HealthGainedAtLevel0, Level, Mod);
-
-    public int Level { get; set; }
-    public float Mod => ModRoll.GetMod(RandomRoll);
-    public string NameMod => ModRoll.GetName(RandomRoll);
-    public int RandomRoll { get; set; }
-
-    private bool isTrash = false;
+    public float Mod => ModRoll.GetMod(Random);
+    public string NameMod => ModRoll.GetName(Random);
 
     public HeadgearInstance(Headgear data, int level) {
         Data = data;
+        DataId = data.ID;
         Level = level;
-        RandomRoll = Random.Range(0, 101);
+        Random = UnityEngine.Random.Range(0, 101);
     }
 
     public bool IsTrash() {
-        return isTrash;
+        return IsMarkedAsTrash;
     }
 
     public void SetTrash(bool isTrash) {
-        this.isTrash = isTrash;
+        this.IsMarkedAsTrash = isTrash;
     }
 
     public string GetDescription() {
@@ -41,7 +42,7 @@ public class HeadgearInstance : IItem, ITrashable {
     }
 
     public int GetValue() {
-        return Mathf.RoundToInt(Data.Value * (1 + Level / 10f) * (1 + RandomRoll / 100f));
+        return Mathf.RoundToInt(Data.Value * (1 + Level / 10f) * (1 + Random / 100f));
     }
 
     public Item GetItem() {

@@ -5,9 +5,10 @@ using G4AW2.Data.DropSystem;
 using UnityEngine;
 
 [Serializable]
-public struct ArmorInstance : IItem, ITrashable {
+public class ArmorInstance : IItem, ITrashable {
     [NonSerialized] public Armor Data;
 
+    public int DataId;
     public bool IsMarkedTrash;
     public int Level;
     public int Random;
@@ -23,6 +24,7 @@ public struct ArmorInstance : IItem, ITrashable {
 
     public ArmorInstance(Armor data, int level) {
         Data = data;
+        DataId = data.ID;
         Level = level;
         IsMarkedTrash = false;
         Random = UnityEngine.Random.Range(0, 101);

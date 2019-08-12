@@ -17,8 +17,6 @@ using UnityEngine.Events;
 /// </summary>
 public class Enemy : MonoBehaviour {
 
-
-
     [Header("Auto Set Items")]
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents AggroRange;
     [AutoSet(SetByNameInChildren = true)] public ColliderEvents AwareRange;
@@ -31,15 +29,19 @@ public class Enemy : MonoBehaviour {
     public RobustLerperSerialized OnHit;
     public ProgressBarControllerFloat HealthBar;
     public EnemyDataInstance EnemyInfo;
+    public float KnockbackTime = 0.25f;
+    public float KnockbackSpeed = 1f;
 
     [Header("Item Dropping")]
     public DroppedItem DroppedItemPrefab;
     public Transform DroppedItemParent;
+    public Transform DroppedItemSpawnOrigin;
     public float ItemSpawnDistance;
 
     private float timeBeforeCanAttack = 0;
     private bool attacking = false;
     private bool dead = false;
+    private bool knockback = false;
 
     void Awake() {
         AutoSet.Init(this);
@@ -81,7 +83,7 @@ public class Enemy : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         DeathFade.Update(Time.deltaTime);
-        if (attacking || dead) return;
+        if (attacking || dead || knockback) return;
 
         OnHit.Update(Time.deltaTime);
 
@@ -134,24 +136,37 @@ public class Enemy : MonoBehaviour {
         attacking = false;
     }
 
-    public void InflictDamage(float damage) {
+    public IEnumerator Knockback(float time) {
+        knockback = true;
+        yield return new WaitForSeconds(time);
+        Body.velocity = Vector2.zero;
+        knockback = false;
+    }
+
+    public void InflictDamage(float damage, Vector3 attackerPos) {
         if (dead) return;
 
         OnHit.StartLerping();
         Animator.SetTrigger("Flinch");
-
         EnemyInfo.CurrentHealth.Value -= damage;
-        if(EnemyInfo.CurrentHealth <= 0) {
+
+        if (EnemyInfo.CurrentHealth <= 0) {
             Animator.SetTrigger("Death");
             StopAllCoroutines();
             Body.velocity = Vector2.zero;
             dead = true;
             DeathFade.StartLerping();
 
-            foreach (var item in EnemyInfo.Data.Drops.GetItems(false)) {
-                var go = Instantiate(DroppedItemPrefab, transform.position + (Vector3) VectorUtils.GetRandomDir(0, ItemSpawnDistance), Quaternion.identity, DroppedItemParent);
+            foreach (var item in EnemyInfo.Data.Drops.GetItems(false, EnemyInfo.Level)) {
+                var go = Instantiate(DroppedItemPrefab,
+                    DroppedItemSpawnOrigin.position + (Vector3) VectorUtils.GetRandomDir(0, ItemSpawnDistance),
+                    Quaternion.identity, DroppedItemParent);
                 go.SetItem(item);
             }
+        }
+        else {
+            Body.velocity = (transform.position - attackerPos) * KnockbackSpeed;
+            StartCoroutine(Knockback(KnockbackTime));
         }
     }
 
@@ -218,7 +233,7 @@ public class Enemy : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("PlayerWeapon")) {
             // You're getting hit. RIP.
-            InflictDamage(PlayerCombat.Instance.Damage);
+            InflictDamage(PlayerCombat.Instance.Damage, other.transform.position);
         }
     }
 

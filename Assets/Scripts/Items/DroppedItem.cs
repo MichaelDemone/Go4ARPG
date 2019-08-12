@@ -13,6 +13,7 @@ public class DroppedItem : MonoBehaviour {
     public void SetItem(Item item, int amount) {
         Item = item;
         Amount = amount;
+        Renderer.sprite = item.Image;
     }
 
     void Update() {

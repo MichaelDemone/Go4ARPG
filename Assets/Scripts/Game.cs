@@ -57,6 +57,12 @@ public class Game : MonoBehaviour {
             File.WriteAllText(saveFile, contents);
         }
     }
+
+    [ContextMenu("Print Save Data")]
+    public void PrintSaveData() {
+        SaveData.Inventory = Inventory;
+        Debug.Log(JsonUtility.ToJson(SaveData));
+    }
 }
 
 [Serializable]

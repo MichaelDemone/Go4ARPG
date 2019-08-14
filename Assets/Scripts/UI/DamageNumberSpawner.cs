@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DamageNumberSpawner : MonoBehaviour {
 
+    public static DamageNumberSpawner instance;
+
     public GameObject DamageNumberPrefab;
     public Transform damageNumberParent;
 
@@ -13,6 +15,7 @@ public class DamageNumberSpawner : MonoBehaviour {
     private GenericPool<UpdateTimer> timers;
     
     void Awake() {
+        instance = this;
         pool = new ObjectPrefabPool(DamageNumberPrefab, damageNumberParent, 5);
         timers = new GenericPool<UpdateTimer>(() => new UpdateTimer());
     }
@@ -30,11 +33,11 @@ public class DamageNumberSpawner : MonoBehaviour {
         }
     }
 
-    public void SpawnNumber(int number, Color c) {
+    public void SpawnNumber(int number, Color c, Vector2 position) {
 
         GameObject damageNumber = pool.GetObject();
-        ((RectTransform) damageNumber.transform).anchoredPosition = new Vector2(0,0);
-        TextMeshProUGUI tmpugui = damageNumber.GetComponent<TextMeshProUGUI>();
+        damageNumber.transform.position = position;
+        TextMeshPro tmpugui = damageNumber.GetComponent<TextMeshPro>();
 
         tmpugui.SetText(number.ToString());
         tmpugui.faceColor = c;
@@ -42,7 +45,7 @@ public class DamageNumberSpawner : MonoBehaviour {
         Color outline = Color.black;
 
         UpdateTimer ut = timers.Get();
-        ut.Start(2, 
+        ut.Start(1, 
         () => { // finish
             pool.Return(damageNumber);
             timers.Return(ut);
@@ -58,7 +61,7 @@ public class DamageNumberSpawner : MonoBehaviour {
 #if UNITY_EDITOR
     [ContextMenu("Spawn Test")]
     public void SpawnNumberTest() {
-        SpawnNumber(Random.Range(1,1000), Color.black);
+        //SpawnNumber(Random.Range(1,1000), Color.black);
     }
 #endif
 }

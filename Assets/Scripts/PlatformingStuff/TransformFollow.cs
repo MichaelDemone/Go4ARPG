@@ -1,4 +1,5 @@
 using System;
+using G4AW2.Utils;
 using UnityEngine;
 
 public class TransformFollow : MonoBehaviour {
@@ -8,6 +9,9 @@ public class TransformFollow : MonoBehaviour {
 
     public float tolerance = 0.1f;
     public float lerpMod = 10f;
+
+    public Vector2 MaxPosition;
+    public Vector2 MinPosition;
 
 #if UNITY_EDITOR
     void Reset() {
@@ -23,6 +27,8 @@ public class TransformFollow : MonoBehaviour {
     void FixedUpdate() {
         Vector3 newPos = Vector3.Lerp(ThisTransform.position, TransformToWatch.position + Offset, Time.deltaTime * lerpMod);
         if((ThisTransform.position - newPos).magnitude > tolerance)
-            ThisTransform.position = newPos;
+            ThisTransform.position = newPos.BoundVector3(MinPosition, MaxPosition);
     }
+
+
 }

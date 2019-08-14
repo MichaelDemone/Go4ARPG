@@ -31,13 +31,14 @@ public class Enemy : MonoBehaviour {
     public EnemyDataInstance EnemyInfo;
     public float KnockbackTime = 0.25f;
     public float KnockbackSpeed = 1f;
+    public float DelayAfterKnockback = 0.1f;
 
     [Header("Item Dropping")]
     public DroppedItem DroppedItemPrefab;
     public Transform DroppedItemParent;
     public Transform DroppedItemSpawnOrigin;
     public float ItemSpawnDistance;
-
+    
     private float timeBeforeCanAttack = 0;
     private bool attacking = false;
     private bool dead = false;
@@ -60,6 +61,7 @@ public class Enemy : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        EnemyInfo.CurrentHealth.Value = EnemyInfo.MaxHealth;
         HealthBar.SetData(EnemyInfo.CurrentHealth, EnemyInfo.MaxHealth);
 
         if (EnemyInfo.Data != null) {
@@ -82,10 +84,11 @@ public class Enemy : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        OnHit.Update(Time.deltaTime);
         DeathFade.Update(Time.deltaTime);
         if (attacking || dead || knockback) return;
 
-        OnHit.Update(Time.deltaTime);
 
         Vector2 velocity = Vector2.zero;
 
@@ -137,17 +140,46 @@ public class Enemy : MonoBehaviour {
     }
 
     public IEnumerator Knockback(float time) {
-        knockback = true;
-        yield return new WaitForSeconds(time);
-        Body.velocity = Vector2.zero;
-        knockback = false;
+
+        // Set up
+        {
+            knockback = true;
+            Animator.SetBool("Flinch", true);
+        }
+        
+        // Knockback
+        {
+            float startTime = Time.time;
+            float finishedTime = Time.time + time;
+
+            Vector2 startSpeed = Body.velocity;
+            Vector2 endSpeed = Vector2.zero;
+
+            while(Time.time < finishedTime) {
+                float progress = (Time.time - startTime) / time;
+                Body.velocity = startSpeed * (1 - progress) + endSpeed * progress;
+                yield return null;
+            }
+
+            Body.velocity = Vector2.zero;
+        }
+
+        // Wait for recovering
+        yield return new WaitForSeconds(DelayAfterKnockback);
+
+        // Clean up
+        {
+            Animator.SetBool("Flinch", false);
+            knockback = false;
+        }
+        
     }
 
     public void InflictDamage(float damage, Vector3 attackerPos) {
         if (dead) return;
 
+        DamageNumberSpawner.instance.SpawnNumber((int)damage, Color.red, transform.position);
         OnHit.StartLerping();
-        Animator.SetTrigger("Flinch");
         EnemyInfo.CurrentHealth.Value -= damage;
 
         if (EnemyInfo.CurrentHealth <= 0) {
@@ -165,8 +197,11 @@ public class Enemy : MonoBehaviour {
             }
         }
         else {
-            Body.velocity = (transform.position - attackerPos) * KnockbackSpeed;
-            StartCoroutine(Knockback(KnockbackTime));
+            if (!attacking && !knockback) {
+                Body.velocity = (transform.position - attackerPos).normalized * KnockbackSpeed;
+                knockback = true;
+                StartCoroutine(Knockback(KnockbackTime));
+            }
         }
     }
 

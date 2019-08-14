@@ -55,6 +55,11 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        // Check knockback
+        if (knockback) {
+            return;
+        }
+
         // Set Velocity
         Vector3 vel;
         {
@@ -157,6 +162,30 @@ public class PlayerMovement : MonoBehaviour {
         }
 
 
+    }
+
+    private bool knockback = false;
+
+    public void Knockback(float time, float force, Vector3 origin) {
+        knockback = true;
+        StartCoroutine(KnockbackWait(time));
+        body.velocity = (transform.position - origin).normalized * force;
+    }
+
+    IEnumerator KnockbackWait(float time) {
+        knockback = true;
+        float startTime = Time.time;
+        float finishedTime = Time.time + time;
+        Vector2 startSpeed = body.velocity;
+        Vector2 endSpeed = Vector2.zero;
+        while(Time.time < finishedTime) {
+            float progress = (Time.time - startTime) / time;
+            body.velocity = startSpeed * (1 - progress) + endSpeed * progress;
+            yield return null;
+        }
+        body.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.1f);
+        knockback = false;
     }
 
     #region Dashing

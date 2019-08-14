@@ -6,7 +6,7 @@ namespace G4AW2.Data.DropSystem {
     public class ItemDropper {
         public List<ItemAndRarity> Items;
 
-        public List<IItem> GetItems(bool addGlobalItems) {
+        public List<IItem> GetItems(bool addGlobalItems, int level) {
             List<IItem> droppedItems = new List<IItem>();
 
             foreach(ItemAndRarity item in Items) {
@@ -14,15 +14,15 @@ namespace G4AW2.Data.DropSystem {
                 if(item.dropChance > value) {
                     Item itemThatGoesToInventory = item.item;
                     if (itemThatGoesToInventory is Weapon) {
-                        WeaponInstance wi = new WeaponInstance((Weapon) itemThatGoesToInventory, 1, null);
+                        WeaponInstance wi = new WeaponInstance((Weapon) itemThatGoesToInventory, level, null);
                         droppedItems.Add(wi);
                     }
                     else if (itemThatGoesToInventory is Armor) {
-                        ArmorInstance wi = new ArmorInstance((Armor) itemThatGoesToInventory, 1);
+                        ArmorInstance wi = new ArmorInstance((Armor) itemThatGoesToInventory, level);
                         droppedItems.Add(wi);
                     }
                     else if (itemThatGoesToInventory is Headgear) {
-                        HeadgearInstance wi = new HeadgearInstance((Headgear) itemThatGoesToInventory, 1);
+                        HeadgearInstance wi = new HeadgearInstance((Headgear) itemThatGoesToInventory, level);
                         droppedItems.Add(wi);
                     }
                     else {
@@ -40,7 +40,7 @@ namespace G4AW2.Data.DropSystem {
             int drop_total = 0;
             Dictionary<IItem, int> counts = new Dictionary<IItem, int>();
             for(int i = 0; i < times; i++) {
-                List<IItem> items = GetItems(false);
+                List<IItem> items = GetItems(false, 1);
                 foreach(IItem item in items) {
                     int count = 0;
                     if(counts.TryGetValue(item, out count)) {
@@ -61,7 +61,7 @@ namespace G4AW2.Data.DropSystem {
         private void DropOne() {
             Debug.Log("Drop one");
 
-            List<IItem> items = GetItems(false);
+            List<IItem> items = GetItems(false, 1);
             foreach(IItem item in items) {
                 Debug.Log("Dropped: " + item.GetName());
             }

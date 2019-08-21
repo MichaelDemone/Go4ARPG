@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: 5b282a011289e8f4a849e1e2439b909f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3722281768690339508
+    second: GregsTiles3_0
+  - first:
+      213: -195420720258685581
+    second: GregsTiles3_1
+  - first:
+      213: 5797009627962661402
+    second: GregsTiles3_2
+  - first:
+      213: 2160389112134958741
+    second: GregsTiles3_3
+  - first:
+      213: -2795200928820429186
+    second: GregsTiles3_4
+  - first:
+      213: 6683223119492784594
+    second: GregsTiles3_5
+  - first:
+      213: -6890062734056377415
+    second: GregsTiles3_6
+  - first:
+      213: 4608182253775721132
+    second: GregsTiles3_7
+  - first:
+      213: 9036838001945819921
+    second: GregsTiles3_8
+  - first:
+      213: -710637295568568418
+    second: GregsTiles3_9
+  - first:
+      213: 3914919264667393418
+    second: GregsTiles3_10
+  - first:
+      213: 9071727765773443790
+    second: GregsTiles3_11
+  - first:
+      213: -7815113611096641974
+    second: GregsTiles3_12
+  - first:
+      213: 1361356457852330206
+    second: GregsTiles3_13
+  - first:
+      213: -8532850955498394164
+    second: GregsTiles3_14
+  - first:
+      213: 78493817583711963
+    second: GregsTiles3_15
+  - first:
+      213: 4941891458520444333
+    second: GregsTiles3_16
+  - first:
+      213: 1038359716863650920
+    second: GregsTiles3_17
+  - first:
+      213: -2583723885630033023
+    second: GregsTiles3_18
+  - first:
+      213: 7380518027431650546
+    second: GregsTiles3_19
+  - first:
+      213: -7280263718359886155
+    second: GregsTiles3_20
+  - first:
+      213: 2637132194286216382
+    second: GregsTiles3_21
+  - first:
+      213: -4141985671993519727
+    second: GregsTiles3_22
+  - first:
+      213: 473134091231445586
+    second: GregsTiles3_23
+  - first:
+      213: -2526525493563883131
+    second: GregsTiles3_24
+  - first:
+      213: -7749940728193361044
+    second: GregsTiles3_25
+  - first:
+      213: 4956258005417599435
+    second: GregsTiles3_26
+  - first:
+      213: -4611198310360912352
+    second: GregsTiles3_27
+  - first:
+      213: 3743295259102460128
+    second: GregsTiles3_28
+  - first:
+      213: 8521956222112360820
+    second: GregsTiles3_29
+  - first:
+      213: -7487009334283144427
+    second: GregsTiles3_30
+  - first:
+      213: -1312993161940488987
+    second: GregsTiles3_31
+  - first:
+      213: 9199694068987370790
+    second: GregsTiles3_32
+  - first:
+      213: 8100356137150994282
+    second: GregsTiles3_33
+  - first:
+      213: -4840022107305758995
+    second: GregsTiles3_34
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GregsTiles3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695b6fc3b237e2943b9422805a1d1e78
+      internalID: 3722281768690339508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GregsTiles3_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 30
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f84067e996cc644b91f7c34bc9082b2
+      internalID: -195420720258685581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GregsTiles3_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c1e6f990726344093a151e88383b12
+      internalID: 5797009627962661402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GregsTiles3_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3172c3e607d734b4eab3c7069651b7f5
+      internalID: 2160389112134958741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GregsTiles3_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd179e6e26bba104895334c1a3805149
+      internalID: -2795200928820429186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 6144ec0e7d325de4d8e89e668d3aef0b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

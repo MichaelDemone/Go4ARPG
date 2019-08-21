@@ -114,7 +114,7 @@ namespace UnityEditor {
                     
                     TileBase actualTile = map.GetTile(bottomLeftPos + new Vector3Int(tileCol, tileRow, 0));
 
-                    if(tilesToCorners.ContainsKey(actualTile)) {
+                    if(actualTile != null && tilesToCorners.ContainsKey(actualTile)) {
                         int cornerBools = tilesToCorners[actualTile];
                         corners[corner] = (cornerBools & cornerPosition) != 0;
                     } 
@@ -152,7 +152,8 @@ namespace UnityEditor {
                         v |= bottomRight;
 
                     TileBase tileThatShouldGoHere = cornersToTile[v];
-                    map.SetTile(bottomLeftPos + new Vector3Int(col, row, 0), tileThatShouldGoHere);
+                    if(v != 0)
+                        map.SetTile(bottomLeftPos + new Vector3Int(col, row, 0), tileThatShouldGoHere);
                 }
             }
 

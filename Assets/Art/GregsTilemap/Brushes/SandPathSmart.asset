@@ -53,3 +53,7 @@ MonoBehaviour:
       type: 2}
     Filled: {fileID: 11400000, guid: aeba411f907f09d4f8aa69ee8b6ff497, type: 2}
     Nothing: {fileID: 11400000, guid: f97ad09ab7335f34dbe628458d948c82, type: 2}
+    TopLeftAndBottomRightCorner: {fileID: 11400000, guid: 7560837607bf79642b39770dbd013791,
+      type: 2}
+    TopRightAndBottomLeftCorner: {fileID: 11400000, guid: 3ce78a1766328a34496f355bd073d02b,
+      type: 2}

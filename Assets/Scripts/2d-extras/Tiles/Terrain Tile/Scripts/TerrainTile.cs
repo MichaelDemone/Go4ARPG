@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -71,7 +71,7 @@ namespace UnityEngine.Tilemaps
 			return (tile != null && tile == this);
 		}
 
-		private int GetIndex(byte mask)
+		private int  GetIndex(byte mask)
 		{
 			switch (mask)
 			{

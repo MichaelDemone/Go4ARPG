@@ -28,7 +28,6 @@ namespace UnityEditor {
                 }
 
                 BoundsInt bounds = new BoundsInt(position.position - pivot, position.size);
-
                 foreach (Vector3Int pos in bounds.allPositionsWithin) {
                     tilemap.SetTile(pos, GetRandomTile());
                 }

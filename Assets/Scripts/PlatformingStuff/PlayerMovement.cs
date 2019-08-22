@@ -10,11 +10,12 @@ public class PlayerMovement : MonoBehaviour {
     public static PlayerMovement Instance;
 
 
-    [Header("Autoset References")]
+    [Header("Autoset References")] [AutoSet(CheckChildrenForComponents = true)]
+    public Animator animator;
     [AutoSet] public Rigidbody2D body;
     [AutoSet(SetByNameInChildren = true)] public SpriteRenderer View;
     [AutoSet] public Transform t;
-    [AutoSet(CheckChildrenForComponents = true)] public PlayerAnimations Animations;
+    //[AutoSet(CheckChildrenForComponents = true)] public PlayerAnimations Animations;
     [AutoSet(CheckChildrenForComponents = true, SetByNameInChildren = true)] public Transform Weapon;
 
     [Header("Movement")]
@@ -30,13 +31,48 @@ public class PlayerMovement : MonoBehaviour {
     public float DashingDuration = 0.1f;
     public float DashCooldownDuration = 0.4f;
 
-    private bool dashing = false;
     private Vector2 dashDirection;
     private float dashingDurationEnd = 0;
     private float canDashAgainTime = 0;
     private bool CanDash => Time.time > canDashAgainTime;
 
-    private bool attacking = false;
+    // State Variables
+    private bool _attacking = false;
+    private bool _knockback = false;
+    private bool _dashing = false;
+    
+    private static readonly int Dash = Animator.StringToHash("Dash");
+    private static readonly int BackDash = Animator.StringToHash("Back Dash");
+    private static readonly int Flinch = Animator.StringToHash("Flinch");
+    private static readonly int Attack = Animator.StringToHash("Attack");
+    private static readonly int Stab = Animator.StringToHash("Stab");
+    private static readonly int HeavyAttack = Animator.StringToHash("HeavyAttack");
+    private static readonly int Run = Animator.StringToHash("Run");
+    private static readonly int Combo = Animator.StringToHash("Combo");
+
+    private bool attacking {
+        get { return _attacking; }
+        set {
+            _attacking = value;
+            animator.SetBool(Attack, value);
+        }
+    }
+    
+    private bool knockback {
+        get { return _knockback; }
+        set {
+            _knockback = value;
+            animator.SetBool(Flinch, value);
+        }
+    }
+    
+    private bool dashing {
+        get { return _dashing; }
+        set {
+            _dashing = value;
+            animator.SetBool(Dash, value);
+        }
+    }
 
 #if UNITY_EDITOR
     void Reset() {
@@ -63,9 +99,24 @@ public class PlayerMovement : MonoBehaviour {
         // Set Velocity
         Vector3 vel;
         {
+            if (dashing && dashingDurationEnd <= Time.time) {
+                animator.SetBool(Dash, false);
+                animator.SetBool(BackDash, false);
+                dashing = false;
+            }
+            
             if (dashing) {
-                if (dashingDurationEnd <= Time.time) dashing = false;
+
                 vel = dashDirection * DashForceStrength;
+
+                if (vel.x < 0 && !View.flipX || vel.x > 0 && View.flipX) {
+                    animator.SetBool(Dash, false);
+                    animator.SetBool(BackDash, true);
+                }
+                else {
+                    animator.SetBool(BackDash, false);
+                    animator.SetBool(Dash, true);
+                } 
             }
             else {
 
@@ -103,37 +154,40 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-        // Set Walking Animations
-        {
-            if(body.velocity.magnitude == 0 && vel.magnitude > 0) {
-                // Started walking
-                Animations.StartWalking();
-            }
-            if(body.velocity.magnitude != 0 && vel.magnitude == 0) {
-                // Stopped walking
-                Animations.StopWalking();
-            }
-
-            body.velocity = vel;
-        }
+        
 
         // Set attack animations
         {
             if(Input.GetMouseButtonDown(0)) {
-                Animations.Attack();
+                //animator.SetBool(Attack, true);
                 attacking = true;
+                vel = Vector3.zero;
             }
             if(Input.GetMouseButton(0)) {
-                Animations.Attack();
                 attacking = true;
+                vel = Vector3.zero;
             }
             if(Input.GetMouseButtonUp(0)) {
-                Animations.ResetAttack();
+                //animator.SetBool(Attack,false);
                 attacking = false;
             }
         }
 
+        // Set Walking Animations
+        {
+            if(body.velocity.magnitude == 0 && vel.magnitude > 0) {
+                // Started walking
+                animator.SetBool(Run, true);
+            }
+            if(body.velocity.magnitude != 0 && vel.magnitude == 0) {
+                // Stopped walking
+                animator.SetBool(Run, false);
+            }
 
+            body.velocity = vel;
+        }
+        
+        
         Vector3 directionToMouseFromPlayer;
 
         // Set weapon rotation + position
@@ -160,11 +214,8 @@ public class PlayerMovement : MonoBehaviour {
                 View.flipX = directionToMouseFromPlayer.x < 0;
             }
         }
-
-
     }
 
-    private bool knockback = false;
 
     public void Knockback(float time, float force, Vector3 origin) {
         knockback = true;

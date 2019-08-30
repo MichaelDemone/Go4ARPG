@@ -36,7 +36,7 @@ MonoBehaviour:
   m_Pivot: {x: 0, y: 0, z: 0}
   randomTileSets:
   - randomTiles: {fileID: 11400000, guid: 14cb66e1344eeb64a98a7b6b846c5871, type: 2}
-    Weight: 49
+    Weight: 84
   - randomTiles: {fileID: 11400000, guid: 79b68211282a5f5488380018187a6c54, type: 2}
     Weight: 1
   - randomTiles: {fileID: 11400000, guid: d052d696bf54cdb469eab1cfcffdf56b, type: 2}

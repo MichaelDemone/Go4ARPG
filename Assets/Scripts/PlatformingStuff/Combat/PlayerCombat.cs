@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour {
     public void GetHurtBy(Enemy source, float damageAmount) {
         CurrentHealth.Value -= damageAmount;
         DamageNumberSpawner.instance.SpawnNumber((int) damageAmount, Color.red, transform.position);
-        PlayerMovement.Instance.Knockback(KnockbackTime, KnockbackForce, source.transform.position);
+        //PlayerMovement.Instance.Knockback(KnockbackTime, KnockbackForce, source.transform.position);
         OnHitLerp.StartLerping();
         if (CurrentHealth.Value <= 0) {
             Debug.Log("You have died!");

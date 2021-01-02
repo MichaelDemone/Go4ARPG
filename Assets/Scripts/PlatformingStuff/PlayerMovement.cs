@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using G4AW2.Utils;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,301 +11,54 @@ public class PlayerMovement : MonoBehaviour {
     public static PlayerMovement Instance;
 
 
-    [Header("Autoset References")] [AutoSet(CheckChildrenForComponents = true)]
-    public Animator animator;
+    [Header("Autoset References")] 
+    [AutoSet(CheckChildrenForComponents = true)] public Animator animator;
     [AutoSet] public Rigidbody2D body;
     [AutoSet(SetByNameInChildren = true)] public SpriteRenderer View;
     [AutoSet] public Transform t;
-    //[AutoSet(CheckChildrenForComponents = true)] public PlayerAnimations Animations;
     [AutoSet(CheckChildrenForComponents = true, SetByNameInChildren = true)] public Transform Weapon;
 
     [Header("Movement")]
     public float MovementForceStrength = 1f;
 
-    [Header("Weapon")]
-    public float WeaponDistanceFromPlayer = 0.15f;
-    public Vector3 WeaponOffset = new Vector2(0, 0.05f);
-
-    [Header("Dash")]
-    public float DashForceStrength = 3f;
-    public float MaxTimeBetweenButtonPushesForDash = 0.5f;
-    public float DashingDuration = 0.1f;
-    public float DashCooldownDuration = 0.4f;
-
-    private Vector2 dashDirection;
-    private float dashingDurationEnd = 0;
-    private float canDashAgainTime = 0;
-    private bool CanDash => Time.time > canDashAgainTime;
-
-    // State Variables
-    private bool _attacking = false;
-    private bool _knockback = false;
-    private bool _dashing = false;
-    
-    private static readonly int Dash = Animator.StringToHash("Dash");
-    private static readonly int BackDash = Animator.StringToHash("Back Dash");
-    private static readonly int Flinch = Animator.StringToHash("Flinch");
-    private static readonly int Attack = Animator.StringToHash("Attack");
-    private static readonly int Stab = Animator.StringToHash("Stab");
-    private static readonly int HeavyAttack = Animator.StringToHash("HeavyAttack");
-    private static readonly int Run = Animator.StringToHash("Run");
-    private static readonly int Combo = Animator.StringToHash("Combo");
-
-    private bool attacking {
-        get { return _attacking; }
-        set {
-            _attacking = value;
-            animator.SetBool(Attack, value);
-        }
-    }
-    
-    private bool knockback {
-        get { return _knockback; }
-        set {
-            _knockback = value;
-            animator.SetBool(Flinch, value);
-        }
-    }
-    
-    private bool dashing {
-        get { return _dashing; }
-        set {
-            _dashing = value;
-            animator.SetBool(Dash, value);
-        }
-    }
+    public SimpleControls Inputs;
 
 #if UNITY_EDITOR
     void Reset() {
         AutoSet.Init(this);
     }
 
-    void OnEnable() {
-        AutoSet.Init(this);
-    }
+
 #endif
+
+    void OnEnable()
+    {
+        Inputs.Enable();
+#if UNITY_EDITOR
+        AutoSet.Init(this);
+#endif
+    }
+
+    private void OnDisable()
+    {
+        Inputs.Disable();
+    }
 
     void Awake() {
         Instance = this;
+        Inputs = new SimpleControls();
+
+        Inputs.gameplay.interact.performed += Interact_performed;
+    }
+
+    private void Interact_performed(InputAction.CallbackContext obj)
+    {
+        Debug.Log("interacted");
     }
 
     // Update is called once per frame
     void Update() {
-
-        // Check knockback
-        if (knockback) {
-            return;
-        }
-
-        // Set Velocity
-        Vector3 vel;
-        {
-            if (dashing && dashingDurationEnd <= Time.time) {
-                animator.SetBool(Dash, false);
-                animator.SetBool(BackDash, false);
-                dashing = false;
-            }
-            
-            if (dashing) {
-
-                vel = dashDirection * DashForceStrength;
-
-                if (vel.x < 0 && !View.flipX || vel.x > 0 && View.flipX) {
-                    animator.SetBool(Dash, false);
-                    animator.SetBool(BackDash, true);
-                }
-                else {
-                    animator.SetBool(BackDash, false);
-                    animator.SetBool(Dash, true);
-                } 
-            }
-            else {
-
-                // Dash Checks
-                if (CanDash) {
-                    if(Input.GetKeyDown(KeyCode.D)) {
-                        StartCoroutine(CheckDash(KeyCode.D));
-                    }
-                    if(Input.GetKeyDown(KeyCode.A)) {
-                        StartCoroutine(CheckDash(KeyCode.A));
-                    }
-                    if(Input.GetKeyDown(KeyCode.W)) {
-                        StartCoroutine(CheckDash(KeyCode.W));
-                    }
-                    if(Input.GetKeyDown(KeyCode.S)) {
-                        StartCoroutine(CheckDash(KeyCode.S));
-                    }
-                }
-
-                vel = new Vector2();
-                if(Input.GetKey(KeyCode.D)) {
-                    vel.x = 1;
-                }
-                if(Input.GetKey(KeyCode.A)) {
-                    vel.x += -1;
-                }
-                if(Input.GetKey(KeyCode.W)) {
-                    vel.y = 1;
-                }
-                if(Input.GetKey(KeyCode.S)) {
-                    vel.y += -1;
-                }
-
-                vel = vel.normalized * MovementForceStrength;
-            }
-        }
-
-        
-
-        // Set attack animations
-        {
-            if(Input.GetMouseButtonDown(0)) {
-                //animator.SetBool(Attack, true);
-                attacking = true;
-                vel = Vector3.zero;
-            }
-            if(Input.GetMouseButton(0)) {
-                attacking = true;
-                vel = Vector3.zero;
-            }
-            if(Input.GetMouseButtonUp(0)) {
-                //animator.SetBool(Attack,false);
-                attacking = false;
-            }
-        }
-
-        // Set Walking Animations
-        {
-            if(body.velocity.magnitude == 0 && vel.magnitude > 0) {
-                // Started walking
-                animator.SetBool(Run, true);
-            }
-            if(body.velocity.magnitude != 0 && vel.magnitude == 0) {
-                // Stopped walking
-                animator.SetBool(Run, false);
-            }
-
-            body.velocity = vel;
-        }
-        
-        
-        Vector3 directionToMouseFromPlayer;
-
-        // Set weapon rotation + position
-        {
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 0;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mousePos.z = 0;
-            Vector3 FakeMiddle = transform.position + WeaponOffset;
-            directionToMouseFromPlayer = (mousePos - FakeMiddle).normalized;
-            Vector3 weaponPosition = FakeMiddle + directionToMouseFromPlayer * WeaponDistanceFromPlayer;
-
-            Weapon.position = weaponPosition;
-            Weapon.right = directionToMouseFromPlayer;
-            Weapon.localScale = Weapon.localScale.SetY(directionToMouseFromPlayer.x < 0 ? -1 : 1);
-        }
-
-        // Set body orientation
-        {
-            if(Math.Abs(body.velocity.x) > 0.01f)
-                View.flipX = body.velocity.x < 0;
-
-            if (attacking) {
-                View.flipX = directionToMouseFromPlayer.x < 0;
-            }
-        }
+        var move = Inputs.gameplay.move.ReadValue<Vector2>();
+        transform.position += ((Vector3)move) * MovementForceStrength * Time.deltaTime;
     }
-
-
-    public void Knockback(float time, float force, Vector3 origin) {
-        knockback = true;
-        StartCoroutine(KnockbackWait(time));
-        body.velocity = (transform.position - origin).normalized * force;
-    }
-
-    IEnumerator KnockbackWait(float time) {
-        knockback = true;
-        float startTime = Time.time;
-        float finishedTime = Time.time + time;
-        Vector2 startSpeed = body.velocity;
-        Vector2 endSpeed = Vector2.zero;
-        while(Time.time < finishedTime) {
-            float progress = (Time.time - startTime) / time;
-            body.velocity = startSpeed * (1 - progress) + endSpeed * progress;
-            yield return null;
-        }
-        body.velocity = Vector2.zero;
-        yield return new WaitForSeconds(0.1f);
-        knockback = false;
-    }
-
-    #region Dashing
-
-
-    IEnumerator CheckDash(KeyCode key) {
-        float time = Time.time;
-
-
-        // Key down -> Key up -> key down is a double tap 
-        if(!Input.GetKeyDown(key))
-            yield break;
-
-        while(Time.time < time + MaxTimeBetweenButtonPushesForDash) {
-
-            if(Input.GetKeyUp(key)) {
-                break;
-            }
-
-            yield return null;
-        }
-
-        while(Time.time < time + MaxTimeBetweenButtonPushesForDash) {
-
-            if(Input.GetKeyDown(key)) {
-                break;
-            }
-
-            yield return null;
-        }
-
-        if(Time.time >= time + MaxTimeBetweenButtonPushesForDash || dashing)
-            yield break;
-
-        dashing = true;
-
-        // Successful dash!
-        if(key == KeyCode.A) {
-            // Dash left
-            dashDirection = Vector2.left;
-        } else if(key == KeyCode.S) {
-            // Dash down
-            dashDirection = Vector2.down;
-        } else if(key == KeyCode.D) {
-            // Dash right
-            dashDirection = Vector2.right;
-        } else if(key == KeyCode.W) {
-            // Dash up
-            dashDirection = Vector2.up;
-        }
-
-        dashingDurationEnd = Time.time + DashingDuration;
-        canDashAgainTime = Time.time + DashCooldownDuration;
-    }
-
-    #endregion
-
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-
-    }
-
-    private void OnCollisionExit2D(Collision2D collision) {
-
-    }
-
-    private void OnCollisionStay2D(Collision2D collision) {
-
-    }
-
 }

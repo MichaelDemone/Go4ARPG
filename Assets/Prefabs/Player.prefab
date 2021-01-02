@@ -569,7 +569,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8866119604533018576}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.65, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -616,12 +616,6 @@ MonoBehaviour:
   t: {fileID: 8866119604533018573}
   Weapon: {fileID: 8866119605398756749}
   MovementForceStrength: 1
-  WeaponDistanceFromPlayer: 0.1
-  WeaponOffset: {x: 0, y: 0.1, z: 0}
-  DashForceStrength: 3
-  MaxTimeBetweenButtonPushesForDash: 0.5
-  DashingDuration: 0.2
-  DashCooldownDuration: 0.4
 --- !u!61 &8866119604533018578
 BoxCollider2D:
   m_ObjectHideFlags: 0

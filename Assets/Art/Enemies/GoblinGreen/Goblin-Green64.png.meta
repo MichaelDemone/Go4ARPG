@@ -1,127 +1,363 @@
 fileFormatVersion: 2
 guid: 03250a6a4c96e00478de458191be07fb
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Goblin-Green64_0
-    21300002: Goblin-Green64_1
-    21300004: Goblin-Green64_2
-    21300006: Goblin-Green64_3
-    21300008: Goblin-Green64_4
-    21300010: Goblin-Green64_5
-    21300012: Goblin-Green64_6
-    21300014: Goblin-Green64_7
-    21300016: Goblin-Green64_8
-    21300018: Goblin-Green64_9
-    21300020: Goblin-Green64_10
-    21300022: Goblin-Green64_11
-    21300024: Goblin-Green64_12
-    21300026: Goblin-Green64_13
-    21300028: Goblin-Green64_14
-    21300030: Goblin-Green64_15
-    21300032: Goblin-Green64_16
-    21300034: Goblin-Green64_17
-    21300036: Goblin-Green64_18
-    21300038: Goblin-Green64_19
-    21300040: Goblin-Green64_20
-    21300042: Goblin-Green64_21
-    21300044: Goblin-Green64_22
-    21300046: Goblin-Green64_23
-    21300048: Goblin-Green64_24
-    21300050: Goblin-Green64_25
-    21300052: Goblin-Green64_26
-    21300054: Goblin-Green64_27
-    21300056: Goblin-Green64_28
-    21300058: Goblin-Green64_29
-    21300060: Goblin-Green64_30
-    21300062: Goblin-Green64_31
-    21300064: Goblin-Green64_32
-    21300066: Goblin-Green64_33
-    21300068: Goblin-Green64_34
-    21300070: Goblin-Green64_35
-    21300072: Goblin-Green64_36
-    21300074: Goblin-Green64_37
-    21300076: Goblin-Green64_38
-    21300078: Goblin-Green64_39
-    21300080: Goblin-Green64_40
-    21300082: Goblin-Green64_41
-    21300084: Goblin-Green64_42
-    21300086: Goblin-Green64_43
-    21300088: Goblin-Green64_44
-    21300090: Goblin-Green64_45
-    21300092: Goblin-Green64_46
-    21300094: Goblin-Green64_47
-    21300096: Goblin-Green64_48
-    21300098: Goblin-Green64_49
-    21300100: Goblin-Green64_50
-    21300102: Goblin-Green64_51
-    21300104: Goblin-Green64_52
-    21300106: Goblin-Green64_53
-    21300108: Goblin-Green64_54
-    21300110: Goblin-Green64_55
-    21300112: Goblin-Green64_56
-    21300114: Goblin-Green64_57
-    21300116: Goblin-Green64_58
-    21300118: Goblin-Green64_59
-    21300120: Goblin-Green64_60
-    21300122: Goblin-Green64_61
-    21300124: Goblin-Green64_62
-    21300126: Goblin-Green64_63
-    21300128: Goblin-Green64_64
-    21300130: Goblin-Green64_65
-    21300132: Goblin-Green64_66
-    21300134: Goblin-Green64_67
-    21300136: Goblin-Green64_68
-    21300138: Goblin-Green64_69
-    21300140: Goblin-Green64_70
-    21300142: Goblin-Green64_71
-    21300144: Goblin-Green64_72
-    21300146: Goblin-Green64_73
-    21300148: Goblin-Green64_74
-    21300150: Goblin-Green64_75
-    21300152: Goblin-Green64_76
-    21300154: Goblin-Green64_77
-    21300156: Goblin-Green64_78
-    21300158: Goblin-Green64_79
-    21300160: Goblin-Green64_80
-    21300162: Goblin-Green64_81
-    21300164: Goblin-Green64_82
-    21300166: Goblin-Green64_83
-    21300168: Goblin-Green64_84
-    21300170: Goblin-Green64_85
-    21300172: Goblin-Green64_86
-    21300174: Goblin-Green64_87
-    21300176: Goblin-Green64_88
-    21300178: Goblin-Green64_89
-    21300180: Goblin-Green64_90
-    21300182: Goblin-Green64_91
-    21300184: Goblin-Green64_92
-    21300186: Goblin-Green64_93
-    21300188: Goblin-Green64_94
-    21300190: Goblin-Green64_95
-    21300192: Goblin-Green64_96
-    21300194: Goblin-Green64_97
-    21300196: Goblin-Green64_98
-    21300198: Goblin-Green64_99
-    21300200: Goblin-Green64_100
-    21300202: Goblin-Green64_101
-    21300204: Goblin-Green64_102
-    21300206: Goblin-Green64_103
-    21300208: Goblin-Green64_104
-    21300210: Goblin-Green64_105
-    21300212: Goblin-Green64_106
-    21300214: Goblin-Green64_107
-    21300216: Goblin-Green64_108
-    21300218: Goblin-Green64_109
-    21300220: Goblin-Green64_110
-    21300222: Goblin-Green64_111
-    21300224: Goblin-Green64_112
-    21300226: Goblin-Green64_113
-    21300228: Goblin-Green64_114
-    21300230: Goblin-Green64_115
-    21300232: Goblin-Green64_116
-    21300234: Goblin-Green64_117
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Goblin-Green64_0
+  - first:
+      213: 21300002
+    second: Goblin-Green64_1
+  - first:
+      213: 21300004
+    second: Goblin-Green64_2
+  - first:
+      213: 21300006
+    second: Goblin-Green64_3
+  - first:
+      213: 21300008
+    second: Goblin-Green64_4
+  - first:
+      213: 21300010
+    second: Goblin-Green64_5
+  - first:
+      213: 21300012
+    second: Goblin-Green64_6
+  - first:
+      213: 21300014
+    second: Goblin-Green64_7
+  - first:
+      213: 21300016
+    second: Goblin-Green64_8
+  - first:
+      213: 21300018
+    second: Goblin-Green64_9
+  - first:
+      213: 21300020
+    second: Goblin-Green64_10
+  - first:
+      213: 21300022
+    second: Goblin-Green64_11
+  - first:
+      213: 21300024
+    second: Goblin-Green64_12
+  - first:
+      213: 21300026
+    second: Goblin-Green64_13
+  - first:
+      213: 21300028
+    second: Goblin-Green64_14
+  - first:
+      213: 21300030
+    second: Goblin-Green64_15
+  - first:
+      213: 21300032
+    second: Goblin-Green64_16
+  - first:
+      213: 21300034
+    second: Goblin-Green64_17
+  - first:
+      213: 21300036
+    second: Goblin-Green64_18
+  - first:
+      213: 21300038
+    second: Goblin-Green64_19
+  - first:
+      213: 21300040
+    second: Goblin-Green64_20
+  - first:
+      213: 21300042
+    second: Goblin-Green64_21
+  - first:
+      213: 21300044
+    second: Goblin-Green64_22
+  - first:
+      213: 21300046
+    second: Goblin-Green64_23
+  - first:
+      213: 21300048
+    second: Goblin-Green64_24
+  - first:
+      213: 21300050
+    second: Goblin-Green64_25
+  - first:
+      213: 21300052
+    second: Goblin-Green64_26
+  - first:
+      213: 21300054
+    second: Goblin-Green64_27
+  - first:
+      213: 21300056
+    second: Goblin-Green64_28
+  - first:
+      213: 21300058
+    second: Goblin-Green64_29
+  - first:
+      213: 21300060
+    second: Goblin-Green64_30
+  - first:
+      213: 21300062
+    second: Goblin-Green64_31
+  - first:
+      213: 21300064
+    second: Goblin-Green64_32
+  - first:
+      213: 21300066
+    second: Goblin-Green64_33
+  - first:
+      213: 21300068
+    second: Goblin-Green64_34
+  - first:
+      213: 21300070
+    second: Goblin-Green64_35
+  - first:
+      213: 21300072
+    second: Goblin-Green64_36
+  - first:
+      213: 21300074
+    second: Goblin-Green64_37
+  - first:
+      213: 21300076
+    second: Goblin-Green64_38
+  - first:
+      213: 21300078
+    second: Goblin-Green64_39
+  - first:
+      213: 21300080
+    second: Goblin-Green64_40
+  - first:
+      213: 21300082
+    second: Goblin-Green64_41
+  - first:
+      213: 21300084
+    second: Goblin-Green64_42
+  - first:
+      213: 21300086
+    second: Goblin-Green64_43
+  - first:
+      213: 21300088
+    second: Goblin-Green64_44
+  - first:
+      213: 21300090
+    second: Goblin-Green64_45
+  - first:
+      213: 21300092
+    second: Goblin-Green64_46
+  - first:
+      213: 21300094
+    second: Goblin-Green64_47
+  - first:
+      213: 21300096
+    second: Goblin-Green64_48
+  - first:
+      213: 21300098
+    second: Goblin-Green64_49
+  - first:
+      213: 21300100
+    second: Goblin-Green64_50
+  - first:
+      213: 21300102
+    second: Goblin-Green64_51
+  - first:
+      213: 21300104
+    second: Goblin-Green64_52
+  - first:
+      213: 21300106
+    second: Goblin-Green64_53
+  - first:
+      213: 21300108
+    second: Goblin-Green64_54
+  - first:
+      213: 21300110
+    second: Goblin-Green64_55
+  - first:
+      213: 21300112
+    second: Goblin-Green64_56
+  - first:
+      213: 21300114
+    second: Goblin-Green64_57
+  - first:
+      213: 21300116
+    second: Goblin-Green64_58
+  - first:
+      213: 21300118
+    second: Goblin-Green64_59
+  - first:
+      213: 21300120
+    second: Goblin-Green64_60
+  - first:
+      213: 21300122
+    second: Goblin-Green64_61
+  - first:
+      213: 21300124
+    second: Goblin-Green64_62
+  - first:
+      213: 21300126
+    second: Goblin-Green64_63
+  - first:
+      213: 21300128
+    second: Goblin-Green64_64
+  - first:
+      213: 21300130
+    second: Goblin-Green64_65
+  - first:
+      213: 21300132
+    second: Goblin-Green64_66
+  - first:
+      213: 21300134
+    second: Goblin-Green64_67
+  - first:
+      213: 21300136
+    second: Goblin-Green64_68
+  - first:
+      213: 21300138
+    second: Goblin-Green64_69
+  - first:
+      213: 21300140
+    second: Goblin-Green64_70
+  - first:
+      213: 21300142
+    second: Goblin-Green64_71
+  - first:
+      213: 21300144
+    second: Goblin-Green64_72
+  - first:
+      213: 21300146
+    second: Goblin-Green64_73
+  - first:
+      213: 21300148
+    second: Goblin-Green64_74
+  - first:
+      213: 21300150
+    second: Goblin-Green64_75
+  - first:
+      213: 21300152
+    second: Goblin-Green64_76
+  - first:
+      213: 21300154
+    second: Goblin-Green64_77
+  - first:
+      213: 21300156
+    second: Goblin-Green64_78
+  - first:
+      213: 21300158
+    second: Goblin-Green64_79
+  - first:
+      213: 21300160
+    second: Goblin-Green64_80
+  - first:
+      213: 21300162
+    second: Goblin-Green64_81
+  - first:
+      213: 21300164
+    second: Goblin-Green64_82
+  - first:
+      213: 21300166
+    second: Goblin-Green64_83
+  - first:
+      213: 21300168
+    second: Goblin-Green64_84
+  - first:
+      213: 21300170
+    second: Goblin-Green64_85
+  - first:
+      213: 21300172
+    second: Goblin-Green64_86
+  - first:
+      213: 21300174
+    second: Goblin-Green64_87
+  - first:
+      213: 21300176
+    second: Goblin-Green64_88
+  - first:
+      213: 21300178
+    second: Goblin-Green64_89
+  - first:
+      213: 21300180
+    second: Goblin-Green64_90
+  - first:
+      213: 21300182
+    second: Goblin-Green64_91
+  - first:
+      213: 21300184
+    second: Goblin-Green64_92
+  - first:
+      213: 21300186
+    second: Goblin-Green64_93
+  - first:
+      213: 21300188
+    second: Goblin-Green64_94
+  - first:
+      213: 21300190
+    second: Goblin-Green64_95
+  - first:
+      213: 21300192
+    second: Goblin-Green64_96
+  - first:
+      213: 21300194
+    second: Goblin-Green64_97
+  - first:
+      213: 21300196
+    second: Goblin-Green64_98
+  - first:
+      213: 21300198
+    second: Goblin-Green64_99
+  - first:
+      213: 21300200
+    second: Goblin-Green64_100
+  - first:
+      213: 21300202
+    second: Goblin-Green64_101
+  - first:
+      213: 21300204
+    second: Goblin-Green64_102
+  - first:
+      213: 21300206
+    second: Goblin-Green64_103
+  - first:
+      213: 21300208
+    second: Goblin-Green64_104
+  - first:
+      213: 21300210
+    second: Goblin-Green64_105
+  - first:
+      213: 21300212
+    second: Goblin-Green64_106
+  - first:
+      213: 21300214
+    second: Goblin-Green64_107
+  - first:
+      213: 21300216
+    second: Goblin-Green64_108
+  - first:
+      213: 21300218
+    second: Goblin-Green64_109
+  - first:
+      213: 21300220
+    second: Goblin-Green64_110
+  - first:
+      213: 21300222
+    second: Goblin-Green64_111
+  - first:
+      213: 21300224
+    second: Goblin-Green64_112
+  - first:
+      213: 21300226
+    second: Goblin-Green64_113
+  - first:
+      213: 21300228
+    second: Goblin-Green64_114
+  - first:
+      213: 21300230
+    second: Goblin-Green64_115
+  - first:
+      213: 21300232
+    second: Goblin-Green64_116
+  - first:
+      213: 21300234
+    second: Goblin-Green64_117
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -141,6 +377,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -175,8 +412,10 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -187,7 +426,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -198,7 +438,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -209,6 +450,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -228,6 +470,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: b968588a275c48a4a8cd2b7863f61df1
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -248,6 +491,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 465da86f7b446de4fb9cf5182737aee9
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -268,6 +512,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 6212fbbf89f279543b0044ad2f46169f
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -288,6 +533,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 53e34ae510bdcea43adbeda229f54dca
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -308,6 +554,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: e17a50c52a0d03d489350b61aeb04dce
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -328,6 +575,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 05651296afdb61b4bb0908b2a9bf44a6
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -348,6 +596,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 4e33d7dd74a1ad641b7f2e47240ef5d9
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -368,6 +617,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 6f73bd88332b2f04fb114c72608dd116
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -388,6 +638,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 4ad619be02c372f41bc301959ec35aa0
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -408,6 +659,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 2ba275bbdd0631f43af1082317996658
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -428,6 +680,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: ec13afe260ced8f4cbf7d224084092e8
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -448,6 +701,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: a84bcc36ee444c841b2da15db4123c98
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -468,6 +722,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: f328865e29f697d4892da58322ca8591
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -488,6 +743,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: a5d424199df80a644a2ba4ced4c5d05d
+      internalID: 21300026
       vertices: []
       indices: 
       edges: []
@@ -508,6 +764,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: f3d5ad825bb834a45a0e9248b74e6d1e
+      internalID: 21300028
       vertices: []
       indices: 
       edges: []
@@ -528,6 +785,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: bae5adbc91e21014c88c7dd4a9878c8d
+      internalID: 21300030
       vertices: []
       indices: 
       edges: []
@@ -548,6 +806,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: b61ace71b9811d84fadc91283eb93d2b
+      internalID: 21300032
       vertices: []
       indices: 
       edges: []
@@ -568,6 +827,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: b1802d911d477c74ebc199e18c7b4e6f
+      internalID: 21300034
       vertices: []
       indices: 
       edges: []
@@ -588,6 +848,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 1478ba381864a8f438abbd75f51a8990
+      internalID: 21300036
       vertices: []
       indices: 
       edges: []
@@ -608,6 +869,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 287806b3b0467b94bad4322f74f51ca5
+      internalID: 21300038
       vertices: []
       indices: 
       edges: []
@@ -628,6 +890,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 13065b1d865ef194389343145eddd00a
+      internalID: 21300040
       vertices: []
       indices: 
       edges: []
@@ -648,6 +911,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 9a93c63bc22a05b459068da274fd897a
+      internalID: 21300042
       vertices: []
       indices: 
       edges: []
@@ -668,6 +932,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 39911fa8abb60a244bebd5d00c7a5a25
+      internalID: 21300044
       vertices: []
       indices: 
       edges: []
@@ -688,6 +953,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: fc00899f741a58742ba783a1ef0ef93f
+      internalID: 21300046
       vertices: []
       indices: 
       edges: []
@@ -708,6 +974,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: a4173038f55b4814396f740d594cfd5e
+      internalID: 21300048
       vertices: []
       indices: 
       edges: []
@@ -728,6 +995,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 77e827bbebb8220408b2515dd2868691
+      internalID: 21300050
       vertices: []
       indices: 
       edges: []
@@ -748,6 +1016,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 7757e1c0e4c957f4292c2cabbbce6178
+      internalID: 21300052
       vertices: []
       indices: 
       edges: []
@@ -768,6 +1037,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 7bb420cfee27127468e4234ac6795a69
+      internalID: 21300054
       vertices: []
       indices: 
       edges: []
@@ -788,6 +1058,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: d37f35bf207adc04594507ea83d4f60a
+      internalID: 21300056
       vertices: []
       indices: 
       edges: []
@@ -808,6 +1079,7 @@ TextureImporter:
       tessellationDetail: -1
       bones: []
       spriteID: 8be5968735078f841a0c5d8fc814f63c
+      internalID: 21300058
       vertices: []
       indices: 
       edges: []
@@ -816,10 +1088,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

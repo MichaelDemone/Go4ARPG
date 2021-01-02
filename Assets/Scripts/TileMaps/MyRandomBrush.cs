@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 namespace UnityEditor {
     [CustomGridBrush(false, false, false, "My Random Brush")]
     [CreateAssetMenu(fileName = "New My Random Brush", menuName = "Brushes/My Random Brush")]
-    public class MyRandomBrush : GridBrush {
+    public class MyRandomBrush : UnityEditor.Tilemaps.GridBrush {
 
         [Serializable]
         public struct RandomTileSet {
@@ -72,7 +72,7 @@ namespace UnityEditor {
 
 
     [CustomEditor(typeof(MyRandomBrush))]
-    public class RandomBrushEditor : GridBrushEditor {
+    public class RandomBrushEditor : UnityEditor.Tilemaps.GridBrushEditor {
         private MyRandomBrush randomBrush { get { return target as MyRandomBrush; } }
         private GameObject lastBrushTarget;
 

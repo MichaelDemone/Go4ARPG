@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 namespace UnityEditor {
     [CustomGridBrush(false, false, false, "Smart Brush")]
     [CreateAssetMenu(fileName = "New Smart Brush", menuName = "Brushes/Smart Brush")]
-    public class SmartBrush : GridBrush {
+    public class SmartBrush : UnityEditor.Tilemaps.GridBrush {
 
         [Serializable]
         public struct PathTileSet {
@@ -197,7 +197,7 @@ namespace UnityEditor {
 
 
     [CustomEditor(typeof(SmartBrush))]
-    public class SmartBrushEditor : GridBrushEditor {
+    public class SmartBrushEditor : UnityEditor.Tilemaps.GridBrushEditor {
         private SmartBrush randomBrush { get { return target as SmartBrush; } }
         private GameObject lastBrushTarget;
 

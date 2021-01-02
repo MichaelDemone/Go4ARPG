@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour {
     }
 
     void Start() {
-        HealthBar.SetData(CurrentHealth, MaxHealth);
+        if(HealthBar) HealthBar.SetData(CurrentHealth, MaxHealth);
     }
 
     // Update is called once per frame

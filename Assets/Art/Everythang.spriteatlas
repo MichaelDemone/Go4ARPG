@@ -40,10 +40,12 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: b99b34fe21a073b45b54c54f5c963b9d, type: 3}
     - {fileID: 2800000, guid: cae61065253518a44a270776d381066b, type: 3}
+    totalSpriteSurfaceArea: 4500
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -140,5 +142,6 @@ SpriteAtlas:
   - GregTiles2_25
   - GregTiles2_26
   - GregTiles2_27
+  m_RenderDataMap: {}
   m_Tag: Everythang
   m_IsVariant: 0

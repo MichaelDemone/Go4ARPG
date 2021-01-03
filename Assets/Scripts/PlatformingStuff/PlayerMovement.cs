@@ -9,6 +9,7 @@ using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour {
 
     public static PlayerMovement Instance;
+    public PlayerPickUp PlayerPickUp;
 
 
     [Header("Autoset References")] 
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 
     [Header("Movement")]
     public float MovementForceStrength = 1f;
+    public int PlayerLiftWeight = 10;
 
     public SimpleControls Inputs;
 
@@ -49,11 +51,18 @@ public class PlayerMovement : MonoBehaviour {
         Inputs = new SimpleControls();
 
         Inputs.gameplay.interact.performed += Interact_performed;
+        Inputs.gameplay.pickup.performed += Pickup_performed;
     }
 
     private void Interact_performed(InputAction.CallbackContext obj)
     {
         Debug.Log("interacted");
+    }
+
+    private void Pickup_performed(InputAction.CallbackContext obj)
+    {
+        //Debug.Log("picked up");
+        PlayerPickUp.PickUp();
     }
 
     // Update is called once per frame

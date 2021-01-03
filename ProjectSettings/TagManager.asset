@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TransitionArea
   - PlayerWeapon
+  - Moveable
+  - Mineable
   layers:
   - Default
   - TransparentFX

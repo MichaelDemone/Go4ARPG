@@ -24,7 +24,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                     ""id"": ""1077f913-a9f9-41b1-acb3-b9ee0adbc744"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap,SlowTap""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""move"",
@@ -41,13 +41,32 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""pickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""a243a753-4da0-4d3c-9f08-e7db278e2463"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""abb776f3-f329-4f7b-bbf8-b577d13be018"",
-                    ""path"": ""*/{PrimaryAction}"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1bfb99cc-f6cf-409e-b631-7852949e0e8d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -142,6 +161,28 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                     ""action"": ""look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48074a9a-0f62-4cf8-a040-484491d21044"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a433333b-b9fa-442a-ae2c-487e0c931b5d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -153,6 +194,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
         m_gameplay_interact = m_gameplay.FindAction("interact", throwIfNotFound: true);
         m_gameplay_move = m_gameplay.FindAction("move", throwIfNotFound: true);
         m_gameplay_look = m_gameplay.FindAction("look", throwIfNotFound: true);
+        m_gameplay_pickup = m_gameplay.FindAction("pickup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +247,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
     private readonly InputAction m_gameplay_interact;
     private readonly InputAction m_gameplay_move;
     private readonly InputAction m_gameplay_look;
+    private readonly InputAction m_gameplay_pickup;
     public struct GameplayActions
     {
         private @SimpleControls m_Wrapper;
@@ -212,6 +255,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
         public InputAction @interact => m_Wrapper.m_gameplay_interact;
         public InputAction @move => m_Wrapper.m_gameplay_move;
         public InputAction @look => m_Wrapper.m_gameplay_look;
+        public InputAction @pickup => m_Wrapper.m_gameplay_pickup;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +274,9 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                 @look.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
                 @look.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
                 @look.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLook;
+                @pickup.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickup;
+                @pickup.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickup;
+                @pickup.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickup;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +290,9 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                 @look.started += instance.OnLook;
                 @look.performed += instance.OnLook;
                 @look.canceled += instance.OnLook;
+                @pickup.started += instance.OnPickup;
+                @pickup.performed += instance.OnPickup;
+                @pickup.canceled += instance.OnPickup;
             }
         }
     }
@@ -252,5 +302,6 @@ public class @SimpleControls : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
     }
 }

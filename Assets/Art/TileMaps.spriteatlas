@@ -40,9 +40,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: f6fe9a3935fb445448ee30765b1db1d1, type: 3}
+    totalSpriteSurfaceArea: 26284
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -255,5 +257,6 @@ SpriteAtlas:
   - GregTiles2_25
   - GregTiles2_26
   - GregTiles2_27
+  m_RenderDataMap: {}
   m_Tag: TileMaps
   m_IsVariant: 0
